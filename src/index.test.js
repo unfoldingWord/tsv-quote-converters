@@ -1,20 +1,41 @@
 // index.test.js
-import ConvertULTQuotesToOLQuotes from './index';
+import TSV7ULTQuotesToOrigLQuotes from "./index";
 
-test('ConvertULTQuotesToOLQuotes with book "jdg" and provided tsvContent', () => {
-  const book = 'jdg';
-  const tsvContent = `
-  15:1	k3p9		rc://*/ta/man/translate/writing-newevent	And it happened	1	The author is using this phrase to introduce a new event in the story. Use a word, phrase, or other method in your language that is natural for introducing a new event.
-  15:1	m2q4		rc://*/ta/man/translate/figs-metonymy	in the days of	1	The author is using the word **days** by association to mean ”time.” Alternate translation: “at the time of”
+describe("TSV7ULTQuotesToOrigLQuotes", () => {
+  it('TSV7ULTQuotesToOrigLQuotes with book "jol" and provided tsvContent', async () => {
+    const book = "jol";
+    const tsvContent = `
+Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
+1:5	f2g7		rc://*/ta/man/translate/grammar-connect-logic-result	Wake up, drunkards, and weep! And wail, all of the drinkers of wine, upon the sweet wine, for it has been cut off from your mouth	1	See the discussion in the General Introduction to Joel of places such as this where the speaker describes a result before giving the reason for it. If it would be more natural in your language, you could reverse the order of these phrases, since the second phrase gives the reason for the result that the first phrase describes. Alternate translation: “The sweet wine has been cut off from your mouth, so wail upon it, all of the drinkers of wine”
+1:5	q7n2		rc://*/ta/man/translate/figs-idiom	it has been cut off from your mouth	1	This is an expression that means that something is no longer available. Your language may have a comparable expression that you can use in your translation. Alternate translation: “it is no longer available for you to drink”
+1:5	v7w2		rc://*/ta/man/translate/grammar-collectivenouns	from your mouth	1	Since Joel is referring to a group of people, it might be more natural in your language to use the plural form of **mouth**. Alternate translation: “from your mouths”
   `;
 
-  const result = ConvertULTQuotesToOLQuotes(book, tsvContent);
+    try {
+      const { output, errors } = await TSV7ULTQuotesToOrigLQuotes(
+        book,
+        tsvContent
+      );
 
-  // Add your expected output here
-  const expectedOutput = {
-    output: '', // Replace with expected output
-    errors: ''  // Replace with expected errors
-  };
+      const expectedOutput = {
+        output: `Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
+1:5	f2g7		rc://*/ta/man/translate/grammar-connect-logic-result	הָקִ֤יצוּ שִׁכּוֹרִים֙ וּ⁠בְכ֔וּ וְ⁠הֵילִ֖לוּ כָּל שֹׁ֣תֵי יָ֑יִן עַל עָסִ֕יס כִּ֥י נִכְרַ֖ת מִ⁠פִּי⁠כֶֽם	1	See the discussion in the General Introduction to Joel of places such as this where the speaker describes a result before giving the reason for it. If it would be more natural in your language, you could reverse the order of these phrases, since the second phrase gives the reason for the result that the first phrase describes. Alternate translation: “The sweet wine has been cut off from your mouth, so wail upon it, all of the drinkers of wine”
+1:5	q7n2		rc://*/ta/man/translate/figs-idiom	נִכְרַ֖ת מִ⁠פִּי⁠כֶֽם	1	This is an expression that means that something is no longer available. Your language may have a comparable expression that you can use in your translation. Alternate translation: “it is no longer available for you to drink”
+1:5	v7w2		rc://*/ta/man/translate/grammar-collectivenouns	מִ⁠פִּי⁠כֶֽם	1	Since Joel is referring to a group of people, it might be more natural in your language to use the plural form of **mouth**. Alternate translation: “from your mouths”`,
+        errors: "",
+      };
 
-  expect(result).toEqual(expectedOutput);
+      // Check the output
+      expect(output).toBeDefined();
+      expect(output).toEqual(expectedOutput.output);
+
+      // Check the errors
+      expect(errors).toBeDefined();
+      expect(errors).toEqual(expectedOutput.errors);
+    } catch (error) {
+      // Handle any unexpected errors
+      console.error("Test failed with error:", error);
+      throw error;
+    }
+  });
 });

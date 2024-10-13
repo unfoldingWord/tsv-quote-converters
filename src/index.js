@@ -1,1 +1,1 @@
-export * from './core';
+export { default } from './core/TSV7ULTQuotesToOrigLQuotes';

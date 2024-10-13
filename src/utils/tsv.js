@@ -12,15 +12,16 @@ const tsvRowToObject = entry => {
     }
 }
 
-const parseTsvToObjects = content => {
+export const parseTsvToObjects = content => {
     const tsvEntries = content
         .split("\n")
+        .filter(r => r.trim())
         .map(r => r.split("\t"))
         .entries();
     return [...tsvEntries]
         .map(r => tsvRowToObject(r))
 }
 
-const tsvRecordToString = record => {
+export const tsvRecordToString = record => {
     return `${record.ref}\t${record.id}\t${record.tags}\t${record.supportReference}\t${record.quote}\t${record.occurrence}\t${record.note}`;
 }
