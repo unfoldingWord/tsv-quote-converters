@@ -10,6 +10,15 @@ import { slimSourceTokens } from '../utils/tokens';
 // Adapted from https://github.com/unfoldingWord-box3/uw-proskomma/blob/main/src/utils/download.js May 2021
 const getDocuments = async (pk, book, dcsUrl = "https://git.door43.org") => {
   book = book.toLowerCase()
+
+  const existingBookCodes = Object.values(pk.documents)
+    .filter(d => docSet.docIds.includes(d.id))
+    .map(d => d.headers.bookCode);
+
+  if (existingBookCodes.includes(book)) {
+    return pk;
+  }
+
   const ol_bible = BibleBookData?.[book]?.testament === "old" ? "hbo_uhb" : "el-x-koine_ugnt";
   if (!ol_bible) {
     console.error(`ERROR: Book ${book} not a valid Bible book`);
@@ -45,6 +54,7 @@ const getDocuments = async (pk, book, dcsUrl = "https://git.door43.org") => {
     pk.importDocuments(selectors, 'usfm', content, {});
     // console.log(`      Imported in ${Date.now() - startTime} msec`);
   }
+  pk.getDocuments();
   return pk;
 };
 
@@ -242,7 +252,7 @@ const getTidiedData = (wordList) => {
 
 const prune = true; // only return the matching quote -- not the entire verse text
 
-export default function TSV7ULTQuotesToOrigLQuotes(book, tsvContent) {
+export default function TSV7ULTQuotesToOrigLQuotes(book, tsvContent, dcsUrl = "https://git.door43.org") {  
   return new Promise((resolve, reject) => {
     let output = [];
     let errors = [];
@@ -272,7 +282,7 @@ export default function TSV7ULTQuotesToOrigLQuotes(book, tsvContent) {
       }
     ]);    
 
-    getDocuments(pk, book)
+    getDocuments(pk, book, dcsUrl)
       .then(async () => {
         // Query Proskomma which now contains the books
         const tokenLookup = await doAlignmentQuery(pk);
