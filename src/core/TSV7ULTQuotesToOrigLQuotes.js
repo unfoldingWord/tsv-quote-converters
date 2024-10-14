@@ -54,7 +54,6 @@ const getDocuments = async (pk, book, dcsUrl = "https://git.door43.org") => {
     pk.importDocuments(selectors, 'usfm', content, {});
     // console.log(`      Imported in ${Date.now() - startTime} msec`);
   }
-  pk.getDocuments();
   return pk;
 };
 
@@ -292,10 +291,9 @@ export default function TSV7ULTQuotesToOrigLQuotes(book, tsvContent, dcsUrl = "h
         console.log("TSV RECORDS", tsvRecords);
         for (const tsvRecord of tsvRecords) {
           nRecords++;
-          if (!tsvRecord.ref || !tsvRecord.quote || !tsvRecord.occurrence || tsvRecord.ref == "Reference") {
-            if (tsvRecord.ref) {
-              output.push(tsvRecordToString(tsvRecord));
-            }
+          if (!tsvRecord.ref || !tsvRecord.quote || !tsvRecord.occurrence || tsvRecord.ref == "Reference" || ! /[a-zA-Z]/.test(tsvRecord.quote)) {
+            // Last condition checks for Latin alphabet characters. If none, we don't need to process this record since not an English ULT quote
+            output.push(tsvRecordToString(tsvRecord));
             continue;
           }
           const cv = tsvRecord.ref;
@@ -320,7 +318,7 @@ export default function TSV7ULTQuotesToOrigLQuotes(book, tsvContent, dcsUrl = "h
             errors.push(errorMsg);
           }
         }
-        resolve({ output: output.join("\n"), errors: errors.join("\n") });
+        resolve({ output, errors });
       })
       .catch((err) => {
         console.error(err);
