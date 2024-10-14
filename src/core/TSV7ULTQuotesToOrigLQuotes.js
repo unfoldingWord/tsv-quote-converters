@@ -7,22 +7,38 @@ import { parseTsvToObjects, tsvRecordToString } from '../utils/tsv';
 import { rejigAlignment } from '../utils/rejig_alignment';
 import { slimSourceTokens } from '../utils/tokens';
 
+const pk = new Proskomma([
+  {
+      name: "org",
+      type: "string",
+      regex: "^[^\\s]+$"
+  },
+  {
+      name: "lang",
+      type: "string",
+      regex: "^[^\\s]+$"
+  },
+  {
+      name: "abbr",
+      type: "string",
+      regex: "^[A-za-z0-9_-]+$"
+  }
+]);
+let tokenLookup = {};
+const importedBooks = [];
+
 // Adapted from https://github.com/unfoldingWord-box3/uw-proskomma/blob/main/src/utils/download.js May 2021
-const getDocuments = async (pk, book, dcsUrl = "https://git.door43.org") => {
+const getDocuments = async (book, dcsUrl = "https://git.door43.org") => {
   book = book.toLowerCase()
 
-  const existingBookCodes = Object.values(pk.documents)
-    .filter(d => docSet.docIds.includes(d.id))
-    .map(d => d.headers.bookCode);
-
-  if (existingBookCodes.includes(book)) {
+  if (importedBooks.includes(book)) {
     return pk;
   }
 
   const ol_bible = BibleBookData?.[book]?.testament === "old" ? "hbo_uhb" : "el-x-koine_ugnt";
   if (!ol_bible) {
     console.error(`ERROR: Book ${book} not a valid Bible book`);
-    return;
+    return pk;
   }
   const baseURLs = [
       ['unfoldingWord', ...ol_bible.split('_'), `${dcsUrl}/api/v1/repos/unfoldingWord/${ol_bible}/contents/${BibleBookData[book].usfm}.usfm`],
@@ -51,15 +67,22 @@ const getDocuments = async (pk, book, dcsUrl = "https://git.door43.org") => {
     if (abbr === 'ult') {
       content = [rejigAlignment(content)]; // Tidy-up ULT USFM alignment info
     }
-    pk.importDocuments(selectors, 'usfm', content, {});
+    try {
+      pk.importDocuments(selectors, 'usfm', content, {});
+    } catch (err) {
+      if (! err.message.includes('already exists in docSet')) {
+        console.error(`ERROR: ${err}`);
+      }
+    }
     // console.log(`      Imported in ${Date.now() - startTime} msec`);
   }
+  importedBooks.push(book);
   return pk;
 };
 
 // Adapted from https://github.com/unfoldingWord-box3/uw-proskomma/blob/main/src/utils/query.js May 2021
 // Called from main
-const doAlignmentQuery = async (pk) => {
+const doAlignmentQuery = async () => {
   const query =
     '{' +
     'docSets {' +
@@ -86,11 +109,11 @@ const doAlignmentQuery = async (pk) => {
   if (result.errors) {
     throw new Error(result.errors);
   }
-  const ret = {};
+  tokenLookup = {};
   for (const docSet of result.data.docSets) {
-    ret[docSet.abbr] = {};
+    tokenLookup[docSet.abbr] = {};
     for (const document of docSet.documents) {
-      ret[docSet.abbr][document.book] = {};
+      tokenLookup[docSet.abbr][document.book] = {};
       for (const itemGroup of document.mainSequence.itemGroups) {
         const chapter = itemGroup.scopeLabels.filter((s) => s.startsWith('chapter/'))[0].split('/')[1];
         for (const verse of itemGroup.scopeLabels
@@ -98,12 +121,11 @@ const doAlignmentQuery = async (pk) => {
           .split('/')[1]
           .split('-')) {
           const cv = `${chapter}:${verse}`;
-          ret[docSet.abbr][document.book][cv] = itemGroup.tokens;
+          tokenLookup[docSet.abbr][document.book][cv] = itemGroup.tokens;
         }
       }
     }
   }
-  return ret;
 };
 
 // Adapted from https://github.com/unfoldingWord-box3/uw-proskomma/blob/main/src/utils/search.js May 2021
@@ -263,32 +285,15 @@ export default function TSV7ULTQuotesToOrigLQuotes(book, tsvContent, dcsUrl = "h
       reject(errorMsg);
     }
 
-    const pk = new Proskomma([
-      {
-          name: "org",
-          type: "string",
-          regex: "^[^\\s]+$"
-      },
-      {
-          name: "lang",
-          type: "string",
-          regex: "^[^\\s]+$"
-      },
-      {
-          name: "abbr",
-          type: "string",
-          regex: "^[A-za-z0-9_-]+$"
-      }
-    ]);    
-
-    getDocuments(pk, book, dcsUrl)
+    getDocuments(book, dcsUrl)
       .then(async () => {
         // Query Proskomma which now contains the books
-        const tokenLookup = await doAlignmentQuery(pk);
+        if (! tokenLookup?.ult?.[book.toUpperCase()] || ! tokenLookup[testament === 'old' ? 'uhb' : 'ugnt']?.[book.toUpperCase()]) {
+          await doAlignmentQuery();
+        }
         let nRecords = 0;
         let counts = { pass: 0, fail: 0 };
         const tsvRecords = parseTsvToObjects(tsvContent);
-        console.log("TSV RECORDS", tsvRecords);
         for (const tsvRecord of tsvRecords) {
           nRecords++;
           if (!tsvRecord.ref || !tsvRecord.quote || !tsvRecord.occurrence || tsvRecord.ref == "Reference" || ! /[a-zA-Z]/.test(tsvRecord.quote)) {
@@ -303,7 +308,6 @@ export default function TSV7ULTQuotesToOrigLQuotes(book, tsvContent, dcsUrl = "h
           const wordLikeULTTokens = allULTTokens.filter((t) => t.subType === 'wordLike').map(({ subType, position, ...rest }) => rest);
 
           const resultObject = origLFromGLQuote(book, cv, sourceTokens, wordLikeULTTokens, tsvRecord.quote, tsvRecord.occurrence, prune);
-          console.log(resultObject);
           if ('data' in resultObject) {
             console.assert(!resultObject.error);
             counts.pass++;
