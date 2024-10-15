@@ -32,13 +32,13 @@ const getDocuments = async (book, dcsUrl = "https://git.door43.org") => {
   book = book.toLowerCase()
 
   if (importedBooks.includes(book)) {
-    return pk;
+    return;
   }
 
   const ol_bible = BibleBookData?.[book]?.testament === "old" ? "hbo_uhb" : "el-x-koine_ugnt";
   if (!ol_bible) {
     console.error(`ERROR: Book ${book} not a valid Bible book`);
-    return pk;
+    return;
   }
   const baseURLs = [
       ['unfoldingWord', ...ol_bible.split('_'), `${dcsUrl}/api/v1/repos/unfoldingWord/${ol_bible}/contents/${BibleBookData[book].usfm}.usfm`],
@@ -77,7 +77,7 @@ const getDocuments = async (book, dcsUrl = "https://git.door43.org") => {
     // console.log(`      Imported in ${Date.now() - startTime} msec`);
   }
   importedBooks.push(book);
-  return pk;
+  return;
 };
 
 // Adapted from https://github.com/unfoldingWord-box3/uw-proskomma/blob/main/src/utils/query.js May 2021
@@ -301,6 +301,7 @@ export default function TSV7ULTQuotesToOrigLQuotes(book, tsvContent, dcsUrl = "h
             output.push(tsvRecordToString(tsvRecord));
             continue;
           }
+          tsvRecord.quote = tsvRecord.quote.replace("QUOTE_NOT_FOUND: ", "");
           const cv = tsvRecord.ref;
           const source = testament === 'old' ? tokenLookup.uhb : tokenLookup.ugnt;
           const sourceTokens = source[book.toUpperCase()][cv];
