@@ -273,7 +273,9 @@ const getTidiedData = (wordList) => {
 
 const prune = true; // only return the matching quote -- not the entire verse text
 
-export default function TSV7ULTQuotesToOrigLQuotes(book, tsvContent, dcsUrl = "https://git.door43.org") {  
+const containsHebrewOrGreek = (text) => /[\u0590-\u05FF\uFB1D-\uFB4F\u0370-\u03FF\u1F00-\u1FFF]/.test(text);
+
+export default function tsv7_ult_quotes_to_origl_quotes(book, tsvContent, dcsUrl = "https://git.door43.org") {  
   return new Promise((resolve, reject) => {
     let output = [];
     let errors = [];
@@ -296,8 +298,8 @@ export default function TSV7ULTQuotesToOrigLQuotes(book, tsvContent, dcsUrl = "h
         const tsvRecords = parseTsvToObjects(tsvContent);
         for (const tsvRecord of tsvRecords) {
           nRecords++;
-          if (!tsvRecord.ref || !tsvRecord.quote || !tsvRecord.occurrence || tsvRecord.ref == "Reference" || ! /[a-zA-Z]/.test(tsvRecord.quote)) {
-            // Last condition checks for Latin alphabet characters. If none, we don't need to process this record since not an English ULT quote
+          if (!tsvRecord.ref || !tsvRecord.quote?.trim() || !tsvRecord.occurrence || tsvRecord.ref == "Reference" || containsHebrewOrGreek(tsvRecord.quote)) {
+            // Last condition checks for Greek or Hebrew characters. If they exist, we don't need to process this record since not an English ULT quote
             output.push(tsvRecordToString(tsvRecord));
             continue;
           }

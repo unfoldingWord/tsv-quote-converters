@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.js"),
-      name: "TSV7ULTQuotesToOrigLQuotes",
+      name: "tsv7_ult_quotes_to_origl_quotes",
       formats: ["es"],
     },
   }
