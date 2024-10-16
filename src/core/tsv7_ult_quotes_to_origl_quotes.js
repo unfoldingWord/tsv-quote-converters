@@ -310,7 +310,50 @@ export default function tsv7_ult_quotes_to_origl_quotes(book, tsvContent, dcsUrl
           const allULTTokens = tokenLookup['ult'][book.toUpperCase()][cv];
           const wordLikeULTTokens = allULTTokens.filter((t) => t.subType === 'wordLike').map(({ subType, position, ...rest }) => rest);
 
-          const resultObject = origLFromGLQuote(book, cv, sourceTokens, wordLikeULTTokens, tsvRecord.quote, tsvRecord.occurrence, prune);
+          const cleanQuote = tsvRecord.quote.replace(/&/g, '…').replace(/[{}]/g, '');
+          const cleanQuoteUC = cleanQuote.replace(/([a-z])/, (match) => match.toUpperCase());
+
+          const quotesToTry = [cleanQuote];
+          if( tsvRecord.quote != cleanQuote ) {
+            quotesToTry.push(tsvRecord.quote);
+          }
+          if (cleanQuote.includes('…')) {
+            quotesToTry.push(cleanQuote.split(/ *… */));
+            if ( tsvRecord.quote != cleanQuote ) {
+              quotesToTry.push(tsvRecord.quote.split(/ *… */));
+            }
+          }
+          if (cleanQuote != cleanQuoteUC) {
+            quotesToTry.push(cleanQuoteUC);
+            if (cleanQuoteUC.includes('…')) {
+              quotesToTry.push(cleanQuoteUC.split(/ *… */));
+            }
+          }
+
+          let resultObject = null;
+          for (const quote of quotesToTry) {
+            console.log("TRYING "+quote);
+            if (typeof quote === 'string') {
+              resultObject = origLFromGLQuote(book, cv, sourceTokens, wordLikeULTTokens, quote, tsvRecord.occurrence, prune);
+              if ('data' in resultObject) {
+                break;
+              }
+            } else if (Array.isArray(quote)) {
+              const partsConverted = [];
+              for (const part of quote) {
+                resultObject = origLFromGLQuote(book, cv, sourceTokens, wordLikeULTTokens, part, tsvRecord.occurrence, prune);
+                if (! ('data' in resultObject)) {
+                  break;
+                }
+                partsConverted.push(getTidiedData(resultObject.data));
+              }
+              if (partsConverted.length === quote.length) {
+                resultObject.data = [partsConverted.join(' & ')];
+                break;
+              }
+            }
+          }
+
           if ('data' in resultObject) {
             console.assert(!resultObject.error);
             counts.pass++;
