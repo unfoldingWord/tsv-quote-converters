@@ -332,7 +332,6 @@ export default function tsv7_ult_quotes_to_origl_quotes(book, tsvContent, dcsUrl
 
           let resultObject = null;
           for (const quote of quotesToTry) {
-            console.log("TRYING "+quote);
             if (typeof quote === 'string') {
               resultObject = origLFromGLQuote(book, cv, sourceTokens, wordLikeULTTokens, quote, tsvRecord.occurrence, prune);
               if ('data' in resultObject) {
@@ -343,7 +342,10 @@ export default function tsv7_ult_quotes_to_origl_quotes(book, tsvContent, dcsUrl
               for (const part of quote) {
                 resultObject = origLFromGLQuote(book, cv, sourceTokens, wordLikeULTTokens, part, tsvRecord.occurrence, prune);
                 if (! ('data' in resultObject)) {
-                  break;
+                  resultObject = origLFromGLQuote(book, cv, sourceTokens, wordLikeULTTokens, part.replace(/([a-z])/, (match) => match.toUpperCase()), tsvRecord.occurrence, prune);
+                  if (! ('data' in resultObject)) {
+                    break;
+                  }
                 }
                 partsConverted.push(getTidiedData(resultObject.data));
               }
