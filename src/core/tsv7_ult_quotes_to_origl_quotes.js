@@ -147,7 +147,7 @@ const searchULTWordRecords = (ULTSearchString, ULTTokens) => {
     // The ULT "sourceTokens" have all punctuation (incl. word punctuation) as separate tokens!
     // So remove sentence punctuation (incl. all apostrophes!) from our individual search words
     // Added 'all' scope flag below to handle words with multiple punctuation marks to be removed, e.g. "(word),"
-    searchExpr = xregexp.replace(searchExpr, /[“‘(),”’?:;.!]/, '', 'all'); // Added colon and parentheses
+    searchExpr = xregexp.replace(searchExpr, /["'“‘”’{}(),?:;.!]/, '', 'all'); // Added colon and parentheses
     if (searchExpr.includes('…')) {
       const searchExprParts = searchExpr.split('…');
       ret.push([searchExprParts[0], false]);
@@ -266,7 +266,7 @@ const origLFromGLQuote = (book, cv, sourceTokens, ULTTokens, ULTSearchString, se
 const getTidiedData = (wordList) => {
   // console.log(`getTidiedData((${wordList.length}) ${wordList})…`);
 
-  const tidiedDataString = wordList.join(' ').replace(/ … /, '…');
+  const tidiedDataString = wordList.join(' ').replace(/\s*…\s*/, ' & ');
   // console.log(`  Returning '${tidiedDataString}'`);
   return tidiedDataString;
 };
