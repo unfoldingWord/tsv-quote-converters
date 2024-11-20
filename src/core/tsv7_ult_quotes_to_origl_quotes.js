@@ -9,40 +9,40 @@ import { slimSourceTokens } from '../utils/tokens';
 
 const pk = new Proskomma([
   {
-      name: "org",
-      type: "string",
-      regex: "^[^\\s]+$"
+    name: 'org',
+    type: 'string',
+    regex: '^[^\\s]+$',
   },
   {
-      name: "lang",
-      type: "string",
-      regex: "^[^\\s]+$"
+    name: 'lang',
+    type: 'string',
+    regex: '^[^\\s]+$',
   },
   {
-      name: "abbr",
-      type: "string",
-      regex: "^[A-za-z0-9_-]+$"
-  }
+    name: 'abbr',
+    type: 'string',
+    regex: '^[A-za-z0-9_-]+$',
+  },
 ]);
 let tokenLookup = {};
 const importedBooks = [];
 
 // Adapted from https://github.com/unfoldingWord-box3/uw-proskomma/blob/main/src/utils/download.js May 2021
-const getDocuments = async (book, dcsUrl = "https://git.door43.org") => {
-  book = book.toLowerCase()
+const getDocuments = async (book, dcsUrl = 'https://git.door43.org') => {
+  book = book.toLowerCase();
 
   if (importedBooks.includes(book)) {
     return;
   }
 
-  const ol_bible = BibleBookData?.[book]?.testament === "old" ? "hbo_uhb" : "el-x-koine_ugnt";
+  const ol_bible = BibleBookData?.[book]?.testament === 'old' ? 'hbo_uhb' : 'el-x-koine_ugnt';
   if (!ol_bible) {
     console.error(`ERROR: Book ${book} not a valid Bible book`);
     return;
   }
   const baseURLs = [
-      ['unfoldingWord', ...ol_bible.split('_'), `${dcsUrl}/api/v1/repos/unfoldingWord/${ol_bible}/contents/${BibleBookData[book].usfm}.usfm`],
-      ['unfoldingWord', 'en', 'ult', `${dcsUrl}/api/v1/repos/unfoldingWord/en_ult/contents/${BibleBookData[book].usfm}.usfm`],
+    ['unfoldingWord', ...ol_bible.split('_'), `${dcsUrl}/api/v1/repos/unfoldingWord/${ol_bible}/contents/${BibleBookData[book].usfm}.usfm`],
+    ['unfoldingWord', 'en', 'ult', `${dcsUrl}/api/v1/repos/unfoldingWord/en_ult/contents/${BibleBookData[book].usfm}.usfm`],
   ];
   // console.log('Download USFM');
   for (const [org, lang, abbr, baseURL] of baseURLs) {
@@ -70,7 +70,7 @@ const getDocuments = async (book, dcsUrl = "https://git.door43.org") => {
     try {
       pk.importDocuments(selectors, 'usfm', content, {});
     } catch (err) {
-      if (! err.message.includes('already exists in docSet')) {
+      if (!err.message.includes('already exists in docSet')) {
         console.error(`ERROR: ${err}`);
       }
     }
@@ -275,7 +275,7 @@ const prune = true; // only return the matching quote -- not the entire verse te
 
 const containsHebrewOrGreek = (text) => /[\u0590-\u05FF\uFB1D-\uFB4F\u0370-\u03FF\u1F00-\u1FFF]/.test(text);
 
-export default function tsv7_ult_quotes_to_origl_quotes(book, tsvContent, dcsUrl = "https://git.door43.org") {  
+export default function tsv7_ult_quotes_to_origl_quotes(book, tsvContent, dcsUrl = 'https://git.door43.org') {
   return new Promise((resolve, reject) => {
     let output = [];
     let errors = [];
@@ -290,7 +290,7 @@ export default function tsv7_ult_quotes_to_origl_quotes(book, tsvContent, dcsUrl
     getDocuments(book, dcsUrl)
       .then(async () => {
         // Query Proskomma which now contains the books
-        if (! tokenLookup?.ult?.[book.toUpperCase()] || ! tokenLookup[testament === 'old' ? 'uhb' : 'ugnt']?.[book.toUpperCase()]) {
+        if (!tokenLookup?.ult?.[book.toUpperCase()] || !tokenLookup[testament === 'old' ? 'uhb' : 'ugnt']?.[book.toUpperCase()]) {
           await doAlignmentQuery();
         }
         let nRecords = 0;
@@ -298,76 +298,110 @@ export default function tsv7_ult_quotes_to_origl_quotes(book, tsvContent, dcsUrl
         const tsvRecords = parseTsvToObjects(tsvContent);
         for (const tsvRecord of tsvRecords) {
           nRecords++;
-          if (!tsvRecord.ref || !tsvRecord.quote?.trim() || !tsvRecord.occurrence || tsvRecord.ref == "Reference" || containsHebrewOrGreek(tsvRecord.quote)) {
+          if (!tsvRecord.ref || !tsvRecord.quote?.trim() || !tsvRecord.occurrence || tsvRecord.ref == 'Reference' || containsHebrewOrGreek(tsvRecord.quote)) {
             // Last condition checks for Greek or Hebrew characters. If they exist, we don't need to process this record since not an English ULT quote
             output.push(tsvRecordToString(tsvRecord));
             continue;
           }
-          tsvRecord.quote = tsvRecord.quote.replace("QUOTE_NOT_FOUND: ", "");
-          const cv = tsvRecord.ref;
-          const source = testament === 'old' ? tokenLookup.uhb : tokenLookup.ugnt;
-          const sourceTokens = source[book.toUpperCase()][cv];
-          const allULTTokens = tokenLookup['ult'][book.toUpperCase()][cv];
-          const wordLikeULTTokens = allULTTokens.filter((t) => t.subType === 'wordLike').map(({ subType, position, ...rest }) => rest);
-
-          const cleanQuote = tsvRecord.quote.replace(/&/g, '…').replace(/[{}]/g, '');
-          const cleanQuoteUC = cleanQuote.replace(/([a-z])/, (match) => match.toUpperCase());
-
-          const quotesToTry = [cleanQuote];
-          if( tsvRecord.quote != cleanQuote ) {
-            quotesToTry.push(tsvRecord.quote);
-          }
-          if (cleanQuote.includes('…')) {
-            quotesToTry.push(cleanQuote.split(/ *… */));
-            if ( tsvRecord.quote != cleanQuote ) {
-              quotesToTry.push(tsvRecord.quote.split(/ *… */));
-            }
-          }
-          if (cleanQuote != cleanQuoteUC) {
-            quotesToTry.push(cleanQuoteUC);
-            if (cleanQuoteUC.includes('…')) {
-              quotesToTry.push(cleanQuoteUC.split(/ *… */));
-            }
-          }
-
-          let resultObject = null;
-          for (const quote of quotesToTry) {
-            if (typeof quote === 'string') {
-              resultObject = origLFromGLQuote(book, cv, sourceTokens, wordLikeULTTokens, quote, tsvRecord.occurrence, prune);
-              if ('data' in resultObject) {
-                break;
-              }
-            } else if (Array.isArray(quote)) {
-              const partsConverted = [];
-              for (const part of quote) {
-                resultObject = origLFromGLQuote(book, cv, sourceTokens, wordLikeULTTokens, part, tsvRecord.occurrence, prune);
-                if (! ('data' in resultObject)) {
-                  resultObject = origLFromGLQuote(book, cv, sourceTokens, wordLikeULTTokens, part.replace(/([a-z])/, (match) => match.toUpperCase()), tsvRecord.occurrence, prune);
-                  if (! ('data' in resultObject)) {
-                    break;
-                  }
+          tsvRecord.quote = tsvRecord.quote.replace('QUOTE_NOT_FOUND: ', '');
+          const [chapter, verseRef] = tsvRecord.ref.split(':');
+          console.log(`chapter: ${chapter}, verseRef: ${verseRef}`);
+          const verses = [];
+          const verseCommaParts = verseRef.trim().split(',');
+          console.log("CHAPTER: ", chapter, verseRef);
+          console.log("verseCommaParts:", verseCommaParts);
+          for (const commaPart of verseCommaParts) {
+            if (commaPart.includes('-')) {
+              const verseRange = commaPart.trim().split('-');
+              if (verseRange.length > 1) {
+                for (let i = parseInt(verseRange[0]); i <= parseInt(verseRange[1]); i++) {
+                  verses.push(i);
                 }
-                partsConverted.push(getTidiedData(resultObject.data));
               }
-              if (partsConverted.length === quote.length) {
-                resultObject.data = [partsConverted.join(' & ')];
-                break;
-              }
+            } else {
+              verses.push(parseInt(commaPart));
             }
           }
+          console.log('VERSES:', verses);
+          for (const verseIdx in verses) {
+            const verse = verses[verseIdx];
+            const cv = `${chapter}:${verse}`;
+            const source = testament === 'old' ? tokenLookup.uhb : tokenLookup.ugnt;
+            const sourceTokens = source[book.toUpperCase()][cv];
+            const allULTTokens = tokenLookup['ult'][book.toUpperCase()][cv];
+            const wordLikeULTTokens = allULTTokens?.filter((t) => t.subType === 'wordLike').map(({ subType, position, ...rest }) => rest);
 
-          if ('data' in resultObject) {
-            console.assert(!resultObject.error);
-            counts.pass++;
-            tsvRecord.quote = getTidiedData(resultObject.data);
-            output.push(tsvRecordToString(tsvRecord));
-          } else {
-            tsvRecord.quote = "QUOTE_NOT_FOUND: " + tsvRecord.quote;
-            output.push(tsvRecordToString(tsvRecord));
-            counts.fail++;
-            const errorMsg = `Error: ${book} ${cv} ${tsvRecord.id} ${resultObject.error}`;
-            console.error(errorMsg);
-            errors.push(errorMsg);
+            const cleanQuote = tsvRecord.quote.replace(/&/g, '…').replace(/[{}]/g, '');
+            const cleanQuoteUC = cleanQuote.replace(/([a-z])/, (match) => match.toUpperCase());
+
+            const quotesToTry = [cleanQuote];
+            if (tsvRecord.quote != cleanQuote) {
+              quotesToTry.push(tsvRecord.quote);
+            }
+            if (cleanQuote.includes('…')) {
+              quotesToTry.push(cleanQuote.split(/ *… */));
+              if (tsvRecord.quote != cleanQuote) {
+                quotesToTry.push(tsvRecord.quote.split(/ *… */));
+              }
+            }
+            if (cleanQuote != cleanQuoteUC) {
+              quotesToTry.push(cleanQuoteUC);
+              if (cleanQuoteUC.includes('…')) {
+                quotesToTry.push(cleanQuoteUC.split(/ *… */));
+              }
+            }
+
+            let resultObject = null;
+            for (const quote of quotesToTry) {
+              if (typeof quote === 'string') {
+                resultObject = origLFromGLQuote(book, cv, sourceTokens, wordLikeULTTokens, quote, tsvRecord.occurrence, prune);
+                if ('data' in resultObject) {
+                  break;
+                }
+              } else if (Array.isArray(quote)) {
+                const partsConverted = [];
+                for (const part of quote) {
+                  resultObject = origLFromGLQuote(book, cv, sourceTokens, wordLikeULTTokens, part, tsvRecord.occurrence, prune);
+                  if (!('data' in resultObject)) {
+                    resultObject = origLFromGLQuote(
+                      book,
+                      cv,
+                      sourceTokens,
+                      wordLikeULTTokens,
+                      part.replace(/([a-z])/, (match) => match.toUpperCase()),
+                      tsvRecord.occurrence,
+                      prune
+                    );
+                    if (!('data' in resultObject)) {
+                      break;
+                    }
+                  }
+                  partsConverted.push(getTidiedData(resultObject.data));
+                }
+                if (partsConverted.length === quote.length) {
+                  resultObject.data = [partsConverted.join(' & ')];
+                  break;
+                }
+              }
+            }
+
+            if ('data' in resultObject) {
+              console.assert(!resultObject.error);
+              counts.pass++;
+              tsvRecord.quote = getTidiedData(resultObject.data);
+              output.push(tsvRecordToString(tsvRecord));
+              break;
+            } else {
+              if (verseIdx < verses.length - 1) {
+                continue;
+              }
+              tsvRecord.quote = 'QUOTE_NOT_FOUND: ' + tsvRecord.quote;
+              output.push(tsvRecordToString(tsvRecord));
+              counts.fail++;
+              const errorMsg = `Error: ${book} ${cv} ${tsvRecord.id} ${resultObject.error}`;
+              console.error(errorMsg);
+              errors.push(errorMsg);
+            }
           }
         }
         resolve({ output, errors });
