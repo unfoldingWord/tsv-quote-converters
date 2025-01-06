@@ -1,6 +1,6 @@
 {
   "name": "tsv7-ult-quotes-to-origl-quotes",
-  "version": "1.0.35",
+  "version": "1.0.36",
   "description": "",
   "main": "./dist/tsv7-ult-quotes-to-origl-quotes.mjs",
   "module": "./dist/tsv7-ult-quotes-to-origl-quotes.mjs",

@@ -263,7 +263,7 @@ export function addGLQuoteCols(book, tsvContent, dcsUrl = 'https://git.door43.or
             output.push(tsvRecordToTSV9String(tsvRecord));
             continue;
           }
-          const quote = tsvRecord.quote.replace('QUOTE_NOT_FOUND: ', '').replace(/\s*…\s*/g, ' & ');;
+          const quote = tsvRecord.quote.replace('QUOTE_NOT_FOUND: ', '').replace(/\s*…\s*/g, ' & ');
           const [chapter, verseRef] = tsvRecord.ref.split(':');
           // console.log(`chapter: ${chapter}, verseRef: ${verseRef}`);
           const verses = [];
