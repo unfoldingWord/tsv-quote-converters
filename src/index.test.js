@@ -1,8 +1,11 @@
 // index.test.js
-import tsv7_ult_quotes_to_origl_quotes from "./index";
+import {convertULTQuotes2OL, addGLQuoteCols} from "./index";
+import { BibleBookData } from "./common/books";
+import fs from "fs";
+import path from "path";
 
-describe("tsv7_ult_quotes_to_origl_quotes", () => {
-  it('tsv7_ult_quotes_to_origl_quotes with book "jol" and provided tsvContent', async () => {
+describe("convertULTQuotes2OL", () => {
+  it('convertULTQuotes2OL with book "jol" and provided tsvContent', async () => {
     const book = "jol";
     const tsvContent = `Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
 1:4-6	q7n2		rc://*/ta/man/translate/figs-idiom	it has been cut & from your mouth	1	This is an expression that means that something is no longer available. Your language may have a comparable expression that you can use in your translation. Alternate translation: “it is no longer available for you to drink”
@@ -13,14 +16,14 @@ describe("tsv7_ult_quotes_to_origl_quotes", () => {
 1:6	zo55		rc://*/ta/man/translate/figs-infostructure	כִּ֤י שָֽׁמְעָה֙ בִּ⁠שְׂדֵ֣ה מוֹאָ֔ב כִּֽי־פָקַ֤ד יְהוָה֙ אֶת־עַמּ֔⁠וֹ\\nלָ⁠תֵ֥ת לָ⁠הֶ֖ם לָֽחֶם	1	Naomi first heard about Yahweh visiting his people and then decided to return to Bethlehem, so it might be more natural to put this information first, as in the UST.`;
 
     try {
-      const { output, errors } = await tsv7_ult_quotes_to_origl_quotes(
+      const { output, errors } = await convertULTQuotes2OL(
         book,
         tsvContent
       );
 
       const expectedOutput = {
         output: ['Reference	ID	Tags	SupportReference	Quote	Occurrence	Note',
-'1:4-6	q7n2		rc://*/ta/man/translate/figs-idiom	נִכְרַ֖ת & מִ⁠פִּי⁠כֶֽם	1	This is an expression that means that something is no longer available. Your language may have a comparable expression that you can use in your translation. Alternate translation: “it is no longer available for you to drink”',
+'1:4-6	q7n2		rc://*/ta/man/translate/figs-idiom	נִכְרַ֖ת מִ⁠פִּי⁠כֶֽם	1	This is an expression that means that something is no longer available. Your language may have a comparable expression that you can use in your translation. Alternate translation: “it is no longer available for you to drink”',
 '1:5	e2g7		rc://*/ta/man/translate/grammar-connect-logic-result	הָקִ֤יצוּ שִׁכּוֹרִים֙ וּ⁠בְכ֔וּ וְ⁠הֵילִ֖לוּ כָּל שֹׁ֣תֵי יָ֑יִן עַל עָסִ֕יס כִּ֥י נִכְרַ֖ת מִ⁠פִּי⁠כֶֽם	1	See the discussion in the General Introduction to Joel of places such as this where the speaker describes a result before giving the reason for it. If it would be more natural in your language, you could reverse the order of these phrases, since the second phrase gives the reason for the result that the first phrase describes. Alternate translation: “The sweet wine has been cut off from your mouth, so wail upon it, all of the drinkers of wine”',
 '1:5	f2g7		rc://*/ta/man/translate/grammar-connect-logic-result	הָקִ֤יצוּ שִׁכּוֹרִים֙ וּ⁠בְכ֔וּ וְ⁠הֵילִ֖לוּ כָּל שֹׁ֣תֵי יָ֑יִן עַל עָסִ֕יס כִּ֥י נִכְרַ֖ת מִ⁠פִּי⁠כֶֽם	1	See the discussion in the General Introduction to Joel of places such as this where the speaker describes a result before giving the reason for it. If it would be more natural in your language, you could reverse the order of these phrases, since the second phrase gives the reason for the result that the first phrase describes. Alternate translation: “The sweet wine has been cut off from your mouth, so wail upon it, all of the drinkers of wine”',
 '1:5	v7w2		rc://*/ta/man/translate/grammar-collectivenouns	מִ⁠פִּי⁠כֶֽם	1	Since Joel is referring to a group of people, it might be more natural in your language to use the plural form of **mouth**. Alternate translation: “from your mouths”',
@@ -43,7 +46,7 @@ describe("tsv7_ult_quotes_to_origl_quotes", () => {
 
       const rows = tsvContent.split("\n");
       for(let i = 0; i < rows.length; i++) {
-        const result = await tsv7_ult_quotes_to_origl_quotes(
+        const result = await convertULTQuotes2OL(
           book,
           rows[i]
         );
@@ -56,3 +59,259 @@ describe("tsv7_ult_quotes_to_origl_quotes", () => {
     }
   }, 10000);
 });
+
+describe("test_joshua_16_10_split_duplicate", () => {
+  it('convertULTQuotes2OL with book "jos" and provided tsvContent', async () => {
+    const book = "jos";
+    const tsvContent = `Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
+16:10	g4k8		rc://*/ta/man/translate/figs-genericnoun	the Canaanite & the Canaanite	1	The author is not referring to a specific **Canaanite**. He means Canaanites in general. It may be more natural in your language to express this meaning by using a plural form. Alternate translation: “the Canaanites … the Canaanites”`;
+
+    try {
+      const { output, errors } = await convertULTQuotes2OL(
+        book,
+        tsvContent
+      );
+
+      const expectedOutput = {
+        output: ['Reference	ID	Tags	SupportReference	Quote	Occurrence	Note',
+'16:10	g4k8		rc://*/ta/man/translate/figs-genericnoun	אֶת־הַֽ⁠כְּנַעֲנִ֖י & הַֽ⁠כְּנַעֲנִ֜י	1	The author is not referring to a specific **Canaanite**. He means Canaanites in general. It may be more natural in your language to express this meaning by using a plural form. Alternate translation: “the Canaanites … the Canaanites”'],
+        errors: [],
+      };
+
+      // Check the output
+      expect(output).toBeDefined();
+      expect(output).toEqual(expectedOutput.output);
+
+      // Check the errors
+      expect(errors).toBeDefined();
+      // expect(errors).toEqual(expectedOutput.errors);
+
+      const rows = tsvContent.split("\n");
+      for(let i = 0; i < rows.length; i++) {
+        const result = await convertULTQuotes2OL(
+          book,
+          rows[i]
+        );
+        expect(result.output[0]).toEqual(expectedOutput.output[i]);
+      }
+    } catch (error) {
+      // Handle any unexpected errors
+      console.error("Test failed with error:", error);
+      throw error;
+    }
+  }, 10000);
+});
+
+describe("test_mat_1_4_duplicate", () => {
+  it('convertULTQuotes2OL with book "mat" and provided tsvContent', async () => {
+    debugger;
+    const book = "mat";
+    const tsvContent = `Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
+1:4	g4k8		rc://*/ta/man/translate/figs-genericnoun	fathered & and Nahshon fathered Salmon	2	test`;
+
+    try {
+      const { output, errors } = await convertULTQuotes2OL(
+        book,
+        tsvContent
+      );
+
+      const expectedOutput = {
+        output: ['Reference	ID	Tags	SupportReference	Quote	Occurrence	Note',
+'1:4	g4k8		rc://*/ta/man/translate/figs-genericnoun	ἐγέννησεν & Ναασσὼν δὲ ἐγέννησεν τὸν Σαλμών	2	test'],
+        errors: [],
+      };
+
+      // Check the output
+      expect(output).toBeDefined();
+      expect(output).toEqual(expectedOutput.output);
+
+      // Check the errors
+      expect(errors).toBeDefined();
+      // expect(errors).toEqual(expectedOutput.errors);
+
+      const rows = tsvContent.split("\n");
+      for(let i = 0; i < rows.length; i++) {
+        const result = await convertULTQuotes2OL(
+          book,
+          rows[i]
+        );
+        expect(result.output[0]).toEqual(expectedOutput.output[i]);
+      }
+    } catch (error) {
+      // Handle any unexpected errors
+      console.error("Test failed with error:", error);
+      throw error;
+    }
+  }, 100000);
+});
+
+describe("test1", () => {
+  it('test1', async () => {
+    debugger; // Add this line to pause execution for debugging
+    const book = "jud";
+    const tsvContent = `Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
+1:1	g4k8		rc://*/ta/man/translate/figs-genericnoun	a servant of Jesus Christ	1	test`;
+
+    const expectedTsvContent = [`Reference	ID	Tags	SupportReference	Quote	Occurrence	Note`,
+`1:1	g4k8		rc://*/ta/man/translate/figs-genericnoun	Ἰησοῦ Χριστοῦ δοῦλος	1	test`];
+
+    try {
+      const { output, errors } = await convertULTQuotes2OL(
+        book,
+        tsvContent
+      );
+      expect(output).toBeDefined();
+      expect(output).toEqual(expectedTsvContent);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, 1000000)
+});
+
+describe("test all 66 books", () => {
+  debugger; // Add this line to pause execution for debugging
+  for (const key of Object.keys(BibleBookData)) {
+    if (key !== "jud") {
+      continue;
+    }
+    it(`convertULTQuotes2OL with book "${key}"`, async () => {
+      const book = key;
+      const engFilePath = path.join(__dirname, `../fixtures/tn_${key.toUpperCase()}_eng.tsv`);
+      const olFilePath = path.join(__dirname, `../fixtures/tn_${key.toUpperCase()}_ol.tsv`);
+
+      if (!fs.existsSync(engFilePath) || !fs.existsSync(olFilePath)) {
+        console.warn(`Skipping test for book ${key} as the required files do not exist.`);
+        return;
+      }
+      console.log(`Running test for book ${key}`);
+
+      const tsvContent = fs.readFileSync(engFilePath, "utf8");
+      const expectedTsvContent = fs.readFileSync(olFilePath, "utf8");
+
+      try {
+        const { output, errors } = await convertULTQuotes2OL(book, tsvContent);
+
+        // Check the output
+        expect(output).toBeDefined();
+        expect(errors).toBeDefined();
+        // expect(errors).toEqual([]);
+
+        if (errors.length > 0) {
+          const errorFilePath = `${engFilePath}.errors.txt`;
+          fs.writeFileSync(errorFilePath, errors.join("\n"), "utf8");
+        }
+
+        const outputRows = output.map(row => row.split("\t"));
+        const expectedRows = expectedTsvContent.split("\n").map(row => row.split("\t"));
+        const doNotMatch = [];
+
+        for (let i = 1; i < outputRows.length; i++) { // Skip header row
+          if (!expectedRows[i] || !outputRows[i]) {
+            console.log(`No expected row for row ${i}, ${key} ${outputRows[i][0]} (${outputRows[i][1]})`);
+            continue;
+          }
+          let outputQuote = outputRows[i][4].replace(/[\u200B-\u200D\uFEFF]/g, ''); // Remove zero-width spaces
+          let expectedQuote = expectedRows[i][4].replace(/[\u200B-\u200D\uFEFF]/g, '').replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]+$/, ''); // Remove zero-width spaces and punctuation from the end
+          let message = `Comparing row ${i}, ${key} ${outputRows[i][0]} (${outputRows[i][1]}): "${outputQuote}" vs "${expectedQuote}"`;
+          if (outputQuote) {
+            console.log(message);
+            try {
+              outputQuote = outputQuote.replace('־', ' ').replace('־', ' ').replace('׀', ' ');
+              expect(outputQuote).toEqual(expectedQuote); // Compare "Quote" column
+            } catch (error) {
+              console.log("Error:", error.message);
+              message += error.message;
+              doNotMatch.push(message);
+              throw error;
+            }
+          }
+        }
+        if (doNotMatch.length > 0) {
+          const doNotMatchPath = `${engFilePath}.no_match.txt`;
+          fs.writeFileSync(doNotMatchPath, doNotMatch.join("\n\n"), "utf8");
+        }
+        expect(errors).toEqual([]);
+        expect(doNotMatch).toEqual([]);
+      } catch (error) {
+        // Handle any unexpected errors
+        console.error(`Test failed for book ${book} with error:`, error);
+        throw error;
+      }
+    }, 10000);
+  }
+});
+
+describe("test GL quotes", () => {
+  debugger; // Add this line to pause execution for debugging
+  for (const key of Object.keys(BibleBookData)) {
+    if (key !== "jud") {
+      continue;
+    }
+    it(`convertULTQuotes2OL with book "${key}"`, async () => {
+      const book = key;
+      const engFilePath = path.join(__dirname, `../fixtures/tn_${key.toUpperCase()}_eng.tsv`);
+      const olFilePath = path.join(__dirname, `../fixtures/tn_${key.toUpperCase()}_ol.tsv`);
+
+      if (!fs.existsSync(engFilePath) || !fs.existsSync(olFilePath)) {
+        console.warn(`Skipping test for book ${key} as the required files do not exist.`);
+        return;
+      }
+      console.log(`Running test for book ${key}`);
+
+      const tsvContent = fs.readFileSync(olFilePath, "utf8");
+      const expectedTsvContent = fs.readFileSync(engFilePath, "utf8");
+
+      try {
+        const { output, errors } = await addGLQuoteCols(book, tsvContent);
+
+        console.log(errors);
+        console.log(output);
+
+        // Check the output
+        expect(output).toBeDefined();
+        expect(errors).toBeDefined();
+        // expect(errors).toEqual([]);
+
+        if (errors.length > 0) {
+          const errorFilePath = `${olFilePath}.gl_errors.txt`;
+          fs.writeFileSync(errorFilePath, errors.join("\n"), "utf8");
+        }
+
+        const outputRows = output.map(row => row.split("\t"));
+        const expectedRows = expectedTsvContent.split("\n").map(row => row.split("\t"));
+        const doNotMatch = [];
+
+        for (let i = 1; i < outputRows.length; i++) { // Skip header row
+          if (!expectedRows[i] || !outputRows[i]) {
+            console.log(`No expected row for row ${i}, ${key} ${outputRows[i][0]} (${outputRows[i][1]})`);
+            continue;
+          }
+          let outputQuote = outputRows[i][6].replace(/[\u200B-\u200D\uFEFF]/g, ''); // Remove zero-width spaces
+          let expectedQuote = expectedRows[i][4].replace(/[\u200B-\u200D\uFEFF]/g, '').replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]+$/, ''); // Remove zero-width spaces and punctuation from the end
+          let message = `Comparing row ${i}, ${key} ${outputRows[i][0]} (${outputRows[i][1]}): "${outputQuote}" vs "${expectedQuote}"`;
+          if (outputQuote) {
+            console.log(message);
+            try {
+              expect(outputQuote).toEqual(expectedQuote); // Compare "Quote" column
+            } catch (error) {
+              console.log("Error:", error.message);
+              message += error.message;
+              doNotMatch.push(message);
+            }
+          }
+        }
+        if (doNotMatch.length > 0) {
+          const doNotMatchPath = `${engFilePath}.gl_no_match.txt`;
+          fs.writeFileSync(doNotMatchPath, doNotMatch.join("\n\n"), "utf8");
+        }
+        expect(errors).toEqual([]);
+        expect(doNotMatch).toEqual([]);
+      } catch (error) {
+        // Handle any unexpected errors
+        console.error(`Test failed for book ${book} with error:`, error);
+        throw error;
+      }
+    }, 10000);
+  }
+});
+

@@ -1,6 +1,6 @@
 {
   "name": "tsv7-ult-quotes-to-origl-quotes",
-  "version": "1.0.28",
+  "version": "1.0.35",
   "description": "",
   "main": "./dist/tsv7-ult-quotes-to-origl-quotes.mjs",
   "module": "./dist/tsv7-ult-quotes-to-origl-quotes.mjs",
@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "build": "rm -rf ./dist && vite build",
-    "test": "jest"
+    "test": "jest",
+    "start": "node ./src/core/tsv7_ult_quotes_to_origl_quotes.js"
   },
   "keywords": [],
   "author": "",
