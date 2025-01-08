@@ -327,7 +327,7 @@ describe("test2", () => {
 
       const expectedOutput = {
         output: ['Reference	ID	Tags	SupportReference	Quote	Occurrence	GLQuote	GLOccurrence	Note',
-'1:17	z5xw		rc://*/ta/man/translate/figs-explicit	τῆς μετοικεσίας Βαβυλῶνος	-1	Matthew refers to the same event that he referred to in [1:11–12](../01/11.md). Express the idea in the same way you did in those verses. Alternate translation: [the Babylonians captured Jerusalem and took many people away … when that happened]'],
+'1:17	z5xw		rc://*/ta/man/translate/figs-explicit	τῆς μετοικεσίας Βαβυλῶνος	-1	the Babylonian deportation	-1	Matthew refers to the same event that he referred to in [1:11–12](../01/11.md). Express the idea in the same way you did in those verses. Alternate translation: [the Babylonians captured Jerusalem and took many people away … when that happened]'],
         errors: [],
       };
 
