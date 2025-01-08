@@ -21,10 +21,8 @@ export const parseTsvToObjects = content => {
         .map(r => {
             let items = r.split("\t");            
             if (items.length == 7) {
-                const note = items.pop();
-                items.push('');
-                items.push(0);
-                items.push(note);
+                items.splice(6, 0, '');
+                items.splice(7, 0, 0);
             }
             return items
         })

@@ -9,18 +9,21 @@
 export function getAlignedQuote(sourceTokens, targetTokens, sourceQuote, sourceFirstGroupOccurrence = 1) {
   let targetOccurrence = 0;
   // Split the quote into groups of words
-  const wordGroups = sourceQuote.split(' & ').map((group) => group.split(/[\s\p{P}\p{S}]+/u).filter((word) => word !== ''));
-  // console.log(wordGroups);
+  const wordGroups = sourceQuote.split(' & ').map((group) =>
+    group
+      .replace('\\n', ' ')
+      .split(/[\s\p{P}\p{S}]+/u)
+      .filter((word) => word !== '')
+  );
   // Find the specific occurrence for each group, ensuring sequential order
   const sourceMatches = [];
-  let searchStartIndex = 0;
+  let currentIndex = 0;
 
   for (const groupIdx in wordGroups) {
     const group = wordGroups[groupIdx];
-    const groupOccurrence = groupIdx == 0 ? sourceFirstGroupOccurrence : 1;
+    const groupOccurrence = sourceFirstGroupOccurrence === -1 || groupIdx !== 0 ? 1 : sourceFirstGroupOccurrence;
     // console.log(groupIdx, occurrence, groupOccurrence)
     let currentOccurrence = 0;
-    let currentIndex = searchStartIndex;
     let found = false;
 
     // console.log(`Searching for group: ${group} from position ${currentIndex} for occurrence ${groupOccurrence}`);
@@ -33,7 +36,7 @@ export function getAlignedQuote(sourceTokens, targetTokens, sourceQuote, sourceF
         // console.log(`groupOccurrence: ${groupOccurrence}`);
         if (currentOccurrence === groupOccurrence) {
           sourceMatches.push(match.tokens);
-          searchStartIndex = match.endIndex;
+          currentIndex = match.endIndex;
           found = true;
           // console.log(`Found group: ${group} at position ${currentIndex}`);
           break;
@@ -45,13 +48,13 @@ export function getAlignedQuote(sourceTokens, targetTokens, sourceQuote, sourceF
     }
 
     if (!found) {
-      throw new Error(`Occurrence ${sourceFirstGroupOccurrence} not found for "${group}" after position ${searchStartIndex}`);
+      throw new Error(`Occurrence ${sourceFirstGroupOccurrence} not found for "${group}" after position ${currentIndex}`);
     }
   }
 
   // console.log(JSON.stringify(targetMatches, null, 2));
 
-  const sourceScopes = sourceMatches.map((tokens) => tokens.map(token => token.scopes || []).flat()).flat(); // This may be an empty array if source is Greek or Hebrew
+  const sourceScopes = sourceMatches.map((tokens) => tokens.map((token) => token.scopes || []).flat()).flat(); // This may be an empty array if source is Greek or Hebrew
 
   // console.log(flattenedArray);
 
@@ -61,7 +64,7 @@ export function getAlignedQuote(sourceTokens, targetTokens, sourceQuote, sourceF
   let otherText = '';
   let firstGroupOccurrence = 1;
 
-  for(let idx = 0; idx < targetTokens.length; idx++) {
+  for (let idx = 0; idx < targetTokens.length; idx++) {
     const targetToken = targetTokens[idx];
     // console.log(idx, token);
     if (targetToken.subType === 'wordLike') {
@@ -100,10 +103,10 @@ export function getAlignedQuote(sourceTokens, targetTokens, sourceQuote, sourceF
         }
         if (currentString) {
           if (otherText) {
-            currentString += otherText.replace(/\n+/, " ").replace(/\s+/g, " ");
+            currentString += otherText.replace(/\n+/, ' ').replace(/\s+/g, ' ');
             otherText = '';
           }
-          if(targetGroups.length == 0) {
+          if (targetGroups.length == 0) {
             firstGroupOccurrence = 1;
           }
         }
@@ -141,7 +144,7 @@ function findConsecutiveTokens(tokens, words, startIndex) {
   let matchedTokens = [];
 
   const wordOccurrences = {};
-  for(let i = 0; i < startIndex; i++) {
+  for (let i = 0; i < startIndex; i++) {
     if (tokens[i].subType === 'wordLike' && !wordOccurrences[tokens[i].payload]) {
       wordOccurrences[tokens[i].payload] = 0;
     }
@@ -151,12 +154,12 @@ function findConsecutiveTokens(tokens, words, startIndex) {
 
   while (tokenIndex < tokens.length && wordIndex < words.length) {
     const token = tokens[tokenIndex];
-    if (token.subType === "wordLike" && !wordOccurrences[token.payload]) {
+    if (token.subType === 'wordLike' && !wordOccurrences[token.payload]) {
       wordOccurrences[token.payload] = 0;
     }
     wordOccurrences[token.payload]++;
     token.occurrence = wordOccurrences[token.payload];
-    
+
     const word = words[wordIndex];
     // console.log(tokenIndex, token, wordIndex, word);
     if (token.subType != 'wordLike') {
@@ -165,7 +168,7 @@ function findConsecutiveTokens(tokens, words, startIndex) {
       continue;
     }
     // console.log("have wordLike payload: |"+token.payload+"| Word: |"+word+"|");
-    if (token.payload.toLowerCase() != word.toLowerCase()) {
+    if (token.payload.normalize() != word.normalize()) {
       break;
     }
     // console.log("MATCH!");

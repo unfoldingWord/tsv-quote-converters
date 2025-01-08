@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Proskomma } from 'proskomma';
 
 import { BibleBookData } from '../common/books';
-import { parseTsvToObjects,  tsvRecordToTSV7String, tsvRecordToTSV9String } from '../utils/tsv';
+import { parseTsvToObjects, tsvRecordToTSV7String, tsvRecordToTSV9String } from '../utils/tsv';
 import { rejigAlignment } from '../utils/rejig_alignment';
 import { getAlignedQuote } from './getAlignedQuote';
 
@@ -119,13 +119,11 @@ const doAlignmentQuery = async () => {
           .filter((s) => s.startsWith('verses/'))[0]
           .split('/')[1]
           .split('-')) {
-          const cv = `${chapter}:${verse}`;
-          tokenLookup[docSet.abbr][document.book][cv] = itemGroup.tokens;
+          tokenLookup[docSet.abbr][document.book][`${chapter}:${verse}`] = itemGroup.tokens;
         }
       }
     }
   }
-  console.log(tokenLookup);
 };
 
 const containsHebrewOrGreek = (text) => /[\u0590-\u05FF\uFB1D-\uFB4F\u0370-\u03FF\u1F00-\u1FFF]/.test(text);
@@ -163,62 +161,54 @@ export function convertULTQuotes2OL(book, tsvContent, dcsUrl = 'https://git.door
           }
           const quote = tsvRecord.quote.replace('QUOTE_NOT_FOUND: ', '').replace(/\s*…\s*/g, ' & ');
           const [chapter, verseRef] = tsvRecord.ref.split(':');
-          // console.log(`chapter: ${chapter}, verseRef: ${verseRef}`);
-          const verses = [];
+          const sourceTokens = [];
+          const targetTokens = [];
+          const targetBible = testament === 'old' ? 'uhb' : 'ugnt';
+
+          // Handle verse ranges
           const verseCommaParts = verseRef.trim().split(',');
-          // console.log("CHAPTER: ", chapter, verseRef);
-          // console.log("verseCommaParts:", verseCommaParts);
           for (const commaPart of verseCommaParts) {
             if (commaPart.includes('-')) {
               const verseRange = commaPart.trim().split('-');
               if (verseRange.length > 1) {
                 for (let i = parseInt(verseRange[0]); i <= parseInt(verseRange[1]); i++) {
-                  verses.push(i);
+                  sourceTokens.push(...tokenLookup.ult?.[book.toUpperCase()][`${chapter}:${i}`]);
+                  targetTokens.push(...tokenLookup[targetBible][book.toUpperCase()][`${chapter}:${i}`]);
                 }
               }
             } else {
-              verses.push(parseInt(commaPart));
+              sourceTokens.push(...tokenLookup.ult?.[book.toUpperCase()][`${chapter}:${commaPart}`]);
+              targetTokens.push(...tokenLookup[targetBible][book.toUpperCase()][`${chapter}:${commaPart}`]);
             }
           }
-          // console.log('VERSES:', verses);
-          for (const verseIdx in verses) {
-            const verse = verses[verseIdx];
-            const cv = `${chapter}:${verse}`;
-            const source = testament === 'old' ? tokenLookup.uhb : tokenLookup.ugnt;
-            const sourceTokens = source[book.toUpperCase()][cv];
-            const allULTTokens = tokenLookup.ult?.[book.toUpperCase()][cv];
-          
-            let resultObject = null;
 
-            let err =  null;
-            try {
-              let occurrence = 1;
-              if (tsvRecord.occurrence && tsvRecord.occurrence !== '1') {
-                occurrence = parseInt(tsvRecord.occurrence);
-              }
-              resultObject = getAlignedQuote(allULTTokens, sourceTokens, quote, occurrence);
-            } catch (e) {
-              err = e;
+          let resultObject = null;
+
+          let err = null;
+          try {
+            let occurrence = 1;
+            if (tsvRecord.occurrence && tsvRecord.occurrence !== '1') {
+              occurrence = parseInt(tsvRecord.occurrence);
             }
+            resultObject = getAlignedQuote(sourceTokens, targetTokens, quote, occurrence);
+          } catch (e) {
+            err = e;
+          }
 
-            if (resultObject) {
-              counts.pass++;
-              // console.log(resultObject);
-              tsvRecord.quote = resultObject.quote;
+          if (resultObject) {
+            counts.pass++;
+            tsvRecord.quote = resultObject.quote;
+            if (tsvRecord.occurrence != -1) {
               tsvRecord.occurrence = resultObject.occurrence;
-              output.push(tsvRecordToTSV7String(tsvRecord));
-              break;
-            } else {
-              if (verseIdx < verses.length - 1) {
-                continue;
-              }
-              tsvRecord.quote = 'QUOTE_NOT_FOUND: ' + tsvRecord.quote;
-              output.push(tsvRecordToTSV7String(tsvRecord));
-              counts.fail++;
-              const errorMsg = `Error: ${book} ${cv} ${tsvRecord.id} ${err}`;
-              console.error(errorMsg);
-              errors.push(errorMsg);
             }
+            output.push(tsvRecordToTSV7String(tsvRecord));
+          } else {
+            tsvRecord.quote = 'QUOTE_NOT_FOUND: ' + tsvRecord.quote;
+            output.push(tsvRecordToTSV7String(tsvRecord));
+            counts.fail++;
+            const errorMsg = `Error: ${book} ${tsvRecord.ref} ${tsvRecord.id} ${err}`;
+            console.error(errorMsg);
+            errors.push(errorMsg);
           }
         }
         resolve({ output, errors });
@@ -263,60 +253,58 @@ export function addGLQuoteCols(book, tsvContent, dcsUrl = 'https://git.door43.or
             output.push(tsvRecordToTSV9String(tsvRecord));
             continue;
           }
-          const quote = tsvRecord.quote.replace('QUOTE_NOT_FOUND: ', '').replace(/\s*…\s*/g, ' & ');
+          if (tsvRecord.quote.includes('QUOTE_NOT_FOUND')) {
+            tsvRecord.glQuote = tsvRecord.quote;
+            output.push(tsvRecordToTSV9String(tsvRecord));
+            continue;
+          }
+          const quote = tsvRecord.quote.replace(/\s*…\s*/g, ' & ');
           const [chapter, verseRef] = tsvRecord.ref.split(':');
-          // console.log(`chapter: ${chapter}, verseRef: ${verseRef}`);
-          const verses = [];
+          const sourceTokens = [];
+          const targetTokens = [];
+          const sourceBible = testament === 'old' ? 'uhb' : 'ugnt';
+
+          // Handle verse ranges
           const verseCommaParts = verseRef.trim().split(',');
-          // console.log("CHAPTER: ", chapter, verseRef);
-          // console.log("verseCommaParts:", verseCommaParts);
           for (const commaPart of verseCommaParts) {
             if (commaPart.includes('-')) {
               const verseRange = commaPart.trim().split('-');
               if (verseRange.length > 1) {
                 for (let i = parseInt(verseRange[0]); i <= parseInt(verseRange[1]); i++) {
-                  verses.push(i);
+                  sourceTokens.push(...tokenLookup[sourceBible][book.toUpperCase()][`${chapter}:${i}`]);
+                  targetTokens.push(...tokenLookup.ult?.[book.toUpperCase()][`${chapter}:${i}`]);
                 }
               }
             } else {
-              verses.push(parseInt(commaPart));
+              sourceTokens.push(...tokenLookup[sourceBible][book.toUpperCase()][`${chapter}:${commaPart}`]);
+              targetTokens.push(...tokenLookup.ult?.[book.toUpperCase()][`${chapter}:${commaPart}`]);
             }
           }
-          // console.log('VERSES:', verses);
-          for (const verseIdx in verses) {
-            const verse = verses[verseIdx];
-            const cv = `${chapter}:${verse}`;
-            const source = testament === 'old' ? tokenLookup.uhb : tokenLookup.ugnt;
-            const sourceTokens = source[book.toUpperCase()][cv];
-            const allULTTokens = tokenLookup.ult?.[book.toUpperCase()][cv];
+          let resultObject = null;
+          let err = null;
+          try {
+            resultObject = getAlignedQuote(sourceTokens, targetTokens, quote, tsvRecord.occurrence);
+          } catch (e) {
+            err = e;
+          }
 
-            let resultObject = null;
-
-            let err =  null;
-            try {
-              resultObject = getAlignedQuote(sourceTokens, allULTTokens, quote, tsvRecord.occurrence);
-            } catch (e) {
-              err = e;
-            }
-
-            if (resultObject) {
-              counts.pass++;
-              // console.log(resultObject);
-              tsvRecord.glQuote = resultObject.quote;
+          if (resultObject) {
+            counts.pass++;
+            tsvRecord.glQuote = resultObject.quote;
+            if (tsvRecord.occurrence != -1) {
               tsvRecord.glOccurrence = resultObject.occurrence;
-              output.push(tsvRecordToTSV9String(tsvRecord));
-              break;
             } else {
-              if (verseIdx < verses.length - 1) {
-                continue;
-              }
-              tsvRecord.glQuote = 'QUOTE_NOT_FOUND: ' + tsvRecord.quote;
-              output.push(tsvRecordToTSV9String(tsvRecord));
-              counts.fail++;
-              const errorMsg = `Error: ${book} ${cv} ${tsvRecord.id} ${err}`;
-              console.error(errorMsg);
-              errors.push(errorMsg);
+              tsvRecord.glOccurrence = -1;
             }
+            output.push(tsvRecordToTSV9String(tsvRecord));
+          } else {
+            tsvRecord.glQuote = 'QUOTE_NOT_FOUND: ' + tsvRecord.quote;
+            tsvRecord.glOccurrence = tsvRecord.occurrence;
+            output.push(tsvRecordToTSV9String(tsvRecord));
+            counts.fail++;
+            const errorMsg = `Error: ${book} ${tsvRecord.ref} ${tsvRecord.id} ${err}`;
+            console.error(errorMsg);
+            errors.push(errorMsg);
           }
         }
         resolve({ output, errors });

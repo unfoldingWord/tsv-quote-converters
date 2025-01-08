@@ -169,7 +169,6 @@ describe("test1", () => {
 });
 
 describe("test all 66 books", () => {
-  debugger; // Add this line to pause execution for debugging
   for (const key of Object.keys(BibleBookData)) {
     if (key !== "jud") {
       continue;
@@ -242,7 +241,6 @@ describe("test all 66 books", () => {
 });
 
 describe("test GL quotes", () => {
-  debugger; // Add this line to pause execution for debugging
   for (const key of Object.keys(BibleBookData)) {
     if (key !== "jud") {
       continue;
@@ -315,3 +313,36 @@ describe("test GL quotes", () => {
   }
 });
 
+describe("test2", () => {
+  it('test2', async () => {
+    const book = "mat";
+    const tsvContent = `Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
+1:17	z5xw		rc://*/ta/man/translate/figs-explicit	τῆς μετοικεσίας Βαβυλῶνος	-1	Matthew refers to the same event that he referred to in [1:11–12](../01/11.md). Express the idea in the same way you did in those verses. Alternate translation: [the Babylonians captured Jerusalem and took many people away … when that happened]`;
+
+    try {
+      const { output, errors } = await addGLQuoteCols(
+        book,
+        tsvContent
+      );
+
+      const expectedOutput = {
+        output: ['Reference	ID	Tags	SupportReference	Quote	Occurrence	GLQuote	GLOccurrence	Note',
+'1:17	z5xw		rc://*/ta/man/translate/figs-explicit	τῆς μετοικεσίας Βαβυλῶνος	-1	Matthew refers to the same event that he referred to in [1:11–12](../01/11.md). Express the idea in the same way you did in those verses. Alternate translation: [the Babylonians captured Jerusalem and took many people away … when that happened]'],
+        errors: [],
+      };
+
+      // Check the output
+      expect(output).toBeDefined();
+      console.log(output);
+      expect(output).toEqual(expectedOutput.output);
+
+      // Check the errors
+      expect(errors).toBeDefined();
+      // expect(errors).toEqual(expectedOutput.errors);
+    } catch (error) {
+      // Handle any unexpected errors
+      console.error("Test failed with error:", error);
+      throw error;
+    }
+  }, 1000000);
+});
