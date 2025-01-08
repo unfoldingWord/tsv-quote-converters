@@ -317,7 +317,7 @@ describe("test2", () => {
   it('test2', async () => {
     const book = "mat";
     const tsvContent = `Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
-1:17	z5xw		rc://*/ta/man/translate/figs-explicit	τῆς μετοικεσίας Βαβυλῶνος	-1	Matthew refers to the same event that he referred to in [1:11–12](../01/11.md). Express the idea in the same way you did in those verses. Alternate translation: [the Babylonians captured Jerusalem and took many people away … when that happened]`;
+4:10	ah9a		rc://*/ta/man/translate/figs-declarative	Κύριον τὸν Θεόν σου προσκυνήσεις, καὶ αὐτῷ μόνῳ λατρεύσεις.\\n\\n	1	The author of the quotation is using a statement to give a command. If it would be helpful in your language, you could use a command form. Alternate translation: [You must worship the Lord your God, and you must serve only him]`;
 
     try {
       const { output, errors } = await addGLQuoteCols(
@@ -327,7 +327,7 @@ describe("test2", () => {
 
       const expectedOutput = {
         output: ['Reference	ID	Tags	SupportReference	Quote	Occurrence	GLQuote	GLOccurrence	Note',
-'1:17	z5xw		rc://*/ta/man/translate/figs-explicit	τῆς μετοικεσίας Βαβυλῶνος	-1	the Babylonian deportation	-1	Matthew refers to the same event that he referred to in [1:11–12](../01/11.md). Express the idea in the same way you did in those verses. Alternate translation: [the Babylonians captured Jerusalem and took many people away … when that happened]'],
+'4:10	ah9a		rc://*/ta/man/translate/figs-declarative	Κύριον τὸν Θεόν σου προσκυνήσεις, καὶ αὐτῷ μόνῳ λατρεύσεις.\\n\\n	1	You will worship the Lord your God, and you will serve only him	1	The author of the quotation is using a statement to give a command. If it would be helpful in your language, you could use a command form. Alternate translation: [You must worship the Lord your God, and you must serve only him]'],
         errors: [],
       };
 

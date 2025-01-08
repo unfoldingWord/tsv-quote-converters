@@ -11,7 +11,7 @@ export function getAlignedQuote(sourceTokens, targetTokens, sourceQuote, sourceF
   // Split the quote into groups of words
   const wordGroups = sourceQuote.split(' & ').map((group) =>
     group
-      .replace('\\n', ' ')
+      .replaceAll('\\n', ' ')
       .split(/[\s\p{P}\p{S}]+/u)
       .filter((word) => word !== '')
   );
