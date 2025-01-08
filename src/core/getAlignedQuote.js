@@ -9,7 +9,7 @@
 export function getAlignedQuote(sourceTokens, targetTokens, sourceQuote, sourceFirstGroupOccurrence = 1) {
   let targetOccurrence = 0;
   // Split the quote into groups of words
-  const wordGroups = sourceQuote.split(' & ').map((group) =>
+  const wordGroups = sourceQuote.split(/ *& */).map((group) =>
     group
       .replaceAll('\\n', ' ')
       .split(/[\s\p{P}\p{S}]+/u)
