@@ -317,17 +317,17 @@ describe("test2", () => {
   it('test2', async () => {
     const book = "mat";
     const tsvContent = `Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
-4:10	ah9a		rc://*/ta/man/translate/figs-declarative	Κύριον τὸν Θεόν σου προσκυνήσεις, καὶ αὐτῷ μόνῳ λατρεύσεις.\\n\\n	1	The author of the quotation is using a statement to give a command. If it would be helpful in your language, you could use a command form. Alternate translation: [You must worship the Lord your God, and you must serve only him]`;
+1:8-9	ei0o		rc://*/ta/man/translate/figs-explicit	and Joram fathered Ozias & Ozias & Jotham & and & fathered Hezekiah	1	In these two verses, Matthew lists **Joram**, **Ozias**, and **Jotham**. In the list of kings in 1 Chronicles 3, however, there are four names between **Joram** and **Jotham** (see [1 Chronicles 3:11–12](../1co/03/11.md)), not one. So, Matthew has not mentioned three of these kings, and the word translated as **fathered** only requires the older person to be an ancestor of the younger person, who could be a son, grandson, great-grandson, or even great-great-grandson. It is unclear exactly where in the list Matthew leaves out the three kings. He could be using the name **Ozias**: (1) to refer to the king that 1 Chronicles names “Azariah.” In this case, **Ozias** is the great-great-grandson of **Joram** and the father of **Jotham**. Alternate translation: [and Joram was the great-great-grandfather of Ozias, and Ozias fathered Jotham] (2) to refer to the king that 1 Chronicles names “Ahaziah.” In this case, **Ozias** is the son of **Joram** and the great-great-grandfather of **Jotham**. Alternate translation: [and Joram fathered Ozias, and Ozias was the great-great-grandfather of Jotham]`;
 
     try {
-      const { output, errors } = await addGLQuoteCols(
+      const { output, errors } = await convertULTQuotes2OL(
         book,
         tsvContent
       );
 
       const expectedOutput = {
         output: ['Reference	ID	Tags	SupportReference	Quote	Occurrence	GLQuote	GLOccurrence	Note',
-'4:10	ah9a		rc://*/ta/man/translate/figs-declarative	Κύριον τὸν Θεόν σου προσκυνήσεις, καὶ αὐτῷ μόνῳ λατρεύσεις.\\n\\n	1	You will worship the Lord your God, and you will serve only him	1	The author of the quotation is using a statement to give a command. If it would be helpful in your language, you could use a command form. Alternate translation: [You must worship the Lord your God, and you must serve only him]'],
+'1:8-9	ei0o		rc://*/ta/man/translate/figs-explicit	Ἰωρὰμ δὲ ἐγέννησεν τὸν Ὀζείαν & Ὀζείας δὲ ἐγέννησεν τὸν Ἰωαθάμ	1	In these two verses, Matthew lists **Joram**, **Ozias**, and **Jotham**. In the list of kings in 1 Chronicles 3, however, there are four names between **Joram** and **Jotham** (see [1 Chronicles 3:11–12](../1co/03/11.md)), not one. So, Matthew has not mentioned three of these kings, and the word translated as **fathered** only requires the older person to be an ancestor of the younger person, who could be a son, grandson, great-grandson, or even great-great-grandson. It is unclear exactly where in the list Matthew leaves out the three kings. He could be using the name **Ozias**: (1) to refer to the king that 1 Chronicles names “Azariah.” In this case, **Ozias** is the great-great-grandson of **Joram** and the father of **Jotham**. Alternate translation: [and Joram was the great-great-grandfather of Ozias, and Ozias fathered Jotham] (2) to refer to the king that 1 Chronicles names “Ahaziah.” In this case, **Ozias** is the son of **Joram** and the great-great-grandfather of **Jotham**. Alternate translation: [and Joram fathered Ozias, and Ozias was the great-great-grandfather of Jotham]'],
         errors: [],
       };
 

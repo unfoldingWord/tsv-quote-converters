@@ -119,7 +119,7 @@ const doAlignmentQuery = async () => {
           .filter((s) => s.startsWith('verses/'))[0]
           .split('/')[1]
           .split('-')) {
-          tokenLookup[docSet.abbr][document.book][`${chapter}:${verse}`] = itemGroup.tokens;
+          tokenLookup[docSet.abbr][document.book][`${chapter}:${verse}`] = itemGroup.tokens.map((t) => {t.chapter = chapter; t.verse = verse; return t;});
         }
       }
     }

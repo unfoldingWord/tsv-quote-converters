@@ -19,7 +19,7 @@ export function getAlignedQuote(sourceTokens, targetTokens, sourceQuote, sourceF
   const sourceMatches = [];
   let currentIndex = 0;
 
-  for (const groupIdx in wordGroups) {
+  for (let groupIdx = 0; groupIdx < wordGroups.length; groupIdx++) {
     const group = wordGroups[groupIdx];
     const groupOccurrence = sourceFirstGroupOccurrence === -1 || groupIdx !== 0 ? 1 : sourceFirstGroupOccurrence;
     // console.log(groupIdx, occurrence, groupOccurrence)
@@ -54,7 +54,7 @@ export function getAlignedQuote(sourceTokens, targetTokens, sourceQuote, sourceF
 
   // console.log(JSON.stringify(targetMatches, null, 2));
 
-  const sourceScopes = sourceMatches.map((tokens) => tokens.map((token) => token.scopes || []).flat()).flat(); // This may be an empty array if source is Greek or Hebrew
+  const sourceScopes = sourceMatches.map((tokens) => tokens.map((token) => token.scopes.map(scope => `${scope}:${token.chapter}:${token.verse}`) || []).flat()).flat(); // This may be an empty array if source is Greek or Hebrew
 
   // console.log(flattenedArray);
 
@@ -78,7 +78,7 @@ export function getAlignedQuote(sourceTokens, targetTokens, sourceQuote, sourceF
       let targetIsMatch = false;
       if (sourceScopes.length > 0) {
         for (const scope of sourceScopes) {
-          if (scope.includes(`/${targetToken.payload}:${occurrence}:`)) {
+          if (scope.includes(`/${targetToken.payload}:${occurrence}:`) && scope.endsWith(`:${targetToken.chapter}:${targetToken.verse}`)) {
             targetIsMatch = true;
             break;
           }
@@ -86,7 +86,7 @@ export function getAlignedQuote(sourceTokens, targetTokens, sourceQuote, sourceF
       } else {
         for (const sourceMatch of sourceMatches.flat()) {
           for (const scope of targetToken.scopes) {
-            if (scope.includes(`/${sourceMatch.payload}:${sourceMatch.occurrence}:`)) {
+            if (scope.includes(`/${sourceMatch.payload}:${sourceMatch.occurrence}:${sourceMatch.chapter}:${sourceMatch.verse}`)) {
               targetIsMatch = true;
               break;
             }
@@ -145,20 +145,24 @@ function findConsecutiveTokens(tokens, words, startIndex) {
 
   const wordOccurrences = {};
   for (let i = 0; i < startIndex; i++) {
-    if (tokens[i].subType === 'wordLike' && !wordOccurrences[tokens[i].payload]) {
-      wordOccurrences[tokens[i].payload] = 0;
+    if (tokens[i].subType === 'wordLike') {
+      if (!wordOccurrences[tokens[i].payload]) {
+        wordOccurrences[tokens[i].payload] = 0;
+      }
+      wordOccurrences[tokens[i].payload]++;
+      tokens[i].occurrence = wordOccurrences[tokens[i].payload];
     }
-    wordOccurrences[tokens[i].payload]++;
-    tokens[i].occurrence = wordOccurrences[tokens[i].payload];
   }
 
   while (tokenIndex < tokens.length && wordIndex < words.length) {
     const token = tokens[tokenIndex];
-    if (token.subType === 'wordLike' && !wordOccurrences[token.payload]) {
-      wordOccurrences[token.payload] = 0;
+    if (token.subType === 'wordLike') {
+      if (!wordOccurrences[token.payload]) {
+        wordOccurrences[token.payload] = 0;
+      }
+      wordOccurrences[token.payload]++;
+      token.occurrence = wordOccurrences[token.payload];
     }
-    wordOccurrences[token.payload]++;
-    token.occurrence = wordOccurrences[token.payload];
 
     const word = words[wordIndex];
     // console.log(tokenIndex, token, wordIndex, word);
