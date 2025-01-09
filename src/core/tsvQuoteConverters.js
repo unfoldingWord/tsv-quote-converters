@@ -288,7 +288,7 @@ export function addGLQuoteCols(book, tsvContent, dcsUrl = 'https://git.door43.or
             err = e;
           }
 
-          if (resultObject) {
+          if (resultObject && resultObject.quote && resultObject.occurrence) {
             counts.pass++;
             tsvRecord.glQuote = resultObject.quote;
             if (tsvRecord.occurrence != -1) {

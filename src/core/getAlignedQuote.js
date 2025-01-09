@@ -68,11 +68,18 @@ export function getAlignedQuote(sourceTokens, targetTokens, sourceQuote, sourceF
     const targetToken = targetTokens[idx];
     // console.log(idx, token);
     if (targetToken.subType === 'wordLike') {
-      if (!wordOccurrences[targetToken.payload]) {
-        wordOccurrences[targetToken.payload] = 0;
+      if (!wordOccurrences[targetToken.chapter]) {
+        wordOccurrences[targetToken.chapter] = {};
       }
-      wordOccurrences[targetToken.payload]++;
-      const occurrence = wordOccurrences[targetToken.payload];
+      if (!wordOccurrences[targetToken.chapter][targetToken.verse]) { 
+        wordOccurrences[targetToken.chapter][targetToken.verse] = {};
+      }
+      if (!wordOccurrences[targetToken.chapter][targetToken.verse][targetToken.payload]) {
+        wordOccurrences[targetToken.chapter][targetToken.verse][targetToken.payload] = 0;
+      }
+      wordOccurrences[targetToken.chapter][targetToken.verse][targetToken.payload]++;
+
+      const occurrence = wordOccurrences[targetToken.chapter][targetToken.verse][targetToken.payload];
       targetToken.occurrence = occurrence;
 
       let targetIsMatch = false;
@@ -84,9 +91,9 @@ export function getAlignedQuote(sourceTokens, targetTokens, sourceQuote, sourceF
           }
         }
       } else {
-        for (const sourceMatch of sourceMatches.flat()) {
+        for (const sourceMatch of sourceMatches.flat().filter((t) => t.chapter = targetToken.chapter && t.verse === targetToken.verse)) {
           for (const scope of targetToken.scopes) {
-            if (scope.includes(`/${sourceMatch.payload}:${sourceMatch.occurrence}:${sourceMatch.chapter}:${sourceMatch.verse}`)) {
+            if (scope.includes(`/${sourceMatch.payload}:${sourceMatch.occurrence}`)) {
               targetIsMatch = true;
               break;
             }
@@ -127,6 +134,14 @@ export function getAlignedQuote(sourceTokens, targetTokens, sourceQuote, sourceF
     targetGroups.push(currentString);
   }
 
+  if (!targetGroups.length) {
+    throw new Error('No target groups found');
+  }
+
+  if (!firstGroupOccurrence) {
+    throw new Error('No first group occurrence found');
+  }
+
   // console.log(targetGroups, firstGroupOccurrence);
   return { quote: targetGroups.join(' & '), occurrence: firstGroupOccurrence };
 }
@@ -146,22 +161,38 @@ function findConsecutiveTokens(tokens, words, startIndex) {
   const wordOccurrences = {};
   for (let i = 0; i < startIndex; i++) {
     if (tokens[i].subType === 'wordLike') {
-      if (!wordOccurrences[tokens[i].payload]) {
-        wordOccurrences[tokens[i].payload] = 0;
+      if (!wordOccurrences[tokens[i].chapter]) {
+        wordOccurrences[tokens[i].chapter] = {};
       }
-      wordOccurrences[tokens[i].payload]++;
-      tokens[i].occurrence = wordOccurrences[tokens[i].payload];
+      if (!wordOccurrences[tokens[i].chapter][tokens[i].verse]) { 
+        wordOccurrences[tokens[i].chapter][tokens[i].verse] = {};
+      }
+      if (!wordOccurrences[tokens[i].chapter][tokens[i].verse][tokens[i].payload]) {
+        wordOccurrences[tokens[i].chapter][tokens[i].verse][tokens[i].payload] = 0;
+      }
+      wordOccurrences[tokens[i].chapter][tokens[i].verse][tokens[i].payload]++;
+
+      const occurrence = wordOccurrences[tokens[i].chapter][tokens[i].verse][tokens[i].payload];
+      tokens[i].occurrence = wordOccurrences[tokens[i].chapter][tokens[i].verse][tokens[i].payload];
     }
   }
 
   while (tokenIndex < tokens.length && wordIndex < words.length) {
     const token = tokens[tokenIndex];
     if (token.subType === 'wordLike') {
-      if (!wordOccurrences[token.payload]) {
-        wordOccurrences[token.payload] = 0;
+      if (!wordOccurrences[token.chapter]) {
+        wordOccurrences[token.chapter] = {};
       }
-      wordOccurrences[token.payload]++;
-      token.occurrence = wordOccurrences[token.payload];
+      if (!wordOccurrences[token.chapter][token.verse]) { 
+        wordOccurrences[token.chapter][token.verse] = {};
+      }
+      if (!wordOccurrences[token.chapter][token.verse][token.payload]) {
+        wordOccurrences[token.chapter][token.verse][token.payload] = 0;
+      }
+      wordOccurrences[token.chapter][token.verse][token.payload]++;
+
+      const occurrence = wordOccurrences[token.chapter][token.verse][token.payload];
+      token.occurrence = occurrence;
     }
 
     const word = words[wordIndex];
