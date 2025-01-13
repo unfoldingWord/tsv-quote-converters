@@ -317,7 +317,7 @@ describe("test2", () => {
   it('test2', async () => {
     const book = "mat";
     const tsvContent = `Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
-1:8-9	ei0o		rc://*/ta/man/translate/figs-explicit	Ἰωρὰμ δὲ ἐγέννησεν τὸν Ὀζείαν Ὀζείας δὲ ἐγέννησεν τὸν Ἰωαθάμ	1	In these two verses, Matthew lists **Joram**, **Ozias**, and **Jotham**. In the list of kings in 1 Chronicles 3, however, there are four names between **Joram** and **Jotham** (see [1 Chronicles 3:11–12](../1co/03/11.md)), not one. So, Matthew has not mentioned three of these kings, and the word translated as **fathered** only requires the older person to be an ancestor of the younger person, who could be a son, grandson, great-grandson, or even great-great-grandson. It is unclear exactly where in the list Matthew leaves out the three kings. He could be using the name **Ozias**: (1) to refer to the king that 1 Chronicles names “Azariah.” In this case, **Ozias** is the great-great-grandson of **Joram** and the father of **Jotham**. Alternate translation: [and Joram was the great-great-grandfather of Ozias, and Ozias fathered Jotham] (2) to refer to the king that 1 Chronicles names “Ahaziah.” In this case, **Ozias** is the son of **Joram** and the great-great-grandfather of **Jotham**. Alternate translation: [and Joram fathered Ozias, and Ozias was the great-great-grandfather of Jotham]`;
+1:8-9	ei0o		rc://*/ta/man/translate/figs-explicit	Ἰωρὰμ δὲ ἐγέννησεν τὸν Ὀζείαν, Ὀζείας δὲ ἐγέννησεν τὸν Ἰωαθάμ	1	note....`;
 
     try {
       const { output, errors } = await addGLQuoteCols(
@@ -327,7 +327,41 @@ describe("test2", () => {
 
       const expectedOutput = {
         output: ['Reference	ID	Tags	SupportReference	Quote	Occurrence	GLQuote	GLOccurrence	Note',
-'1:8-9	ei0o		rc://*/ta/man/translate/figs-explicit	Ἰωρὰμ δὲ ἐγέννησεν τὸν Ὀζείαν Ὀζείας δὲ ἐγέννησεν τὸν Ἰωαθάμ	1	and Joram fathered Ozias & Ozias & Jotham	1	In these two verses, Matthew lists **Joram**, **Ozias**, and **Jotham**. In the list of kings in 1 Chronicles 3, however, there are four names between **Joram** and **Jotham** (see [1 Chronicles 3:11–12](../1co/03/11.md)), not one. So, Matthew has not mentioned three of these kings, and the word translated as **fathered** only requires the older person to be an ancestor of the younger person, who could be a son, grandson, great-grandson, or even great-great-grandson. It is unclear exactly where in the list Matthew leaves out the three kings. He could be using the name **Ozias**: (1) to refer to the king that 1 Chronicles names “Azariah.” In this case, **Ozias** is the great-great-grandson of **Joram** and the father of **Jotham**. Alternate translation: [and Joram was the great-great-grandfather of Ozias, and Ozias fathered Jotham] (2) to refer to the king that 1 Chronicles names “Ahaziah.” In this case, **Ozias** is the son of **Joram** and the great-great-grandfather of **Jotham**. Alternate translation: [and Joram fathered Ozias, and Ozias was the great-great-grandfather of Jotham]'],
+'1:8-9	ei0o		rc://*/ta/man/translate/figs-explicit	Ἰωρὰμ δὲ ἐγέννησεν τὸν Ὀζείαν, Ὀζείας δὲ ἐγέννησεν τὸν Ἰωαθάμ	1	and Joram fathered Ozias, and Ozias fathered Jotham	1	note...'],
+        errors: [],
+      };
+
+      // Check the output
+      expect(output).toBeDefined();
+      console.log(output);
+      expect(output).toEqual(expectedOutput.output);
+
+      // Check the errors
+      expect(errors).toBeDefined();
+      // expect(errors).toEqual(expectedOutput.errors);
+    } catch (error) {
+      // Handle any unexpected errors
+      console.error("Test failed with error:", error);
+      throw error;
+    }
+  }, 1000000);
+});
+
+describe("test3", () => {
+  it('test3', async () => {
+    const book = "mat";
+    const tsvContent = `Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
+1:8-9	ei0o		rc://*/ta/man/translate/figs-explicit	and Joram fathered Ozias, and Ozias fathered Jotham	1	note...`;
+
+    try {
+      const { output, errors } = await convertULTQuotes2OL(
+        book,
+        tsvContent
+      );
+
+      const expectedOutput = {
+        output: ['Reference	ID	Tags	SupportReference	Quote	Occurrence	Note',
+'1:8-9	ei0o		rc://*/ta/man/translate/figs-explicit	Ἰωρὰμ δὲ ἐγέννησεν τὸν Ὀζείαν, Ὀζείας δὲ ἐγέννησεν τὸν Ἰωαθάμ	1	note...'],
         errors: [],
       };
 
