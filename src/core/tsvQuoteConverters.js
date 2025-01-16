@@ -190,7 +190,7 @@ export function convertULTQuotes2OL(book, tsvContent, dcsUrl = 'https://git.door
             if (tsvRecord.occurrence && tsvRecord.occurrence !== '1') {
               occurrence = parseInt(tsvRecord.occurrence);
             }
-            resultObject = getAlignedQuote(sourceTokens, targetTokens, quote, occurrence);
+            resultObject = getAlignedQuote(sourceTokens, targetTokens, quote, occurrence, false);
           } catch (e) {
             err = e;
           }
@@ -203,7 +203,7 @@ export function convertULTQuotes2OL(book, tsvContent, dcsUrl = 'https://git.door
             }
             output.push(tsvRecordToTSV7String(tsvRecord));
           } else {
-            tsvRecord.quote = 'QUOTE_NOT_FOUND: ' + tsvRecord.quote;
+            tsvRecord.quote = 'QUOTE_NOT_FOUND: ' + tsvRecord.quote.replace('QUOTE_NOT_FOUND: ', '');
             output.push(tsvRecordToTSV7String(tsvRecord));
             counts.fail++;
             const errorMsg = `Error: ${book} ${tsvRecord.ref} ${tsvRecord.id} ${err}`;
@@ -283,7 +283,7 @@ export function addGLQuoteCols(book, tsvContent, dcsUrl = 'https://git.door43.or
           let resultObject = null;
           let err = null;
           try {
-            resultObject = getAlignedQuote(sourceTokens, targetTokens, quote, tsvRecord.occurrence);
+            resultObject = getAlignedQuote(sourceTokens, targetTokens, quote, tsvRecord.occurrence, true);
           } catch (e) {
             err = e;
           }
@@ -298,7 +298,7 @@ export function addGLQuoteCols(book, tsvContent, dcsUrl = 'https://git.door43.or
             }
             output.push(tsvRecordToTSV9String(tsvRecord));
           } else {
-            tsvRecord.glQuote = 'QUOTE_NOT_FOUND: ' + tsvRecord.quote;
+            tsvRecord.glQuote = 'QUOTE_NOT_FOUND: ' + tsvRecord.quote.replace('QUOTE_NOT_FOUND: ', '');
             tsvRecord.glOccurrence = tsvRecord.occurrence;
             output.push(tsvRecordToTSV9String(tsvRecord));
             counts.fail++;

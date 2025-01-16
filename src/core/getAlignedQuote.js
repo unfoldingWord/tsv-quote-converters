@@ -1,3 +1,5 @@
+import { tokenize, tokenizeOrigLang } from 'string-punctuation-tokenizer';
+
 /**
  * Gets the target quote to from the given quote based on alignment scopes
  * @param {Array} sourceVerseObjects - Array of verse objects from the source language
@@ -6,15 +8,13 @@
  * @param {number} sourceFirstGroupOccurrence - occurrence of the first group in the quote (groups separated by ` & `) in the source verse
  * @returns {string} Corresponding target quote separated by ' & ' if multiple groups
  */
-export function getAlignedQuote(sourceTokens, targetTokens, sourceQuote, sourceFirstGroupOccurrence = 1) {
+export function getAlignedQuote(sourceTokens, targetTokens, sourceQuote, sourceFirstGroupOccurrence = 1, sourceIsOrigLang = true) {
   let targetOccurrence = 0;
   // Split the quote into groups of words
-  const wordGroups = sourceQuote.split(/ *& */).map((group) =>
-    group
-      .replaceAll('\\n', ' ')
-      .split(/[\s\p{P}\p{S}]+/u)
-      .filter((word) => word !== '')
-  );
+  const wordGroups = sourceQuote.split(/ *& */).map((group) => {
+    if (sourceIsOrigLang) return tokenizeOrigLang({ text: group, includePunctuation: false, normalize: true });
+    else return tokenize({ text: group, includePunctuation: false, normalize: true });
+  });
   // Find the specific occurrence for each group, ensuring sequential order
   const sourceMatches = [];
   let currentIndex = 0;
@@ -54,7 +54,7 @@ export function getAlignedQuote(sourceTokens, targetTokens, sourceQuote, sourceF
 
   // console.log(JSON.stringify(targetMatches, null, 2));
 
-  const sourceScopes = sourceMatches.map((tokens) => tokens.map((token) => token.scopes.map(scope => `${scope}:${token.chapter}:${token.verse}`) || []).flat()).flat(); // This may be an empty array if source is Greek or Hebrew
+  const sourceScopes = sourceMatches.map((tokens) => tokens.map((token) => token.scopes.map((scope) => `${scope}:${token.chapter}:${token.verse}`) || []).flat()).flat(); // This may be an empty array if source is Greek or Hebrew
 
   // console.log(flattenedArray);
 
@@ -71,7 +71,7 @@ export function getAlignedQuote(sourceTokens, targetTokens, sourceQuote, sourceF
       if (!wordOccurrences[targetToken.chapter]) {
         wordOccurrences[targetToken.chapter] = {};
       }
-      if (!wordOccurrences[targetToken.chapter][targetToken.verse]) { 
+      if (!wordOccurrences[targetToken.chapter][targetToken.verse]) {
         wordOccurrences[targetToken.chapter][targetToken.verse] = {};
       }
       if (!wordOccurrences[targetToken.chapter][targetToken.verse][targetToken.payload]) {
@@ -91,7 +91,7 @@ export function getAlignedQuote(sourceTokens, targetTokens, sourceQuote, sourceF
           }
         }
       } else {
-        for (const sourceMatch of sourceMatches.flat().filter((t) => t.chapter = targetToken.chapter && t.verse === targetToken.verse)) {
+        for (const sourceMatch of sourceMatches.flat().filter((t) => t.chapter == targetToken.chapter && t.verse === targetToken.verse)) {
           for (const scope of targetToken.scopes) {
             if (scope.includes(`/${sourceMatch.payload}:${sourceMatch.occurrence}`)) {
               targetIsMatch = true;
@@ -164,7 +164,7 @@ function findConsecutiveTokens(tokens, words, startIndex) {
       if (!wordOccurrences[tokens[i].chapter]) {
         wordOccurrences[tokens[i].chapter] = {};
       }
-      if (!wordOccurrences[tokens[i].chapter][tokens[i].verse]) { 
+      if (!wordOccurrences[tokens[i].chapter][tokens[i].verse]) {
         wordOccurrences[tokens[i].chapter][tokens[i].verse] = {};
       }
       if (!wordOccurrences[tokens[i].chapter][tokens[i].verse][tokens[i].payload]) {
@@ -183,7 +183,7 @@ function findConsecutiveTokens(tokens, words, startIndex) {
       if (!wordOccurrences[token.chapter]) {
         wordOccurrences[token.chapter] = {};
       }
-      if (!wordOccurrences[token.chapter][token.verse]) { 
+      if (!wordOccurrences[token.chapter][token.verse]) {
         wordOccurrences[token.chapter][token.verse] = {};
       }
       if (!wordOccurrences[token.chapter][token.verse][token.payload]) {

@@ -1,6 +1,6 @@
 {
   "name": "tsv7-ult-quotes-to-origl-quotes",
-  "version": "1.0.51",
+  "version": "1.0.54",
   "description": "",
   "main": "./dist/tsv7-ult-quotes-to-origl-quotes.mjs",
   "module": "./dist/tsv7-ult-quotes-to-origl-quotes.mjs",
@@ -20,6 +20,7 @@
     "buffer": "^6.0.3",
     "deepcopy": "^2.1.0",
     "proskomma": "^0.9.3",
+    "string-punctuation-tokenizer": "^2.2.0",
     "xregexp": "^5.1.1"
   },
   "devDependencies": {
