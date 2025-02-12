@@ -4,6 +4,7 @@ import { parse } from 'csv-parse/sync';
 import { stringify } from 'csv-stringify/sync';
 import { loadResourceFilesIntoProskomma } from './loadResourceFilesIntoProskomma';
 import { doAlignmentQuery } from './doAlignmentQuery';
+import { getSingleCVsFromReference } from '../utils/getSingleCVsFromReference';
 
 /**
  * Adds GL quote columns.
@@ -51,42 +52,21 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
             continue;
           }
           const quote = tsvRecord['Quote'].replace(/\s*…\s*/g, ' & ');
-          const [chapter, verseRef] = tsvRecord['Reference'].split(':');
           const sourceTokens = [];
           const sourceBible = testament === 'old' ? 'hbo_uhb' : 'el-x-koine_ugnt';
+          const singleCVs = getSingleCVsFromReference(tsvRecord['Reference']);
 
           // Handle verse ranges
-          const verseCommaParts = verseRef.trim().split(',');
-          for (const commaPart of verseCommaParts) {
-            if (commaPart.includes('-')) {
-              const verseRange = commaPart.trim().split('-');
-              if (verseRange.length > 1) {
-                for (let i = parseInt(verseRange[0]); i <= parseInt(verseRange[1]); i++) {
-                  sourceTokens.push(...tokenLookup[sourceBible][bookCode.toUpperCase()][`${chapter}:${i}`]);
-                }
-              }
-            } else {
-              sourceTokens.push(...tokenLookup[sourceBible][bookCode.toUpperCase()][`${chapter}:${commaPart}`]);
-            }
+          for (const cv of singleCVs) {
+            sourceTokens.push(...tokenLookup[sourceBible][bookCode.toUpperCase()][cv]);
           }
 
           for (const link of bibleLinks) {
             const targetTokens = [];
 
             const repo = link.split('/')[1];
-
-            const verseCommaParts = verseRef.trim().split(',');
-            for (const commaPart of verseCommaParts) {
-              if (commaPart.includes('-')) {
-                const verseRange = commaPart.trim().split('-');
-                if (verseRange.length > 1) {
-                  for (let i = parseInt(verseRange[0]); i <= parseInt(verseRange[1]); i++) {
-                    targetTokens.push(...tokenLookup[repo]?.[bookCode.toUpperCase()][`${chapter}:${i}`]);
-                  }
-                }
-              } else {
-                targetTokens.push(...tokenLookup[repo]?.[bookCode.toUpperCase()][`${chapter}:${commaPart}`]);
-              }
+            for (const cv of singleCVs) {
+              targetTokens.push(...tokenLookup[repo]?.[bookCode.toUpperCase()][cv]);
             }
 
             let resultObject = null;

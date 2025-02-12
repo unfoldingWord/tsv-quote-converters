@@ -9,7 +9,7 @@ const defaultTsvInput = `Reference	ID	Tags	SupportReference	Quote	Occurrence	Not
 1:1	ilf2		rc://*/ta/man/translate/writing-participants	Παῦλος, ἀπόστολος Χριστοῦ Ἰησοῦ & τοῖς ἁγίοις τοῖς οὖσιν	1	Your language may have a particular way of introducing the author of a letter and the intended audience. Alternate translation: [I, Paul, an apostle of Jesus Christ … write this letter to you, God’s holy people]
 `;
 const defaultTsvFileURL = `https://git.door43.org/unfoldingWord/en_tn/raw/branch/master/tn_${defaultBookCode.toUpperCase()}.tsv`;
-const defaultBiblesToUse = `unfoldingWord/en_ult/master`;
+const defaultBibleToUse = `unfoldingWord/en_ult/master`;
 
 function handleFetchTSVContent(e) {
   e.preventDefault();
@@ -22,33 +22,33 @@ function handleFetchTSVContent(e) {
 
 function submitForm(e) {
   e.preventDefault();
-  console.log(e.target.elements.biblesToUse.value);
+  const submitButton = e.target.querySelector('button[type="submit"]');
+  const spinner = document.createElement('span');
+  spinner.className = 'fas fa-spinner fa-spin';
+  submitButton.appendChild(spinner);
   addGLQuoteCols({
-    bibleLinks: e.target.elements.biblesToUse.value.split('\n').filter((v) => v.trim()),
+    bibleLinks: [e.target.elements.bibleToUse.value],
     bookCode: e.target.elements.bookCode.value,
     tsvContent: e.target.elements.tsvInput.value,
     trySeparatorsAndOccurrences: true,
   }).then((results) => {
-    console.log(results);
     let tsvRecords = parse(results.output, {
       columns: true,
       delimiter: '\t',
       skip_empty_lines: true,
     });
-    tsvRecords.forEach((rec) => (rec['Quote'] = rec['GLQuote']));
-    console.log(tsvRecords);
+    tsvRecords.forEach((rec) => {rec['Quote'] = rec['GLQuote']; rec['Occcurence'] = rec['GLOccurrence']});
     const outputTsv = stringify(tsvRecords, {
       header: true,
       delimiter: '\t',
       columns: e.target.elements.tsvInput.value.split('\n')[0].split('\t'),
     });
-    console.log(outputTsv);
     convertGLQuotes2OLQuotes({
-      bibleLinks: e.target.elements.biblesToUse.value.split('\n').filter((v) => v.trim()),
+      bibleLinks: [e.target.elements.bibleToUse.value],
       bookCode: e.target.elements.bookCode.value,
       tsvContent: outputTsv,
     }).then((results) => {
-      console.log(results);
+      spinner.remove();
       document.querySelector('#quoteRoundTrip #results').value = results.output || 'No results';
       document.querySelector('#quoteRoundTrip #errors').value = results.errors.join('\n') || 'No errors';
     });
@@ -58,9 +58,8 @@ function submitForm(e) {
 // wrapped in a React fragment for rendering output:
 <div id="quoteRoundTrip">
   <form onSubmit={submitForm}>
-    <h3>Target Bibles to Get Quotes From:</h3>
-    <p> (one per line)</p>
-    <textarea name="biblesToUse" cols="100" rows="3" defaultValue={defaultBiblesToUse} />
+    <h3>GL Bible to use to Align Quate Column:</h3>
+    <input type="text" name="bibleToUse" size="30" defaultValue={defaultBibleToUse} />
     <h3>Bible Book Code:</h3>
     <input type="text" name="bookCode" defaultValue={defaultBookCode} />
     <h3>TSV Input:</h3>
@@ -68,10 +67,10 @@ function submitForm(e) {
     <br />
     <textarea name="tsvInput" id="tsvInput" rows="10" cols="100" style={{ whiteSpace: 'nowrap', overflow: 'auto' }} defaultValue={defaultTsvInput} />
     <br />
-    <button type="submit">Submit</button>
+    <button type="submit">Submit&nbsp;</button>
   </form>
   <p>
-    <strong>TSV w/Quotes:</strong>
+    <strong>TSV w/Fixed Quotes:</strong>
   </p>
   <textarea name="results" rows="10" cols="100" style={{ whiteSpace: 'nowrap', overflow: 'auto' }} id="results"></textarea>
   <p>

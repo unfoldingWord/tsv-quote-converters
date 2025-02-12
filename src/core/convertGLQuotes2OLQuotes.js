@@ -31,7 +31,6 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
       reject(errorMsg);
     }
 
-    console.log(bibleLink, bookCode, dcsUrl);
     loadResourceFilesIntoProskomma({ bibleLinks: [bibleLink], bookCode, dcsUrl })
       .then(doAlignmentQuery)
       .then(tokenLookup => {
