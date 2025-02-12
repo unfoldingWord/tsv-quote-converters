@@ -65,17 +65,51 @@ function submitForm(e) {
     <h3>TSV Input:</h3>
     <input nae="tsvFileURL" id="tsvFileURL" type="text" size="70" defaultValue={defaultTsvFileURL} /> <button onClick={handleFetchTSVContent}>Fetch</button> or paste below
     <br />
-    <textarea name="tsvInput" id="tsvInput" rows="10" cols="100" style={{ whiteSpace: 'nowrap', overflow: 'auto' }} defaultValue={defaultTsvInput} />
+    <textarea 
+      name="tsvInput" 
+      id="tsvInput" 
+      rows="10" 
+      cols="100" 
+      style={{ 
+        whiteSpace: 'pre',
+        overflowWrap: 'normal',
+        overflow: 'auto',
+        fontFamily: 'monospace'
+      }} 
+      defaultValue={defaultTsvInput} 
+    />
     <br />
     <button type="submit">Submit&nbsp;</button>
   </form>
   <p>
     <strong>TSV w/Fixed Quotes:</strong>
   </p>
-  <textarea name="results" rows="10" cols="100" style={{ whiteSpace: 'nowrap', overflow: 'auto' }} id="results"></textarea>
+  <textarea 
+    name="results"
+    id="results"
+    rows="10"
+    cols="100"
+    style={{ 
+        whiteSpace: 'pre',
+        overflowWrap: 'normal',
+        overflow: 'auto',
+        fontFamily: 'monospace'
+      }}
+  />
   <p>
     <strong>Errors:</strong>
   </p>
-  <textarea name="errors" rows="10" cols="100" style={{ whiteSpace: 'nowrap', overflow: 'auto' }} id="errors"></textarea>
+  <textarea 
+    name="errors"
+    id="errors"
+    rows="10"
+    cols="100"
+    style={{ 
+        whiteSpace: 'pre',
+        overflowWrap: 'normal',
+        overflow: 'auto',
+        fontFamily: 'monospace'
+      }}
+  />
 </div>;
 ```
