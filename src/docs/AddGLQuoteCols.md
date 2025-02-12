@@ -20,7 +20,7 @@ function handleFetchTSVContent(e) {
     .then((data) => {
       // Normalize line endings
       const normalizedData = data.replace(/\r\n?/g, '\n');
-      document.getElementById('tsvInput').value = normalizedData;
+      document.querySelector('#addGLQuoteCols #tsvInput').value = normalizedData;
     });
 }
 

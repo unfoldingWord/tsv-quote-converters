@@ -16,7 +16,8 @@ function handleFetchTSVContent(e) {
   fetch(document.querySelector('#quoteRoundTrip #tsvFileURL').value)
     .then((response) => response.text())
     .then((data) => {
-      document.getElementById('tsvInput').value = data;
+      const normalizedData = data.replace(/\r\n?/g, '\n');
+      document.querySelector('#quoteRoundTrip #tsvInput').value = normalizedData;
     });
 }
 
