@@ -1,9 +1,9 @@
 {
-  "name": "tsv7-ult-quotes-to-origl-quotes",
+  "name": "tsv-quote-converters",
   "version": "1.1.0",
   "description": "",
-  "main": "./dist/tsv7-ult-quotes-to-origl-quotes.mjs",
-  "module": "./dist/tsv7-ult-quotes-to-origl-quotes.mjs",
+  "main": "./dist/tsv-quote-converters.mjs",
+  "module": "./dist/tsv-quote-converters.mjs",
   "files": [
     "dist"
   ],

@@ -74,7 +74,6 @@ export async function loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcs
     }
     // console.log(`      Downloaded ${bookCode} ${content.length.toLocaleString()} bytes`);
 
-    const startTime = Date.now();
     if (repo !== 'hbo_uhb' && repo !== 'el-x-koine_ugnt') {
       content = [rejigAlignment(content)]; // Tidy-up USFM alignment info
     }
@@ -85,7 +84,6 @@ export async function loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcs
         console.error(`ERROR: ${err}`);
       }
     }
-    // console.log(`      Imported in ${Date.now() - startTime} msec`);
   }
   return pk;
 }
