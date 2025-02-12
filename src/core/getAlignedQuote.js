@@ -16,14 +16,23 @@ export function getAlignedQuoteTryingDifferentSeparators({ sourceTokens, targetT
   }
 
   if (sourceFirstGroupOccurrence == 0) {
-    throw new Error('source quote exists but occurence is 0');
+    throw new Error('source quote exists but occurrence is 0');
   }
 
   const combinationGenerator = generateNextQuoteCombination(sourceQuote);
   const quotesTried = [];
   let firstError = null;
+  let occurrencesToTry = [];
 
-  for (let occurrence = sourceFirstGroupOccurrence; occurrence >= 1; occurrence--) {
+  if (sourceFirstGroupOccurrence < 0) {
+    occurrencesToTry.push(sourceFirstGroupOccurrence);
+  } else {
+    for (let occurrence = sourceFirstGroupOccurrence; occurrence >= 1; occurrence--) {
+      occurrencesToTry.push(occurrence);
+    }
+  }
+
+  for (let occurrence of occurrencesToTry) {
     for (const quote of combinationGenerator) {
       try {
         quotesTried.push(quote);
@@ -59,7 +68,7 @@ export function getAlignedQuoteTryingDifferentSeparators({ sourceTokens, targetT
  */
 export function getAlignedQuote({ sourceTokens, targetTokens, sourceQuote, sourceFirstGroupOccurrence = 1, sourceIsOrigLang = true }) {
   if (sourceFirstGroupOccurrence == 0 && sourceQuote) {
-    throw new Error('quote exists but occurence is 0');
+    throw new Error('quote exists but occurrence is 0');
   }
 
   if (!sourceQuote) {
@@ -192,11 +201,11 @@ export function getAlignedQuote({ sourceTokens, targetTokens, sourceQuote, sourc
   }
 
   if (!targetGroups.length) {
-    throw new Error('No target groups found');
-  }
-
-  if (!firstGroupOccurrence) {
-    throw new Error('No first group occurrence found');
+    if(sourceIsOrigLang) {
+      throw new Error(`Nothing in the verse of the targe Bible is aligned to ${sourceQuote}`);
+    } else {
+      throw new Error(`Cannot find the aligned words in the original language verse: ${sourceScopes.join(', ')}`);
+    }
   }
 
   // console.log(targetGroups, firstGroupOccurrence);
