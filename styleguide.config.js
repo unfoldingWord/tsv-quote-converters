@@ -1,9 +1,10 @@
 const webpack = require('webpack');
 const path = require('path');
 const { styles, theme } = require('./styleguide.styles');
+const pkg = require('./package.json');
 
 module.exports = {
-  title: 'TSV Quote Converters Styleguide',
+  title: `TSV Quote Converters v${pkg.version}`,
   theme: theme,
   styles: styles,
   ribbon: {
