@@ -1,1 +1,2 @@
-export { convertULTQuotes2OL, addGLQuoteCols } from './core/tsvQuoteConverters';
+export { convertGLQuotes2OLQuotes } from './core/convertGLQuotes2OLQuotes';
+export { addGLQuoteCols } from './core/addGLQuoteCols';

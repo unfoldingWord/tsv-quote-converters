@@ -1,5 +1,5 @@
 // index.test.js
-import {convertULTQuotes2OL, addGLQuoteCols} from "./index";
+import { convertGLQuotes2OLQuotes, addGLQuoteCols } from "./index";
 import { BibleBookData } from "./common/books";
 import fs from "fs";
 import path from "path";
@@ -269,8 +269,8 @@ The grass was dried up, and the flower fell off`,
   }
 ];
 
-describe("test1-convertULTQuotes2OL", () => {
-  it('convertULTQuotes2OL with book "jol" and provided tsvContent', async () => {
+describe("test1-convertGLQuotes2OLQuotes", () => {
+  it('convertGLQuotes2OLQuotes with book "jol" and provided tsvContent', async () => {
     const book = "jol";
     const tsvContent = `Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
 1:4-6	q7n2		rc://*/ta/man/translate/figs-idiom	it has been cut & from your mouth	1	This is an expression that means that something is no longer available. Your language may have a comparable expression that you can use in your translation. Alternate translation: “it is no longer available for you to drink”
@@ -281,7 +281,8 @@ describe("test1-convertULTQuotes2OL", () => {
 1:6	zo55		rc://*/ta/man/translate/figs-infostructure	כִּ֤י שָֽׁמְעָה֙ בִּ⁠שְׂדֵ֣ה מוֹאָ֔ב כִּֽי־פָקַ֤ד יְהוָה֙ אֶת־עַמּ֔⁠וֹ\\nלָ⁠תֵ֥ת לָ⁠הֶ֖ם לָֽחֶם	1	Naomi first heard about Yahweh visiting his people and then decided to return to Bethlehem, so it might be more natural to put this information first, as in the UST.`;
 
     try {
-      const { output, errors } = await convertULTQuotes2OL(
+      const { output, errors } = await convertGLQuotes2OLQuotes(
+        'unfoldingWord/en_ult/v84',
         book,
         tsvContent
       );
@@ -311,11 +312,12 @@ describe("test1-convertULTQuotes2OL", () => {
 
       const rows = tsvContent.split("\n");
       for(let i = 0; i < rows.length; i++) {
-        const result = await convertULTQuotes2OL(
+        const result = await convertGLQuotes2OLQuotes(
+          'unfoldingWord/en_ult/v84',
           book,
           rows[i]
         );
-        expect(result.output[0]).toEqual(expectedOutput.output[i]);
+        expect(result.output).toEqual(expectedOutput.output[i]);
       }
     } catch (error) {
       // Handle any unexpected errors
@@ -325,16 +327,18 @@ describe("test1-convertULTQuotes2OL", () => {
   }, TEST_TIMEOUT);
 });
 
-describe("test12-convertULTQuotes2OL-joshua_16_10_split_duplicate", () => {
-  it('convertULTQuotes2OL with book "jos" and provided tsvContent', async () => {
+describe("test12-convertGLQuotes2OLQuotes-joshua_16_10_split_duplicate", () => {
+  it('convertGLQuotes2OLQuotes with book "jos" and provided tsvContent', async () => {
     const book = "jos";
     const tsvContent = `Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
-16:10	g4k8		rc://*/ta/man/translate/figs-genericnoun	the Canaanite & the Canaanite	1	The author is not referring to a specific **Canaanite**. He means Canaanites in general. It may be more natural in your language to express this meaning by using a plural form. Alternate translation: “the Canaanites … the Canaanites”`;
+16:10	g4k8		rc://*/ta/man/translate/figs-genericnoun	the Canaanite the Canaanite	1	The author is not referring to a specific **Canaanite**. He means Canaanites in general. It may be more natural in your language to express this meaning by using a plural form. Alternate translation: “the Canaanites … the Canaanites”`;
 
     try {
-      const { output, errors } = await convertULTQuotes2OL(
+      const { output, errors } = await convertGLQuotes2OLQuotes(
+        'unfoldingWord/en_ult/v84',
         book,
-        tsvContent
+        tsvContent,
+        true,
       );
 
       const expectedOutput = {
@@ -353,7 +357,8 @@ describe("test12-convertULTQuotes2OL-joshua_16_10_split_duplicate", () => {
 
       const rows = tsvContent.split("\n");
       for(let i = 0; i < rows.length; i++) {
-        const result = await convertULTQuotes2OL(
+        const result = await convertGLQuotes2OLQuotes(
+          'unfoldingWord/en_ult/v84',
           book,
           rows[i]
         );
@@ -367,15 +372,16 @@ describe("test12-convertULTQuotes2OL-joshua_16_10_split_duplicate", () => {
   }, TEST_TIMEOUT);
 });
 
-describe("test3-convertULTQuotes2OL-test_mat_1_4_duplicate", () => {
-  it('convertULTQuotes2OL with book "mat" and provided tsvContent', async () => {
+describe("test3-convertGLQuotes2OLQuotes-test_mat_1_4_duplicate", () => {
+  it('convertGLQuotes2OLQuotes with book "mat" and provided tsvContent', async () => {
     debugger;
     const book = "mat";
     const tsvContent = `Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
 1:4	g4k8		rc://*/ta/man/translate/figs-genericnoun	fathered & and Nahshon fathered Salmon	2	test`;
 
     try {
-      const { output, errors } = await convertULTQuotes2OL(
+      const { output, errors } = await convertGLQuotes2OLQuotes(
+        'unfoldingWord/en_ult/v84',
         book,
         tsvContent
       );
@@ -396,7 +402,8 @@ describe("test3-convertULTQuotes2OL-test_mat_1_4_duplicate", () => {
 
       const rows = tsvContent.split("\n");
       for(let i = 0; i < rows.length; i++) {
-        const result = await convertULTQuotes2OL(
+        const result = await convertGLQuotes2OLQuotes(
+          'unfoldingWord/en_ult/v84',
           book,
           rows[i]
         );
@@ -410,7 +417,7 @@ describe("test3-convertULTQuotes2OL-test_mat_1_4_duplicate", () => {
   }, TEST_TIMEOUT);
 });
 
-describe("test4-convertULTQuotes2OL-jud_1-1", () => {
+describe("test4-convertGLQuotes2OLQuotes-jud_1-1", () => {
   it('test1', async () => {
     debugger; // Add this line to pause execution for debugging
     const book = "jud";
@@ -421,7 +428,8 @@ describe("test4-convertULTQuotes2OL-jud_1-1", () => {
 `1:1	g4k8		rc://*/ta/man/translate/figs-genericnoun	Ἰησοῦ Χριστοῦ δοῦλος	1	test`];
 
     try {
-      const { output, errors } = await convertULTQuotes2OL(
+      const { output, errors } = await convertGLQuotes2OLQuotes(
+        'unfoldingWord/en_ult/v84',
         book,
         tsvContent
       );
@@ -433,9 +441,9 @@ describe("test4-convertULTQuotes2OL-jud_1-1", () => {
   }, TEST_TIMEOUT)
 });
 
-describe("test5-convertULTQuotes2OL-many-books", () => {
+describe("test5-convertGLQuotes2OLQuotes-many-books", () => {
   for (const key of Object.keys(BibleBookData)) {
-    it(`convertULTQuotes2OL with book "${key}"`, async () => {
+    it(`convertGLQuotes2OLQuotes with book "${key}"`, async () => {
       const book = key;
       const engFilePath = path.join(__dirname, `../fixtures/tn_${key.toUpperCase()}_eng.tsv`);
       const olFilePath = path.join(__dirname, `../fixtures/tn_${key.toUpperCase()}_ol.tsv`);
@@ -450,7 +458,7 @@ describe("test5-convertULTQuotes2OL-many-books", () => {
       const expectedTsvContent = fs.readFileSync(olFilePath, "utf8");
 
       try {
-        const { output, errors } = await convertULTQuotes2OL(book, tsvContent);
+        const { output, errors } = await convertGLQuotes2OLQuotes('unfoldingWord/en_ult/v84', book, tsvContent);
 
         // Check the output
         expect(output).toBeDefined();
@@ -519,7 +527,7 @@ describe("test6-addGLQuotes-all-many-books", () => {
       const expectedTsvContent = fs.readFileSync(engFilePath, "utf8");
 
       try {
-        const { output, errors } = await addGLQuoteCols(book, tsvContent);
+        const { output, errors } = await addGLQuoteCols('unfoldingWord/en_ult/v84', book, tsvContent);
 
         console.log(errors);
         console.log(output);
@@ -573,13 +581,14 @@ describe("test6-addGLQuotes-all-many-books", () => {
 });
 
 describe("test7-addGLQuoteCols-mat-verse-span", () => {
-  it('addGLQuoteColos test of mat 1:8-9 for verse spans', async () => {
+  it('addGLQuoteCols test of mat 1:8-9 for verse spans', async () => {
     const book = "mat";
     const tsvContent = `Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
 1:8-9	ei0o		rc://*/ta/man/translate/figs-explicit	Ἰωρὰμ δὲ ἐγέννησεν τὸν Ὀζείαν, Ὀζείας δὲ ἐγέννησεν τὸν Ἰωαθάμ	1	note....`;
 
     try {
       const { output, errors } = await addGLQuoteCols(
+        'unfoldingWord/en_ult/v84', 
         book,
         tsvContent
       );
@@ -606,14 +615,15 @@ describe("test7-addGLQuoteCols-mat-verse-span", () => {
   }, TEST_TIMEOUT);
 });
 
-describe("test8-convertULTQuotes2OL-mat-verse-span", () => {
+describe("test8-convertGLQuotes2OLQuotes-mat-verse-span", () => {
   it('convertULTQuote2OL mat verse span', async () => {
     const book = "mat";
     const tsvContent = `Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
 1:8-9	ei0o		rc://*/ta/man/translate/figs-explicit	and Joram fathered Ozias, and Ozias fathered Jotham	1	note...`;
 
     try {
-      const { output, errors } = await convertULTQuotes2OL(
+      const { output, errors } = await convertGLQuotes2OLQuotes(
+        'unfoldingWord/en_ult/v84',
         book,
         tsvContent
       );
@@ -651,9 +661,10 @@ describe("test9-addGLQuoteCols-jud-1-4", () => {
 `;
 
     try {
-      const result = await addGLQuoteCols(book, tsvContent);
+      const result = await addGLQuoteCols('unfoldingWord/en_ult/v84', book, tsvContent);
+      console.log(result);
       let result2;
-      if (result.output.length) {
+      if (result.output) {
           const updatedRows = result.output.map((row, idx) => {
             const columns = row.split('\t');
             if (idx !== 0 && columns[6] && columns[6] !== 'QUOTE_NOT_FOUND') {
@@ -663,7 +674,7 @@ describe("test9-addGLQuoteCols-jud-1-4", () => {
             return [...columns.slice(0, 6), columns[8]].join('\t');
           });
         console.log(updatedRows);
-        result2 = await convertULTQuotes2OL(book, updatedRows.join("\n"));
+        result2 = await convertGLQuotes2OLQuotes('unfoldingWord/en_ult/v84', book, updatedRows.join("\n"));
       }
 
       const expectedOutput = {
@@ -691,7 +702,34 @@ describe("test9-addGLQuoteCols-jud-1-4", () => {
   }, TEST_TIMEOUT);
 });
 
-describe("test10-convertULTQuote2OL-all-tests", () => {
+describe("test10-addGLQuoteCols-but-in-greek", () => {
+  it('addGLQuoteCols for "but" in greek', async () => {
+    const book = "1co";
+    const tsvContent = `Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
+2:4	chtx		rc://*/ta/man/translate/figs-ellipsis	ἀλλ’ ἐν ἀποδείξει Πνεύματος καὶ δυνάμεως;	1	Here Paul has omitted some words that may be necessary to make a complete thought in your language. If your language needs these words, you could add them here, supplying the idea from earlier in the verse. Alternate translation: [but my word and my proclamation were with a demonstration of the Spirit and of power]
+2:5	av3t		rc://*/ta/man/translate/figs-idiom	ἡ πίστις ὑμῶν, μὴ ᾖ ἐν σοφίᾳ ἀνθρώπων, ἀλλ’ ἐν δυνάμει Θεοῦ	1	Here, when someone has **faith** that is **in** something, the word **in** signals what the **faith** is based on. Unlike in many other cases, **in** does not introduce what it is that people trust. If it would be helpful in your language, you could express the meaning of this phrase by translating **in** with a word or phrase that indicates the basis of the **faith**. Alternate translation: [your faith might not be based on the wisdom of men but be based on the power of God]
+3:2	i3r5		rc://*/ta/man/translate/figs-idiom	ἀλλ’	1	Here, **But** is used to introduce a contrast. It is not necessary to translate it in many languages. If it would be helpful in your language, you could translate it with a word that indicates a contrast. Alternate translation: [Indeed]
+`;
+      
+      try {
+        const {output, errors} = await addGLQuoteCols('unfoldingWord/en_ult/v84', book, tsvContent);  
+        const expectedOutput = {
+          output: ['Reference	ID	Tags	SupportReference	Quote	Occurrence	GLQuote	GLOccurrence	Note',
+            `2:4	chtx		rc://*/ta/man/translate/figs-ellipsis	ἀλλ’ ἐν ἀποδείξει Πνεύματος καὶ δυνάμεως;	1	but with a demonstration of the Spirit and of power	1	Here Paul has omitted some words that may be necessary to make a complete thought in your language. If your language needs these words, you could add them here, supplying the idea from earlier in the verse. Alternate translation: [but my word and my proclamation were with a demonstration of the Spirit and of power]`,
+            `2:5	av3t		rc://*/ta/man/translate/figs-idiom	ἡ πίστις ὑμῶν, μὴ ᾖ ἐν σοφίᾳ ἀνθρώπων, ἀλλ’ ἐν δυνάμει Θεοῦ	1	your faith might not be in the wisdom of men but in the power of God	1	Here, when someone has **faith** that is **in** something, the word **in** signals what the **faith** is based on. Unlike in many other cases, **in** does not introduce what it is that people trust. If it would be helpful in your language, you could express the meaning of this phrase by translating **in** with a word or phrase that indicates the basis of the **faith**. Alternate translation: [your faith might not be based on the wisdom of men but be based on the power of God]`,
+            `3:2	i3r5		rc://*/ta/man/translate/figs-idiom	ἀλλ’	1	Indeed	1	Here, **But** is used to introduce a contrast. It is not necessary to translate it in many languages. If it would be helpful in your language, you could translate it with a word that indicates a contrast. Alternate translation: [Indeed]`
+          ],
+          errors: [],
+        };
+        expect(output).toEqual(expectedOutput.output);
+      } catch (error) {
+        console.error("Test failed with error:", error);
+        throw error;
+      }
+  }, TEST_TIMEOUT);
+});
+
+describe("test11-convertULTQuote2OL-all-tests", () => {
   it.each(tests)(
     `REF: "$params.bookId $params.ref" | EXPECTED: "$expected"`,
     async ({ params }) => {
@@ -703,7 +741,7 @@ ${ref}	abcd			${ultQuote}	${ultOccurrence || occurrence}	note`;
       const expectedTsvContent = [`Reference	ID	Tags	SupportReference	Quote	Occurrence	Note`,
 `${ref}	abcd			${olQuote}	${olOccurrence}	note`];
 
-      const { output, errors } = await convertULTQuotes2OL(bookId, tsvContent);
+      const { output, errors } = await convertGLQuotes2OLQuotes('unfoldingWord/en_ult/v84', bookId, tsvContent);
 
       try {
         expect(output).toEqual(expectedTsvContent);
