@@ -1,6 +1,6 @@
 ## Add GL Quote Columns
 
-Adds two columns per target Bible as GLQuote and GLOccurrence. If there are two or more Bibles given, GLQuote/Occurrence will be suffixed with the Bible's repo name, .e.g. GLQuote:en_ult, GLQuote:en_ust. 
+Adds two columns per target Bible as GLQuote and GLOccurrence. If there are two or more Bibles given, GLQuote/Occurrence will be suffixed with the Bible's repo name, .e.g. GLQuote:en_ult 
 
 ```js
 import { addGLQuoteCols } from '../core/addGLQuoteCols.js';
