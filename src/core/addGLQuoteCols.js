@@ -58,7 +58,9 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
 
           // Handle verse ranges
           for (const cv of singleCVs) {
-            sourceTokens.push(...tokenLookup[sourceBible][bookCode.toUpperCase()][cv]);
+            if (tokenLookup[sourceBible][bookCode.toUpperCase()]?.[cv]) {
+              sourceTokens.push(...tokenLookup[sourceBible][bookCode.toUpperCase()][cv]);
+            }
           }
 
           for (const link of bibleLinks) {
@@ -66,7 +68,9 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
 
             const repo = link.split('/')[1];
             for (const cv of singleCVs) {
-              targetTokens.push(...tokenLookup[repo]?.[bookCode.toUpperCase()][cv]);
+              if (tokenLookup[repo]?.[bookCode.toUpperCase()]?.[cv]) {
+                targetTokens.push(...tokenLookup[repo]?.[bookCode.toUpperCase()][cv]);
+              }
             }
 
             let resultObject = null;
