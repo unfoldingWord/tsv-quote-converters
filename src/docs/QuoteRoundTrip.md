@@ -36,6 +36,7 @@ function submitForm(e) {
     let tsvRecords = parse(results.output, {
       columns: true,
       delimiter: '\t',
+      quote: '',
       skip_empty_lines: true,
     });
     tsvRecords.forEach((rec) => {rec['Quote'] = rec['GLQuote']; rec['Occcurence'] = rec['GLOccurrence']});

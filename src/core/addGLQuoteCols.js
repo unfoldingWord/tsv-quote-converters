@@ -40,6 +40,7 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
         const tsvRecords = parse(tsvContent, {
           columns: true,
           delimiter: '\t',
+          quote: '',
           skip_empty_lines: true,
         });
         for (const tsvRecord of tsvRecords) {
