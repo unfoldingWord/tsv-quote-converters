@@ -6,12 +6,11 @@ Adds two columns per target Bible as GLQuote and GLOccurrence. If there are two 
 import { addGLQuoteCols } from '../core/addGLQuoteCols.js';
 import { parse } from 'csv-parse/sync';
 
-const defaultBookCode = 'eph';
+const defaultBookCode = 'jhn';
 const defaultTsvInput = `Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
-1:1	ilf2		rc://*/ta/man/translate/writing-participants	Παῦλος, ἀπόστολος Χριστοῦ Ἰησοῦ & τοῖς ἁγίοις τοῖς οὖσιν	1	Your language may have a particular way of introducing the author of a letter and the intended audience. Alternate translation: [I, Paul, an apostle of Jesus Christ … write this letter to you, God’s holy people]
-`;
-const defaultTsvFileURL = `https://git.door43.org/worldview/en_sq/raw/branch/master/sq_${defaultBookCode.toUpperCase()}.tsv`;
-const defaultBiblesToUse = `worldview/en_bsb/master`;
+1:10	krcb		rc://*/ta/man/translate/figs-metonymy	ὁ κόσμος	1	This is the note`;
+const defaultTsvFileURL = `https://git.door43.org/unfoldingWord/en_tn/raw/branch/master/tn_${defaultBookCode.toUpperCase()}.tsv`;
+const defaultBiblesToUse = `unfoldingWord/en_ult/master`;
 
 function handleFetchTSVContent(e) {
   e.preventDefault();

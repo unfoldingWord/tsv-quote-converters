@@ -14,9 +14,10 @@ const containsHebrewOrGreek = (text) => /[\u0590-\u05FF\uFB1D-\uFB4F\u0370-\u03F
  * @param {string} tsvContent - The TSV content.
  * @param {boolean} [trySeparatorsAndOccurrences=false] - Whether to try different separators and occurrences.
  * @param {string} [dcsUrl='https://git.door43.org'] - The DCS URL.
+ * @param {boolean} [quiet=true] - Whether to suppress console output.
  * @returns {Promise<Object>} The result object containing output and errors.
  */
-export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, trySeparatorsAndOccurrences = false, dcsUrl = 'https://git.door43.org' }) {
+export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, trySeparatorsAndOccurrences = false, dcsUrl = 'https://git.door43.org', quiet = true }) {
   return new Promise((resolve, reject) => {
     let errors = [];
 
@@ -27,13 +28,13 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
     const testament = BibleBookData[bookCode.toLowerCase()]?.testament;
     if (!testament) {
       const errorMsg = `ERROR: Book ${bookCode} not a valid Bible book`;
-      console.error(errorMsg);
+      if (! quiet) console.error(errorMsg);
       reject(errorMsg);
     }
 
-    loadResourceFilesIntoProskomma({ bibleLinks: [bibleLink], bookCode, dcsUrl })
+    loadResourceFilesIntoProskomma({ bibleLinks: [bibleLink], bookCode, dcsUrl, quiet })
       .then(doAlignmentQuery)
-      .then(tokenLookup => {
+      .then((tokenLookup) => {
         // Query Proskomma which now contains the books
         const repo = bibleLink.split('/')[1];
         let nRecords = 0;
@@ -98,9 +99,17 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
                 sourceQuote: quote,
                 sourceFirstGroupOccurrence: occurrence,
                 sourceIsOrigLang: false,
+                quiet,
               });
             } else {
-              resultObject = getAlignedQuote({ sourceTokens, targetTokens, sourceQuote: quote, sourceFirstGroupOccurrence: occurrence, sourceIsOrigLang: false });
+              resultObject = getAlignedQuote({
+                sourceTokens,
+                targetTokens,
+                sourceQuote: quote,
+                sourceFirstGroupOccurrence: occurrence,
+                sourceIsOrigLang: false,
+                quiet,
+              });
             }
           } catch (e) {
             err = e;
@@ -116,7 +125,7 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
             tsvRecord['Quote'] = 'QUOTE_NOT_FOUND: ' + tsvRecord['Quote'].replace('QUOTE_NOT_FOUND: ', '');
             counts.fail++;
             const errorMsg = `Error: ${bookCode} ${tsvRecord['Reference']} ${tsvRecord['ID']} ${err}`;
-            console.error(errorMsg);
+            if (!quiet) console.error(errorMsg);
             errors.push(errorMsg);
           }
         }
@@ -124,7 +133,7 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
         resolve({ output: outputTsv, errors });
       })
       .catch((err) => {
-        console.error(err);
+        if (! quiet) console.error(err);
         reject(err);
       });
   });

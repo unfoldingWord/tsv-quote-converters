@@ -1,60 +1,6 @@
 import { tokenize, tokenizeOrigLang } from 'string-punctuation-tokenizer';
 import { generateNextQuoteCombination } from '../utils/generateNextQuoteCombination';
-
-/**
- * Tries to get the aligned quote with various quote parts.
- * @param {Object} params - The parameters for the function.
- * @param {Array} params.sourceTokens - Source tokens.
- * @param {Array} params.targetTokens - Target tokens.
- * @param {string} paramssourceQuote - Source quote.
- * @param {number} [params.sourceFirstGroupOccurrence=1] - Source first group occurrence.
- * @returns {Object|null} The result object or null if not found.
- */
-export function getAlignedQuoteTryingDifferentSeparators({ sourceTokens, targetTokens, sourceQuote, sourceFirstGroupOccurrence = 1 }) {
-  if (!sourceQuote) {
-    throw new Error('source quote is empty');
-  }
-
-  if (sourceFirstGroupOccurrence == 0) {
-    throw new Error('source quote exists but occurrence is 0');
-  }
-
-  const combinationGenerator = generateNextQuoteCombination(sourceQuote);
-  const quotesTried = [];
-  let firstError = null;
-  let occurrencesToTry = [];
-
-  if (sourceFirstGroupOccurrence < 0) {
-    occurrencesToTry.push(sourceFirstGroupOccurrence);
-  } else {
-    for (let occurrence = sourceFirstGroupOccurrence; occurrence >= 1; occurrence--) {
-      occurrencesToTry.push(occurrence);
-    }
-  }
-
-  for (let occurrence of occurrencesToTry) {
-    for (const quote of combinationGenerator) {
-      try {
-        quotesTried.push(quote);
-        const result = getAlignedQuote({ sourceTokens, targetTokens, sourceQuote: quote, sourceFirstGroupOccurrence: occurrence });
-        if (result) {
-          console.log(`Found quote: ${quote} with occurrence ${occurrence}`);
-          console.log(`Tried quotes:`, quotesTried);
-          return result;
-        }
-      } catch (err) {
-        console.log(err);
-        if (!firstError) {
-          firstError = err;
-        }
-        continue; // Try next combination
-      }
-    }
-  }
-  console.log(`Quote not found: ${sourceQuote}\nOccurrence: ${sourceFirstGroupOccurrence}`);
-  console.log(`Tried quotes:`, quotesTried);
-  throw firstError;
-}
+import { findPhraseOccurrenceInSentence } from '../utils/findPhraseInSentence';
 
 /**
  * Gets the target quote from the given quote based on alignment scopes.
@@ -64,9 +10,10 @@ export function getAlignedQuoteTryingDifferentSeparators({ sourceTokens, targetT
  * @param {string} params.sourceQuote - Quote from the source language to convert to a target quote (groups separated by ' & ').
  * @param {number} [params.sourceFirstGroupOccurrence=1] - Occurrence of the first group in the quote (groups separated by ` & `) in the source verse.
  * @param {boolean} [params.sourceIsOrigLang=true] - Flag indicating if the source is the original language.
+ * @param {boolean} [quiet=true] - Whether to suppress console output.
  * @returns {string} Corresponding target quote separated by ' & ' if multiple groups.
  */
-export function getAlignedQuote({ sourceTokens, targetTokens, sourceQuote, sourceFirstGroupOccurrence = 1, sourceIsOrigLang = true }) {
+export function getAlignedQuote({ sourceTokens, targetTokens, sourceQuote, sourceFirstGroupOccurrence = 1, sourceIsOrigLang = true, quiet = true }) {
   if (sourceFirstGroupOccurrence == 0 && sourceQuote) {
     throw new Error('quote exists but occurrence is 0');
   }
@@ -92,23 +39,21 @@ export function getAlignedQuote({ sourceTokens, targetTokens, sourceQuote, sourc
   for (let groupIdx = 0; groupIdx < wordGroups.length; groupIdx++) {
     const group = wordGroups[groupIdx];
     const groupOccurrence = sourceFirstGroupOccurrence === -1 || groupIdx !== 0 ? 1 : sourceFirstGroupOccurrence;
-    // console.log(groupIdx, occurrence, groupOccurrence)
     let currentOccurrence = 0;
     let found = false;
 
-    // console.log(`Searching for group: ${group} from position ${currentIndex} for occurrence ${groupOccurrence}`);
+    if (! quiet) console.log(`Searching for group: ${group} from position ${currentIndex} for occurrence ${groupOccurrence}`);
+
     while (currentIndex < sourceTokens.length) {
-      // console.log(`findConsecutiveWords: ${group}, ${currentIndex}`);
+      if (! quiet) console.log(`findConsecutiveWords: ${group}, ${currentIndex}`);
       const match = findConsecutiveTokens(sourceTokens, group, currentIndex);
       if (match) {
         currentOccurrence++;
-        // console.log(`currentOccurrence: ${currentOccurrence}`);
-        // console.log(`groupOccurrence: ${groupOccurrence}`);
         if (currentOccurrence === groupOccurrence) {
           sourceMatches.push(match.tokens);
           currentIndex = match.endIndex;
           found = true;
-          // console.log(`Found group: ${group} at position ${currentIndex}`);
+          if (! quiet) console.log(`Found group: ${group} at position ${currentIndex}`);
           break;
         }
         currentIndex = match.endIndex;
@@ -128,11 +73,10 @@ export function getAlignedQuote({ sourceTokens, targetTokens, sourceQuote, sourc
   const wordOccurrences = {};
   let currentString = '';
   let otherText = '';
-  let firstGroupOccurrence = 1;
+  let firstGroupFirstTokenOccurrence = 1;
 
   for (let idx = 0; idx < targetTokens.length; idx++) {
     const targetToken = targetTokens[idx];
-    // console.log(idx, token);
     if (targetToken.subType === 'wordLike') {
       if (!wordOccurrences[targetToken.chapter]) {
         wordOccurrences[targetToken.chapter] = {};
@@ -172,20 +116,16 @@ export function getAlignedQuote({ sourceTokens, targetTokens, sourceQuote, sourc
 
       if (targetIsMatch) {
         if (!currentString && targetGroups.length == 0) {
-          firstGroupOccurrence = occurrence;
+          firstGroupFirstTokenOccurrence = occurrence;
         }
         if (currentString) {
           if (otherText) {
             currentString += otherText.replace(/\n+/, ' ').replace(/\s+/g, ' ');
             otherText = '';
           }
-          if (targetGroups.length == 0) {
-            firstGroupOccurrence = 1;
-          }
         }
         currentString += targetToken.payload;
       } else if (currentString) {
-        // console.log("PUSHING", currentString);
         targetGroups.push(currentString);
         currentString = '';
         otherText = '';
@@ -196,20 +136,28 @@ export function getAlignedQuote({ sourceTokens, targetTokens, sourceQuote, sourc
       }
     }
   }
+
   if (currentString) {
     targetGroups.push(currentString);
   }
 
   if (!targetGroups.length) {
-    if(sourceIsOrigLang) {
+    if (sourceIsOrigLang) {
       throw new Error(`Nothing in the verse of the targe Bible is aligned to ${sourceQuote}`);
     } else {
       throw new Error(`Cannot find the aligned words in the original language verse: ${sourceScopes.join(', ')}`);
     }
   }
 
-  // console.log(targetGroups, firstGroupOccurrence);
-  return { quote: targetGroups.join(' & '), occurrence: firstGroupOccurrence };
+  const findPhraseParams = {
+    sentence: targetTokens.filter(t => t.subType === 'wordLike').map((t) => t.payload).join(' '),
+    phrase: targetGroups[0],
+    firstWordOccurrence: firstGroupFirstTokenOccurrence,
+    isOrigLang: !sourceIsOrigLang,
+  };
+  const firstGroupOccurrence = findPhraseOccurrenceInSentence(findPhraseParams);
+
+  return { quote: targetGroups.join(' & '), occurrence: firstGroupOccurrence || firstGroupFirstTokenOccurrence };
 }
 
 /**
@@ -262,17 +210,13 @@ function findConsecutiveTokens(tokens, words, startIndex) {
     }
 
     const word = words[wordIndex];
-    // console.log(tokenIndex, token, wordIndex, word);
     if (token.subType != 'wordLike') {
       tokenIndex++;
-      // console.log("not wordLike subType: |"+token.subType+"|");
       continue;
     }
-    // console.log("have wordLike payload: |"+token.payload+"| Word: |"+word+"|");
     if (token.payload.normalize() != word.normalize()) {
       break;
     }
-    // console.log("MATCH!");
     matchedTokens.push(token);
     wordIndex++;
     tokenIndex++;
@@ -285,4 +229,60 @@ function findConsecutiveTokens(tokens, words, startIndex) {
     };
   }
   return null;
+}
+
+/**
+ * Tries to get the aligned quote with various quote parts.
+ * @param {Object} params - The parameters for the function.
+ * @param {Array} params.sourceTokens - Source tokens.
+ * @param {Array} params.targetTokens - Target tokens.
+ * @param {string} paramssourceQuote - Source quote.
+ * @param {number} [params.sourceFirstGroupOccurrence=1] - Source first group occurrence.
+ * @param {boolean} [quiet=true] - Whether to suppress console output.
+ * @returns {Object|null} The result object or null if not found.
+ */
+export function getAlignedQuoteTryingDifferentSeparators({ sourceTokens, targetTokens, sourceQuote, sourceFirstGroupOccurrence = 1, quiet = true }) {
+  if (!sourceQuote) {
+    throw new Error('source quote is empty');
+  }
+
+  if (sourceFirstGroupOccurrence == 0) {
+    throw new Error('source quote exists but occurrence is 0');
+  }
+
+  const combinationGenerator = generateNextQuoteCombination(sourceQuote);
+  const quotesTried = [];
+  let firstError = null;
+  let occurrencesToTry = [];
+
+  if (sourceFirstGroupOccurrence < 0) {
+    occurrencesToTry.push(sourceFirstGroupOccurrence);
+  } else {
+    for (let occurrence = sourceFirstGroupOccurrence; occurrence >= 1; occurrence--) {
+      occurrencesToTry.push(occurrence);
+    }
+  }
+
+  for (let occurrence of occurrencesToTry) {
+    for (const quote of combinationGenerator) {
+      try {
+        quotesTried.push(quote);
+        const result = getAlignedQuote({ sourceTokens, targetTokens, sourceQuote: quote, sourceFirstGroupOccurrence: occurrence });
+        if (result) {
+          if (! quiet) console.log(`Found quote: ${quote} with occurrence ${occurrence}`);
+          if (! quiet) console.log(`Tried quotes:`, quotesTried);
+          return result;
+        }
+      } catch (err) {
+        if (! quiet) console.error(err);
+        if (!firstError) {
+          firstError = err;
+        }
+        continue; // Try next combination
+      }
+    }
+  }
+  if (! quiet) console.log(`Quote not found: ${sourceQuote}\nOccurrence: ${sourceFirstGroupOccurrence}`);
+  if (! quiet) console.log(`Tried quotes:`, quotesTried);
+  throw firstError;
 }

@@ -1,6 +1,10 @@
 export function getSingleCVsFromReference(reference) {
   const singleCVs = [];
   let currentChapter = null;
+
+  if (!reference || ! reference.includes(':')) {
+    return singleCVs;
+  }
   
   // Split on commas first
   const parts = reference.split(',');

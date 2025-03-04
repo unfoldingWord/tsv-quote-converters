@@ -37,6 +37,7 @@ const params = {
 
   // Optional parameters
   trySeparatorsAndOccurrences: true,           // Try different quote separators
+  quiet: false,                                // Show console output
 };
 
 const result = await addGLQuoteCols(params);
@@ -59,6 +60,7 @@ const params = {
 
   // Optional parameters
   trySeparatorsAndOccurrences: true,           // Try different quote separators
+  quiet: false,                                // Show console output
 };
 
 const result = await convertGLQuotes2OLQuotes(params);
