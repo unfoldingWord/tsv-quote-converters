@@ -143,7 +143,7 @@ export function getAlignedQuote({ sourceTokens, targetTokens, sourceQuote, sourc
 
   if (!targetGroups.length) {
     if (sourceIsOrigLang) {
-      throw new Error(`Nothing in the verse of the targe Bible is aligned to ${sourceQuote}`);
+      throw new Error(`Nothing in the verse of the target Bible is aligned to ${sourceQuote}`);
     } else {
       throw new Error(`Cannot find the aligned words in the original language verse: ${sourceScopes.join(', ')}`);
     }

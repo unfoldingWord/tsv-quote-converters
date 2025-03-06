@@ -4,6 +4,7 @@ import { doAlignmentQuery } from './doAlignmentQuery';
 import { getAlignedQuote, getAlignedQuoteTryingDifferentSeparators } from './getAlignedQuote';
 import { parse } from 'csv-parse/sync';
 import { stringify } from 'csv-stringify/sync';
+import { parseBibleReference } from '../utils/parseBibleReference';
 
 const containsHebrewOrGreek = (text) => /[\u0590-\u05FF\uFB1D-\uFB4F\u0370-\u03FF\u1F00-\u1FFF]/.test(text);
 
@@ -28,7 +29,7 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
     const testament = BibleBookData[bookCode.toLowerCase()]?.testament;
     if (!testament) {
       const errorMsg = `ERROR: Book ${bookCode} not a valid Bible book`;
-      if (! quiet) console.error(errorMsg);
+      if (!quiet) console.error(errorMsg);
       reject(errorMsg);
     }
 
@@ -62,26 +63,14 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
             continue;
           }
           const quote = tsvRecord['Quote'].replace('QUOTE_NOT_FOUND: ', '').replace(/\s*…\s*/g, ' & ');
-          const [chapter, verseRef] = tsvRecord['Reference'].split(':');
           const sourceTokens = [];
           const targetTokens = [];
           const targetBible = testament === 'old' ? 'hbo_uhb' : 'el-x-koine_ugnt';
 
-          // Handle verse ranges
-          const verseCommaParts = verseRef.trim().split(',');
-          for (const commaPart of verseCommaParts) {
-            if (commaPart.includes('-')) {
-              const verseRange = commaPart.trim().split('-');
-              if (verseRange.length > 1) {
-                for (let i = parseInt(verseRange[0]); i <= parseInt(verseRange[1]); i++) {
-                  sourceTokens.push(...tokenLookup[repo]?.[bookCode.toUpperCase()][`${chapter}:${i}`]);
-                  targetTokens.push(...tokenLookup[targetBible][bookCode.toUpperCase()][`${chapter}:${i}`]);
-                }
-              }
-            } else {
-              sourceTokens.push(...tokenLookup[repo]?.[bookCode.toUpperCase()][`${chapter}:${commaPart}`]);
-              targetTokens.push(...tokenLookup[targetBible][bookCode.toUpperCase()][`${chapter}:${commaPart}`]);
-            }
+          const allCVs = parseBibleReference(tsvRecord['Reference']);
+          for (const cv of allCVs) {
+            sourceTokens.push(...tokenLookup[repo]?.[bookCode.toUpperCase()][cv]);
+            targetTokens.push(...tokenLookup[targetBible][bookCode.toUpperCase()][cv]);
           }
 
           let resultObject = null;
@@ -133,7 +122,7 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
         resolve({ output: outputTsv, errors });
       })
       .catch((err) => {
-        if (! quiet) console.error(err);
+        if (!quiet) console.error(err);
         reject(err);
       });
   });

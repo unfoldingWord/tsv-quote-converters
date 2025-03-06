@@ -1,4 +1,9 @@
-export function getSingleCVsFromReference(reference) {
+/**
+ * Parse a Bible reference string into an array of individual chapter:verse references
+ * @param {string} reference - A Bible reference string like "1:23,24;2:28-29,3:15"
+ * @returns {string[]} - Array of individual chapter:verse references
+ */
+export function parseBibleReference(reference) {
   const singleCVs = [];
   let currentChapter = null;
 
@@ -6,7 +11,7 @@ export function getSingleCVsFromReference(reference) {
     return singleCVs;
   }
 
-  // Split on commas first
+  // Split on semicolons first
   const semicolonParts = reference.split(';');
 
   for (const scPart of semicolonParts) {
@@ -16,7 +21,7 @@ export function getSingleCVsFromReference(reference) {
         // This part contains a chapter reference
         const [chapter, verse] = commaPart.trim().split(':');
         currentChapter = chapter;
-
+        
         // Handle verse range if present
         if (verse.includes('-')) {
           const [start, end] = verse.split('-').map((v) => parseInt(v));
@@ -45,7 +50,7 @@ export function getSingleCVsFromReference(reference) {
         }
       }
     }
-
-    return singleCVs;
   }
+  
+  return singleCVs;
 }

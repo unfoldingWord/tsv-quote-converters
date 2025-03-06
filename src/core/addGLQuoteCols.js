@@ -5,6 +5,7 @@ import { stringify } from 'csv-stringify/sync';
 import { loadResourceFilesIntoProskomma } from './loadResourceFilesIntoProskomma';
 import { doAlignmentQuery } from './doAlignmentQuery';
 import { getSingleCVsFromReference } from '../utils/getSingleCVsFromReference';
+import { parseBibleReference } from '../utils/parseBibleReference';
 
 /**
  * Adds GL quote columns.
@@ -13,6 +14,7 @@ import { getSingleCVsFromReference } from '../utils/getSingleCVsFromReference';
  * @param {string} tsvContent - The TSV content.
  * @param {boolean} [trySeparatorsAndOccurrences=false] - Whether to try different separators and occurrences.
  * @param {string} [dcsUrl='https://git.door43.org'] - The DCS URL.
+ * @param {boolean} [quiet=true] - Whether to suppress console output.
  * @returns {Promise<Object>} The result object containing output and errors.
  */
 export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparatorsAndOccurrences = false, dcsUrl = 'https://git.door43.org', quiet = true }) {
@@ -48,9 +50,8 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
           const quote = tsvRecord['Quote'].replace(/\s*…\s*/g, ' & ');
           const sourceTokens = [];
           const sourceBible = testament === 'old' ? 'hbo_uhb' : 'el-x-koine_ugnt';
-          const singleCVs = getSingleCVsFromReference(tsvRecord['Reference']);
 
-          // Handle verse ranges
+          const singleCVs = parseBibleReference(tsvRecord['Reference']);
           for (const cv of singleCVs) {
             if (tokenLookup[sourceBible][bookCode.toUpperCase()]?.[cv]) {
               sourceTokens.push(...tokenLookup[sourceBible][bookCode.toUpperCase()][cv]);
@@ -75,6 +76,7 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
             const targetTokens = [];
 
             const repo = link.split('/')[1];
+
             for (const cv of singleCVs) {
               if (tokenLookup[repo]?.[bookCode.toUpperCase()]?.[cv]) {
                 targetTokens.push(...tokenLookup[repo]?.[bookCode.toUpperCase()][cv]);
