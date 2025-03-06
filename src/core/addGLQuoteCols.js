@@ -4,7 +4,6 @@ import { parse } from 'csv-parse/sync';
 import { stringify } from 'csv-stringify/sync';
 import { loadResourceFilesIntoProskomma } from './loadResourceFilesIntoProskomma';
 import { doAlignmentQuery } from './doAlignmentQuery';
-import { getSingleCVsFromReference } from '../utils/getSingleCVsFromReference';
 import { parseBibleReference } from '../utils/parseBibleReference';
 
 /**
