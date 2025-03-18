@@ -69,6 +69,18 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
 
           const allCVs = parseBibleReference(tsvRecord['Reference']);
           for (const cv of allCVs) {
+            if (!tokenLookup[repo]?.[bookCode.toUpperCase()]?.[cv]) {
+              const errorMsg = `Error: ${bookCode} ${tsvRecord['Reference']} ${tsvRecord['ID']} CV not found in ${repo}: ${cv}`;
+              if (!quiet) console.error(errorMsg);
+              errors.push(errorMsg);
+              continue;
+            }
+            if (!tokenLookup[targetBible][bookCode.toUpperCase()]?.[cv]) {
+              const errorMsg = `Error: ${bookCode} ${tsvRecord['Reference']} ${tsvRecord['ID']} CV not found in ${targetBible}: ${cv}`;
+              if (!quiet) console.error(errorMsg);
+              errors.push(errorMsg);
+              continue;
+            }
             sourceTokens.push(...tokenLookup[repo]?.[bookCode.toUpperCase()][cv]);
             targetTokens.push(...tokenLookup[targetBible][bookCode.toUpperCase()][cv]);
           }
