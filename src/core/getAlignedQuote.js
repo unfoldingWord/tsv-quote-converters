@@ -241,7 +241,7 @@ function findConsecutiveTokens(tokens, words, startIndex) {
  * @param {boolean} [quiet=true] - Whether to suppress console output.
  * @returns {Object|null} The result object or null if not found.
  */
-export function getAlignedQuoteTryingDifferentSeparators({ sourceTokens, targetTokens, sourceQuote, sourceFirstGroupOccurrence = 1, quiet = true }) {
+export function getAlignedQuoteTryingDifferentSeparators({ sourceTokens, targetTokens, sourceQuote, sourceFirstGroupOccurrence = 1, sourceIsOrigLang = true, quiet = true }) {
   if (!sourceQuote) {
     throw new Error('source quote is empty');
   }
@@ -267,7 +267,7 @@ export function getAlignedQuoteTryingDifferentSeparators({ sourceTokens, targetT
     for (const quote of combinationGenerator) {
       try {
         quotesTried.push(quote);
-        const result = getAlignedQuote({ sourceTokens, targetTokens, sourceQuote: quote, sourceFirstGroupOccurrence: occurrence });
+        const result = getAlignedQuote({ sourceTokens, targetTokens, sourceQuote: quote, sourceFirstGroupOccurrence: occurrence, sourceIsOrigLang });
         if (result) {
           if (! quiet) console.log(`Found quote: ${quote} with occurrence ${occurrence}`);
           if (! quiet) console.log(`Tried quotes:`, quotesTried);
