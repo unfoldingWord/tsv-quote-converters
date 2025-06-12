@@ -48,7 +48,7 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
         });
         const columns = tsvContent.split('\n')[0].split('\t');
         const quoteFields = ['Quote', 'OrigQuote', 'OrigWords', 'OrigWord'];
-        const quoteField = '';
+        let quoteField = '';
         for (const tsvRecord of tsvRecords) {
           nRecords++;
           let quote = '';
