@@ -10,7 +10,7 @@ import { BibleBookData } from '../common/books';
  * @param {string} [dcsUrl='https://git.door43.org'] - The DCS URL
  * @returns {Promise<Proskomma>} The Proskomma object
  */
-export async function loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcsUrl = 'https://git.door43.org', quiet = true }) {
+export async function loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcsUrl = 'https://git.door43.org', quiet = true, removeHiddenHebrew = false }) {
   bookCode = bookCode.toLowerCase();
 
   const pk = new Proskomma([
@@ -32,7 +32,7 @@ export async function loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcs
 
   const ol_bible = BibleBookData?.[bookCode]?.testament === 'old' ? 'hbo_uhb' : 'el-x-koine_ugnt';
   if (!ol_bible) {
-    if (! quiet) console.error(`ERROR: Book ${bookCode} not a valid Bible book`);
+    if (!quiet) console.error(`ERROR: Book ${bookCode} not a valid Bible book`);
     return;
   }
   const olBibleUrl = `${dcsUrl}/api/v1/repos/unfoldingWord/${ol_bible}`;
@@ -41,8 +41,8 @@ export async function loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcs
     const response = await axios.get(olBibleUrl);
     ol_ref = response.data.catalog.prod.branch_or_tag_name;
   } catch (error) {
-    if (! quiet) console.error(`ERROR: Unable to fetch data from ${olBibleUrl}`, error);
-    if (! quiet) console.error(`Using master branch for ${ol_bible}`);
+    if (!quiet) console.error(`ERROR: Unable to fetch data from ${olBibleUrl}`, error);
+    if (!quiet) console.error(`Using master branch for ${ol_bible}`);
     ol_ref = 'master';
   }
   const baseURLs = [['unfoldingWord', ol_bible, `${dcsUrl}/api/v1/repos/unfoldingWord/${ol_bible}/contents/${BibleBookData[bookCode].usfm}.usfm?ref=${ol_ref}`]];
@@ -56,23 +56,32 @@ export async function loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcs
     }
     baseURLs.push([org, repo, `${dcsUrl}/api/v1/repos/${org}/${repo}/contents/${BibleBookData[bookCode].usfm}.usfm?ref=${ref}`]);
   }
-  if (! quiet) console.log('Download USFM');
+  console.log('Download USFM');
   for (const [org, repo, baseURL] of baseURLs) {
     const selectors = {
       org,
       repo,
     };
-    if (! quiet) console.log(`  ${org}/${repo}`);
+    if (!quiet) console.log(`  ${org}/${repo}`);
     let content = [];
     await axios.request({ method: 'get', url: baseURL }).then(async (response) => {
-      const decodedContent = Buffer.from(response.data.content, 'base64').toString('utf-8');
+      let decodedContent = Buffer.from(response.data.content, 'base64').toString('utf-8');
+
+      // Remove hidden character U+2060 (word joiner) from Hebrew text
+      if (removeHiddenHebrew) {
+        // decodedContent = decodedContent.replace(/\u2060/g, '');
+        console.log(`      Removed word joiner characters (U+2060) from Hebrew text`);
+      } else {
+        console.log(`      No Hebrew text found`);
+      }
+
       content.push(decodedContent);
     });
     if (content.length === 0) {
-      if (! quiet) console.log(`      Book ${bookCode} not found`);
+      if (!quiet) console.log(`      Book ${bookCode} not found`);
       continue;
     }
-    if (! quiet) console.log(`      Downloaded ${bookCode} ${content.length.toLocaleString()} bytes`);
+    if (!quiet) console.log(`      Downloaded ${bookCode} ${content.length.toLocaleString()} bytes`);
 
     if (repo !== 'hbo_uhb' && repo !== 'el-x-koine_ugnt') {
       content = [rejigAlignment(content)]; // Tidy-up USFM alignment info
@@ -81,7 +90,7 @@ export async function loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcs
       pk.importDocuments(selectors, 'usfm', content, {});
     } catch (err) {
       if (!err.message.includes('already exists in docSet')) {
-        if (! quiet) console.error(`ERROR: ${err}`);
+        if (!quiet) console.error(`ERROR: ${err}`);
       }
     }
   }

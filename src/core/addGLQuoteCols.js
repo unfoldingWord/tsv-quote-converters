@@ -33,7 +33,7 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
       reject(errorMsg);
     }
 
-    loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcsUrl, quiet })
+    loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcsUrl, quiet, removeHiddenHebrew: true })
       .then(doAlignmentQuery)
       .then(tokenLookup => {
         let nRecords = 0;
@@ -46,7 +46,9 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
         });
         for (const tsvRecord of tsvRecords) {
           nRecords++;
-          const quote = tsvRecord['Quote'].replace(/\s*…\s*/g, ' & ');
+          let quote = tsvRecord['Quote'] || tsvRecord['OrigQuote'] || tsvRecord['OrigWords'] || tsvRecord['OrigWord'] || '';
+          quote = quote.replace(/\s*…\s*/g, ' & ').trim();
+          tsvRecord['Quote'] = quote;
           const sourceTokens = [];
           const sourceBible = testament === 'old' ? 'hbo_uhb' : 'el-x-koine_ugnt';
 
@@ -61,7 +63,7 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
             const glQuoteColName = bibleLinks.length > 1 ? `GLQuote:${repo}` : 'GLQuote';
             const glOccurrenceColName = bibleLinks.length > 1 ? `GLOccurrence:${repo}` : 'GLOccurrence';
 
-            if (!tsvRecord['Reference'] || !tsvRecord['Quote'].trim() || !parseInt(tsvRecord['Occurrence'])) {
+            if (!tsvRecord['Reference'] || !tsvRecord['Quote'] || !parseInt(tsvRecord['Occurrence'])) {
               tsvRecord[glQuoteColName] = tsvRecord['Quote'];
               tsvRecord[glOccurrenceColName] = tsvRecord['Occurrence'];
               continue;

@@ -10,7 +10,7 @@ const containsHebrewOrGreek = (text) => /[\u0590-\u05FF\uFB1D-\uFB4F\u0370-\u03F
 
 /**
  * Converts GL Quotes to OL Quotes.
- * @param {string} bibleLinks - DCS owner/repo/ref link.
+ * @param {string} bibleLink - DCS owner/repo/ref link.
  * @param {string} bookCode - The book to process.
  * @param {string} tsvContent - The TSV content.
  * @param {boolean} [trySeparatorsAndOccurrences=false] - Whether to try different separators and occurrences.
@@ -33,7 +33,7 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
       reject(errorMsg);
     }
 
-    loadResourceFilesIntoProskomma({ bibleLinks: [bibleLink], bookCode, dcsUrl, quiet })
+    loadResourceFilesIntoProskomma({ bibleLinks: [bibleLink], bookCode, dcsUrl, quiet, removeHiddenHebew: false })
       .then(doAlignmentQuery)
       .then((tokenLookup) => {
         // Query Proskomma which now contains the books
@@ -47,14 +47,33 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
           skip_empty_lines: true,
         });
         const columns = tsvContent.split('\n')[0].split('\t');
+        const quoteFields = ['Quote', 'OrigQuote', 'OrigWords', 'OrigWord'];
+        const quoteField = '';
         for (const tsvRecord of tsvRecords) {
           nRecords++;
+          let quote = '';
+          if (quoteField) {
+            quote = tsvRecord[quoteField] || '';
+          } else {
+            for (const field of quoteFields) {
+              if (tsvRecord[field]) {
+                quote = tsvRecord[field];
+                quoteField = field;
+                break;
+              }
+            }
+          }
+          if (!quoteField) {
+            quoteField = 'Quote';
+          }
+          quote = quote.trim();
+          tsvRecord[quoteField] = quote.trim();
           if (
             !tsvRecord['Reference'] ||
-            !tsvRecord['Quote']?.trim() ||
+            !tsvRecord[quoteField] ||
             !tsvRecord['Occurrence'] ||
             tsvRecord['Reference'] == 'Reference' ||
-            containsHebrewOrGreek(tsvRecord['Quote'])
+            containsHebrewOrGreek(tsvRecord[quoteField])
           ) {
             if (tsvRecord['Reference'] === 'Reference') {
               tsvRecord['Occurrence'] = 'Occurrence';
@@ -62,7 +81,7 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
             // Last condition checks for Greek or Hebrew characters. If they exist, we don't need to process this record since not an English ULT quote
             continue;
           }
-          const quote = tsvRecord['Quote'].replace('QUOTE_NOT_FOUND: ', '').replace(/\s*…\s*/g, ' & ');
+          quote = quote.replace('QUOTE_NOT_FOUND: ', '').replace(/\s*…\s*/g, ' & ').trim();
           const sourceTokens = [];
           const targetTokens = [];
           const targetBible = testament === 'old' ? 'hbo_uhb' : 'el-x-koine_ugnt';
@@ -118,12 +137,12 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
 
           if (resultObject) {
             counts.pass++;
-            tsvRecord['Quote'] = resultObject.quote;
+            tsvRecord[quoteField] = resultObject.quote;
             if (tsvRecord['Occurrence'] != -1) {
               tsvRecord['Occurrence'] = resultObject.occurrence;
             }
           } else {
-            tsvRecord['Quote'] = 'QUOTE_NOT_FOUND: ' + tsvRecord['Quote'].replace('QUOTE_NOT_FOUND: ', '');
+            tsvRecord[quoteField] = 'QUOTE_NOT_FOUND: ' + tsvRecord[quoteField].replace('QUOTE_NOT_FOUND: ', '');
             counts.fail++;
             const errorMsg = `Error: ${bookCode} ${tsvRecord['Reference']} ${tsvRecord['ID']} ${err}`;
             if (!quiet) console.error(errorMsg);
