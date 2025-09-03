@@ -65,8 +65,7 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
             const glQuoteColName = bibleLinks.length > 1 ? `GLQuote:${repo}` : 'GLQuote';
             const glOccurrenceColName = bibleLinks.length > 1 ? `GLOccurrence:${repo}` : 'GLOccurrence';
 
-            console.log(usePreviousGLQuotes, tsvRecord[glQuoteColName], tsvRecord[glOccurrenceColName]);
-            if (usePreviousGLQuotes && tsvRecord[glQuoteColName] && tsvRecord[glOccurrenceColName] && !tsvRecord[glOccurrenceColName].includes('QUOTE_NOT_FOUND') && !tsvRecord[glOccurrenceColName] != "0") {
+            if (usePreviousGLQuotes && tsvRecord[glQuoteColName] && tsvRecord[glOccurrenceColName] && !tsvRecord[glOccurrenceColName].includes('QUOTE_NOT_FOUND') && tsvRecord[glOccurrenceColName] != "0") {
               continue;
             }
 

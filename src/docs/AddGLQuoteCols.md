@@ -35,6 +35,7 @@ function submitForm(e) {
     tsvContent: e.target.elements.tsvInput.value,
     trySeparatorsAndOccurrences: true,
     usePreviousGLQuotes: true,
+    quiet: false,
   }).then((results) => {
     spinner.remove();
     document.querySelector('#addGLQuoteCols #results').value = results.output || 'No results';
