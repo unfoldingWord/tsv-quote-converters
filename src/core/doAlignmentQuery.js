@@ -13,7 +13,7 @@ export async function doAlignmentQuery(pk) {
     '    book: header(id:"bookCode")' +
     '    mainSequence {' +
     '      itemGroups (' +
-    '        byScopes:["chapter/", "verses/"]' +
+    '        byScopes:["chapter/", "blockTag/d", "verses/", "verse/"]' +
     '      ) {' +
     '        scopeLabels' +
     '        tokens {' +
@@ -31,6 +31,7 @@ export async function doAlignmentQuery(pk) {
   if (result.errors) {
     throw new Error(result.errors);
   }
+  console.log(result);
   tokenLookup = {};
   for (const docSet of result.data.docSets) {
     tokenLookup[docSet.repo] = {};
@@ -52,6 +53,7 @@ export async function doAlignmentQuery(pk) {
             itemGroup.tokens[i].verse = verse;
           }
           tokenLookup[docSet.repo][document.book][`${chapter}:${verse}`] = itemGroup.tokens;
+          console.log(`Loaded ${itemGroup.tokens.length} tokens for ${document.book} ${chapter}:${verse}`);
         }
       }
     }

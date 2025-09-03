@@ -16,7 +16,7 @@ import { parseBibleReference } from '../utils/parseBibleReference';
  * @param {boolean} [quiet=true] - Whether to suppress console output.
  * @returns {Promise<Object>} The result object containing output and errors.
  */
-export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparatorsAndOccurrences = false, dcsUrl = 'https://git.door43.org', quiet = true }) {
+export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparatorsAndOccurrences = false, dcsUrl = 'https://git.door43.org', usePreviousGLQuotes = false, quiet = true }) {
   return new Promise((resolve, reject) => {
     let errors = [];
 
@@ -29,7 +29,7 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
     const testament = BibleBookData[bookCode.toLowerCase()]?.testament;
     if (!testament) {
       const errorMsg = `ERROR: Book ${bookCode} not a valid Bible book`;
-      if (! quiet) console.error(errorMsg);
+      if (!quiet) console.error(errorMsg);
       reject(errorMsg);
     }
 
@@ -46,6 +46,7 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
         });
         for (const tsvRecord of tsvRecords) {
           nRecords++;
+
           let quote = tsvRecord['Quote'] || tsvRecord['OrigQuote'] || tsvRecord['OrigWords'] || tsvRecord['OrigWord'] || '';
           quote = quote.replace(/\s*…\s*/g, ' & ').trim();
           tsvRecord['Quote'] = quote;
@@ -60,8 +61,13 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
           }
 
           for (const link of bibleLinks) {
+            const repo = link.split('/')[1];
             const glQuoteColName = bibleLinks.length > 1 ? `GLQuote:${repo}` : 'GLQuote';
             const glOccurrenceColName = bibleLinks.length > 1 ? `GLOccurrence:${repo}` : 'GLOccurrence';
+
+            if (usePreviousGLQuotes && tsvRecord[glQuoteColName] && tsvRecord[glOccurrenceColName]) {
+              continue;
+            }
 
             if (!tsvRecord['Reference'] || !tsvRecord['Quote'] || !parseInt(tsvRecord['Occurrence'])) {
               tsvRecord[glQuoteColName] = tsvRecord['Quote'];
@@ -75,8 +81,6 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
             }
 
             const targetTokens = [];
-
-            const repo = link.split('/')[1];
 
             for (const cv of singleCVs) {
               if (tokenLookup[repo]?.[bookCode.toUpperCase()]?.[cv]) {
@@ -136,7 +140,7 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
               tsvRecord[glOccurrenceColName] = tsvRecord['Occurrence'];
               counts.fail++;
               const errorMsg = `Error: ${bookCode} ${tsvRecord['Reference']} ${tsvRecord['ID']} ${err}`;
-              if (! quiet) console.error(errorMsg);
+              if (!quiet) console.error(errorMsg);
               errors.push(errorMsg);
             }
           }
@@ -145,7 +149,7 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
         resolve({ output: outputTsv, errors });
       })
       .catch((err) => {
-        if (! quiet) console.error(err);
+        if (!quiet) console.error(err);
         reject(err);
       });
   });
