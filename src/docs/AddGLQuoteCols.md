@@ -6,7 +6,7 @@ Adds two columns per target Bible as GLQuote and GLOccurrence. If there are two 
 import { addGLQuoteCols } from '../core/addGLQuoteCols.js';
 import { parse } from 'csv-parse/sync';
 
-const defaultBookCode = 'psa';
+const defaultBookCode = 'jhn';
 const defaultTsvInput = `Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
 1:10	krcb		rc://*/ta/man/translate/figs-metonymy	ὁ κόσμος	1	This is the note`;
 const defaultTsvFileURL = `https://git.door43.org/unfoldingWord/en_tn/raw/branch/master/tn_${defaultBookCode.toUpperCase()}.tsv`;
@@ -33,7 +33,8 @@ function submitForm(e) {
     bibleLinks: e.target.elements.biblesToUse.value.split('\n').filter((v) => v.trim()),
     bookCode: e.target.elements.bookCode.value,
     tsvContent: e.target.elements.tsvInput.value,
-    trySeparatorsAndOccurrences: true
+    trySeparatorsAndOccurrences: true,
+    usePreviousGLQuotes: true,
   }).then((results) => {
     spinner.remove();
     document.querySelector('#addGLQuoteCols #results').value = results.output || 'No results';

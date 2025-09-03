@@ -38,6 +38,7 @@ const params = {
   // Optional parameters
   trySeparatorsAndOccurrences: true,           // Try different quote separators
   quiet: false,                                // Show console output
+  usePreviousGLQuotes: true,                   // Skip if GLQuote/GLOccurrence already exist
 };
 
 const result = await addGLQuoteCols(params);

@@ -13,7 +13,7 @@ export async function doAlignmentQuery(pk) {
     '    book: header(id:"bookCode")' +
     '    mainSequence {' +
     '      itemGroups (' +
-    '        byScopes:["chapter/", "blockTag/d", "verses/", "verse/"]' +
+    '        byScopes:["chapter/", "verses/"]' +
     '      ) {' +
     '        scopeLabels' +
     '        tokens {' +

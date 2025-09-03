@@ -31,6 +31,7 @@ function submitForm(e) {
     bookCode: e.target.elements.bookCode.value,
     tsvContent: e.target.elements.tsvInput.value,
     trySeparatorsAndOccurrences: true,
+    usePreviousGLQuotes: true,
   }).then((results) => {
     let tsvRecords = parse(results.output, {
       columns: true,
