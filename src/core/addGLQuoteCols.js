@@ -33,53 +33,94 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
       reject(errorMsg);
     }
 
-    loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcsUrl, quiet, removeHiddenHebrew: true })
-      .then(doAlignmentQuery)
-      .then(tokenLookup => {
-        let nRecords = 0;
-        let counts = { pass: 0, fail: 0 };
-        const tsvRecords = parse(tsvContent, {
-          columns: true,
-          delimiter: '\t',
-          quote: '',
-          skip_empty_lines: true,
-        });
-        for (const tsvRecord of tsvRecords) {
-          nRecords++;
+    // Parse TSV records first to check if we need to load resources
+    const tsvRecords = parse(tsvContent, {
+      columns: true,
+      delimiter: '\t',
+      quote: '',
+      skip_empty_lines: true,
+    });
 
-          let quote = tsvRecord['Quote'] || tsvRecord['OrigQuote'] || tsvRecord['OrigWords'] || tsvRecord['OrigWord'] || '';
-          quote = quote.replace(/\s*…\s*/g, ' & ').trim();
-          tsvRecord['Quote'] = quote;
-          const sourceTokens = [];
-          const sourceBible = testament === 'old' ? 'hbo_uhb' : 'el-x-koine_ugnt';
+    // Check if we need to load resources
+    let needsResourceLoading = !usePreviousGLQuotes;
 
-          const singleCVs = parseBibleReference(tsvRecord['Reference']);
+    if (usePreviousGLQuotes) {
+      // Check if any rows are missing valid GLQuote and GLOccurrence
+      for (const tsvRecord of tsvRecords) {
+        // Skip rows that have no quote text to begin with
+        let quote = tsvRecord['Quote'] || tsvRecord['OrigQuote'] || tsvRecord['OrigWords'] || tsvRecord['OrigWord'] || '';
+        quote = quote.replace(/\s*…\s*/g, ' & ').trim();
+
+        if (!quote) {
+          // No quote text, skip this row
+          continue;
+        }
+
+        for (const link of bibleLinks) {
+          const repo = link.split('/')[1];
+          const glQuoteColName = bibleLinks.length > 1 ? `GLQuote:${repo}` : 'GLQuote';
+          const glOccurrenceColName = bibleLinks.length > 1 ? `GLOccurrence:${repo}` : 'GLOccurrence';
+
+          if (!tsvRecord[glQuoteColName] ||
+            !tsvRecord[glOccurrenceColName] ||
+            tsvRecord[glOccurrenceColName].includes('QUOTE_NOT_FOUND') ||
+            tsvRecord[glOccurrenceColName] == "0") {
+            needsResourceLoading = true;
+            if (!quiet) console.log(`Row ${tsvRecord.Reference} requires resource loading - missing or invalid GLQuote/GLOccurrence`);
+            break;
+          }
+        }
+        if (needsResourceLoading) break;
+      }
+    }
+
+    // Function to process records with tokenLookup
+    const processRecords = (tokenLookup) => {
+      let nRecords = 0;
+      let counts = { pass: 0, fail: 0 };
+
+      for (const tsvRecord of tsvRecords) {
+        nRecords++;
+
+        let quote = tsvRecord['Quote'] || tsvRecord['OrigQuote'] || tsvRecord['OrigWords'] || tsvRecord['OrigWord'] || '';
+        quote = quote.replace(/\s*…\s*/g, ' & ').trim();
+        tsvRecord['Quote'] = quote;
+        const sourceTokens = [];
+        const sourceBible = testament === 'old' ? 'hbo_uhb' : 'el-x-koine_ugnt';
+
+        const singleCVs = parseBibleReference(tsvRecord['Reference']);
+
+        // Only get sourceTokens if we have tokenLookup and need to process this record
+        if (tokenLookup) {
           for (const cv of singleCVs) {
             if (tokenLookup[sourceBible][bookCode.toUpperCase()]?.[cv]) {
               sourceTokens.push(...tokenLookup[sourceBible][bookCode.toUpperCase()][cv]);
             }
           }
+        }
 
-          for (const link of bibleLinks) {
-            const repo = link.split('/')[1];
-            const glQuoteColName = bibleLinks.length > 1 ? `GLQuote:${repo}` : 'GLQuote';
-            const glOccurrenceColName = bibleLinks.length > 1 ? `GLOccurrence:${repo}` : 'GLOccurrence';
+        for (const link of bibleLinks) {
+          const repo = link.split('/')[1];
+          const glQuoteColName = bibleLinks.length > 1 ? `GLQuote:${repo}` : 'GLQuote';
+          const glOccurrenceColName = bibleLinks.length > 1 ? `GLOccurrence:${repo}` : 'GLOccurrence';
 
-            if (usePreviousGLQuotes && tsvRecord[glQuoteColName] && tsvRecord[glOccurrenceColName] && !tsvRecord[glOccurrenceColName].includes('QUOTE_NOT_FOUND') && tsvRecord[glOccurrenceColName] != "0") {
-              continue;
-            }
+          if (usePreviousGLQuotes && tsvRecord[glQuoteColName] && tsvRecord[glOccurrenceColName] && !tsvRecord[glOccurrenceColName].includes('QUOTE_NOT_FOUND') && tsvRecord[glOccurrenceColName] != "0") {
+            continue;
+          }
 
-            if (!tsvRecord['Reference'] || !tsvRecord['Quote'] || !parseInt(tsvRecord['Occurrence'])) {
-              tsvRecord[glQuoteColName] = tsvRecord['Quote'];
-              tsvRecord[glOccurrenceColName] = tsvRecord['Occurrence'];
-              continue;
-            }
-            if (tsvRecord['Quote'].includes('QUOTE_NOT_FOUND')) {
-              tsvRecord[glQuoteColName] = tsvRecord['Quote'].replace('QUOTE_NOT_FOUND: ', '');
-              tsvRecord[glOccurrenceColName] = tsvRecord['Occurrence'];
-              continue;
-            }
+          if (!tsvRecord['Reference'] || !tsvRecord['Quote'] || !parseInt(tsvRecord['Occurrence'])) {
+            tsvRecord[glQuoteColName] = tsvRecord['Quote'];
+            tsvRecord[glOccurrenceColName] = tsvRecord['Occurrence'];
+            continue;
+          }
+          if (tsvRecord['Quote'].includes('QUOTE_NOT_FOUND')) {
+            tsvRecord[glQuoteColName] = tsvRecord['Quote'].replace('QUOTE_NOT_FOUND: ', '');
+            tsvRecord[glOccurrenceColName] = tsvRecord['Occurrence'];
+            continue;
+          }
 
+          // Only process alignment if we have tokenLookup
+          if (tokenLookup) {
             const targetTokens = [];
 
             for (const cv of singleCVs) {
@@ -127,6 +168,7 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
                 columns.push(glOccurrenceColName);
               }
             }
+
             if (resultObject && resultObject.quote && resultObject.occurrence) {
               counts.pass++;
               tsvRecord[glQuoteColName] = resultObject.quote;
@@ -145,12 +187,27 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
             }
           }
         }
-        const outputTsv = stringify(tsvRecords, { header: true, quote: '', delimiter: '\t', columns });
-        resolve({ output: outputTsv, errors });
-      })
-      .catch((err) => {
-        if (!quiet) console.error(err);
-        reject(err);
-      });
+      }
+
+      const outputTsv = stringify(tsvRecords, { header: true, quote: '', delimiter: '\t', columns });
+      resolve({ output: outputTsv, errors });
+    };
+
+    // Only load resources if needed
+    if (needsResourceLoading) {
+      if (!quiet) console.log('Loading resources for quote alignment...');
+      loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcsUrl, quiet, removeHiddenHebrew: true })
+        .then(doAlignmentQuery)
+        .then(tokenLookup => {
+          processRecords(tokenLookup);
+        })
+        .catch((err) => {
+          if (!quiet) console.error(err);
+          reject(err);
+        });
+    } else {
+      if (!quiet) console.log('Skipping resource loading - using existing GLQuotes');
+      processRecords(null);
+    }
   });
 }
