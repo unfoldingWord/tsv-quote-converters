@@ -47,7 +47,7 @@ function submitForm(e) {
       columns: e.target.elements.tsvInput.value.split('\n')[0].split('\t'),
     });
     convertGLQuotes2OLQuotes({
-      bibleLinks: [e.target.elements.bibleToUse.value],
+      bibleLink: e.target.elements.bibleToUse.value,
       bookCode: e.target.elements.bookCode.value,
       tsvContent: outputTsv,
     }).then((results) => {

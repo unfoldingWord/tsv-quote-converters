@@ -25,7 +25,7 @@ function submitForm(e) {
   spinner.className = 'fas fa-spinner fa-spin';
   submitButton.appendChild(spinner);
   convertGLQuotes2OLQuotes({
-    bibleLinks: [e.target.elements.bibleToUse.value],
+    bibleLink: e.target.elements.bibleToUse.value,
     bookCode: e.target.elements.bookCode.value,
     tsvContent: e.target.elements.tsvInput.value,
     trySeparatorsAndOccurrences: true
