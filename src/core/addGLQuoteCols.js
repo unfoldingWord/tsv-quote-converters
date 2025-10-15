@@ -181,7 +181,7 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
               tsvRecord[glQuoteColName] = 'QUOTE_NOT_FOUND: ' + tsvRecord['Quote'].replace('QUOTE_NOT_FOUND: ', '');
               tsvRecord[glOccurrenceColName] = tsvRecord['Occurrence'];
               counts.fail++;
-              const errorMsg = `Error: ${bookCode} ${tsvRecord['Reference']} ${tsvRecord['ID']} ${err}`;
+              const errorMsg = `Error: line #${nRecords} -- ${bookCode} ${tsvRecord['Reference']} -- ${tsvRecord['ID']} -- ${err}`;
               if (!quiet) console.error(errorMsg);
               errors.push(errorMsg);
             }
