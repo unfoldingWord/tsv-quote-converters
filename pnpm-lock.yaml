@@ -20,9 +20,6 @@ importers:
       csv-stringify:
         specifier: ^6.5.2
         version: 6.5.2
-      deepcopy:
-        specifier: ^2.1.0
-        version: 2.1.0
       proskomma-core:
         specifier: ^0.10.14
         version: 0.10.14(@babel/core@7.26.7)
@@ -2977,9 +2974,6 @@ packages:
 
   deep-is@0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
-
-  deepcopy@2.1.0:
-    resolution: {integrity: sha512-8cZeTb1ZKC3bdSCP6XOM1IsTczIO73fdqtwa2B0N15eAz7gmyhQo+mc5gnFuulsgN3vIQYmTgbmQVKalH1dKvQ==}
 
   deepmerge@4.3.1:
     resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
@@ -10825,10 +10819,6 @@ snapshots:
       which-typed-array: 1.1.15
 
   deep-is@0.1.4: {}
-
-  deepcopy@2.1.0:
-    dependencies:
-      type-detect: 4.1.0
 
   deepmerge@4.3.1: {}
 
