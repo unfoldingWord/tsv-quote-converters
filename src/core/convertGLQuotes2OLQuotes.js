@@ -144,7 +144,7 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
           } else {
             tsvRecord[quoteField] = 'QUOTE_NOT_FOUND: ' + tsvRecord[quoteField].replace('QUOTE_NOT_FOUND: ', '');
             counts.fail++;
-            const errorMsg = `Error: line #${nRecords} -- ${bookCode} ${tsvRecord['Reference']} -- ${tsvRecord['ID']} -- ${err}`;
+            const errorMsg = `Error: line #${nRecords + 1} -- ${bookCode} ${tsvRecord['Reference']} -- ${tsvRecord['ID']} -- ${err}`;
             if (!quiet) console.error(errorMsg);
             errors.push(errorMsg);
           }
