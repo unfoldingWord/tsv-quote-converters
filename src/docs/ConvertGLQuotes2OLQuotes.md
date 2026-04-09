@@ -2,9 +2,9 @@
 import { convertGLQuotes2OLQuotes } from '../core/convertGLQuotes2OLQuotes.js';
 import { parse } from 'csv-parse/sync';
 
-const defaultBookCode = 'jhn';
+const defaultBookCode = 'psa';
 const defaultTsvInput = `Reference	ID	Tags	SupportReference	Quote	Occurrence	Note
-1:10	krcb		rc://*/ta/man/translate/figs-metonymy	the world	2	This is the note`;
+4:0	ky34		rc://*/ta/man/translate/figs-nominaladj	with stringed instruments	1	This is a test note`;
 const defaultTsvFileURL = `https://git.door43.org/unfoldingWord/en_tn/raw/branch/master/tn_${defaultBookCode.toUpperCase()}.tsv`;
 const defaultBibleToUse = `unfoldingWord/en_ult/master`;
 

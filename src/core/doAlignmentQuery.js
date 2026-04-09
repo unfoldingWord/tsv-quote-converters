@@ -31,14 +31,20 @@ export async function doAlignmentQuery(pk) {
   if (result.errors) {
     throw new Error(result.errors);
   }
-  console.log(result);
   tokenLookup = {};
   for (const docSet of result.data.docSets) {
     tokenLookup[docSet.repo] = {};
     for (const document of docSet.documents) {
       tokenLookup[docSet.repo][document.book] = {};
       for (const itemGroup of document.mainSequence.itemGroups) {
-        const chapter = itemGroup.scopeLabels.filter((s) => s.startsWith('chapter/'))[0].split('/')[1];
+        let chapter = 0;
+        try {
+          chapter = itemGroup.scopeLabels.filter((s) => s.startsWith('chapter/'))[0].split('/')[1];
+        } catch (error) {
+          console.error(`Error processing itemGroup with scopeLabels ${itemGroup.scopeLabels}:`, error);
+          continue;
+        }
+        try {
         for (const verse of itemGroup.scopeLabels
           .filter((s) => s.startsWith('verses/'))[0]
           .split('/')[1]
@@ -54,6 +60,10 @@ export async function doAlignmentQuery(pk) {
           }
           tokenLookup[docSet.repo][document.book][`${chapter}:${verse}`] = itemGroup.tokens;
           console.log(`Loaded ${itemGroup.tokens.length} tokens for ${document.book} ${chapter}:${verse}`);
+        }
+        } catch (error) {
+          console.error(`Error processing itemGroup with scopeLabels ${itemGroup.scopeLabels}:`, error);
+          continue;
         }
       }
     }

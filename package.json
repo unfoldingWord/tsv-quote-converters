@@ -1,6 +1,6 @@
 {
   "name": "tsv-quote-converters",
-  "version": "1.1.18",
+  "version": "1.1.19",
   "description": "",
   "main": "./dist/tsv-quote-converters.mjs",
   "module": "./dist/tsv-quote-converters.mjs",
@@ -11,7 +11,8 @@
     "build": "rm -rf ./dist && vite build",
     "test": "jest",
     "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "styleguide:build": "styleguidist build",
+    "styleguide:dev": "styleguidist server --config styleguide.config.js"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +22,8 @@
     "buffer": "^6.0.3",
     "csv-parse": "^5.6.0",
     "csv-stringify": "^6.5.2",
-    "proskomma-core": "^0.10.14",
+    "proskomma-core": "^0.11.3",
+    "proskomma-tools": "^0.0.5",
     "string-punctuation-tokenizer": "^2.2.0",
     "xregexp": "^5.1.1"
   },

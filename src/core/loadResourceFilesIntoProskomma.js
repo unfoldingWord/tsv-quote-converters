@@ -67,13 +67,13 @@ export async function loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcs
     await axios.request({ method: 'get', url: baseURL }).then(async (response) => {
       let decodedContent = Buffer.from(response.data.content, 'base64').toString('utf-8');
 
-      // Remove hidden character U+2060 (word joiner) from Hebrew text
-      if (removeHiddenHebrew) {
-        // decodedContent = decodedContent.replace(/\u2060/g, '');
-        console.log(`      Removed word joiner characters (U+2060) from Hebrew text`);
-      } else {
-        console.log(`      No Hebrew text found`);
-      }
+      // Normalize to NFC to ensure consistent Unicode combining character order.
+      // Hebrew text in different USFM files may have combining characters (e.g., dagesh
+      // and sheva) in different orders. For example, the UHB may store "dagesh then sheva"
+      // while ULT x-content stores "sheva then dagesh" (NFC canonical order). Without
+      // normalization, the string comparison in getAlignedQuote would fail even when the
+      // characters are visually identical.
+      decodedContent = decodedContent.normalize('NFC');
 
       content.push(decodedContent);
     });

@@ -94,7 +94,7 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
               errors.push(errorMsg);
               continue;
             }
-            if (!tokenLookup[targetBible][bookCode.toUpperCase()]?.[cv]) {
+            if (!tokenLookup[targetBible]?.[bookCode.toUpperCase()]?.[cv]) {
               const errorMsg = `Error: ${bookCode} ${tsvRecord['Reference']} ${tsvRecord['ID']} CV not found in ${targetBible}: ${cv}`;
               if (!quiet) console.error(errorMsg);
               errors.push(errorMsg);
