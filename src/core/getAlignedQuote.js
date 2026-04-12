@@ -250,7 +250,6 @@ export function getAlignedQuoteTryingDifferentSeparators({ sourceTokens, targetT
     throw new Error('source quote exists but occurrence is 0');
   }
 
-  const combinationGenerator = generateNextQuoteCombination(sourceQuote);
   const quotesTried = [];
   let firstError = null;
   let occurrencesToTry = [];
@@ -264,6 +263,7 @@ export function getAlignedQuoteTryingDifferentSeparators({ sourceTokens, targetT
   }
 
   for (let occurrence of occurrencesToTry) {
+    const combinationGenerator = generateNextQuoteCombination(sourceQuote);
     for (const quote of combinationGenerator) {
       try {
         quotesTried.push(quote);

@@ -1,9 +1,10 @@
 /**
  * Does the alignment query
  * @param {Promise<Proskomma>} pk - The Proskomma object
- * @returns {Object} The token lookup object 
+ * @param {boolean} [quiet=true] - Whether to suppress console output
+ * @returns {Object} The token lookup object
  */
-export async function doAlignmentQuery(pk) {
+export async function doAlignmentQuery(pk, quiet = true) {
   let tokenLookup = {};
   const query =
     '{' +
@@ -41,28 +42,29 @@ export async function doAlignmentQuery(pk) {
         try {
           chapter = itemGroup.scopeLabels.filter((s) => s.startsWith('chapter/'))[0].split('/')[1];
         } catch (error) {
-          console.error(`Error processing itemGroup with scopeLabels ${itemGroup.scopeLabels}:`, error);
+          if (!quiet) console.error(`Error processing itemGroup with scopeLabels ${itemGroup.scopeLabels}:`, error);
           continue;
         }
         try {
-        for (const verse of itemGroup.scopeLabels
-          .filter((s) => s.startsWith('verses/'))[0]
-          .split('/')[1]
-          .split('-')) {
-          for (let i = 0; i < itemGroup.tokens.length; i++) {
-            if (docSet.repo === 'el-x-koine_ugnt' && i < itemGroup.tokens.length - 1 && itemGroup.tokens[i].subType === 'wordLike' && itemGroup.tokens[i + 1].payload === '’') {
-              // Need to put the single right curly quote with the Greek word if the Bible is el-x-koine_ugnt
-              itemGroup.tokens[i].payload += '’';
-              itemGroup.tokens[i + 1].payload = '';
+          const verseScope = itemGroup.scopeLabels.filter((s) => s.startsWith('verses/'))[0].split('/')[1];
+          // For verse spans (e.g. "5-6"), annotate all tokens and store under each verse.
+          // The same array reference is stored under each key; callers must deduplicate
+          // when collecting tokens for a span reference.
+          for (const verse of verseScope.split('-')) {
+            for (let i = 0; i < itemGroup.tokens.length; i++) {
+              if (docSet.repo === 'el-x-koine_ugnt' && i < itemGroup.tokens.length - 1 && itemGroup.tokens[i].subType === 'wordLike' && itemGroup.tokens[i + 1].payload === '\u2019') {
+                // Need to put the single right curly quote with the Greek word if the Bible is el-x-koine_ugnt
+                itemGroup.tokens[i].payload += '\u2019';
+                itemGroup.tokens[i + 1].payload = '';
+              }
+              itemGroup.tokens[i].chapter = chapter;
+              itemGroup.tokens[i].verse = verse;
             }
-            itemGroup.tokens[i].chapter = chapter;
-            itemGroup.tokens[i].verse = verse;
+            tokenLookup[docSet.repo][document.book][`${chapter}:${verse}`] = itemGroup.tokens;
           }
-          tokenLookup[docSet.repo][document.book][`${chapter}:${verse}`] = itemGroup.tokens;
-          console.log(`Loaded ${itemGroup.tokens.length} tokens for ${document.book} ${chapter}:${verse}`);
-        }
+          if (!quiet) console.log(`Loaded ${itemGroup.tokens.length} tokens for ${document.book} ${chapter}:${verseScope}`);
         } catch (error) {
-          console.error(`Error processing itemGroup with scopeLabels ${itemGroup.scopeLabels}:`, error);
+          if (!quiet) console.error(`Error processing itemGroup with scopeLabels ${itemGroup.scopeLabels}:`, error);
           continue;
         }
       }

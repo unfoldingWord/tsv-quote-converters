@@ -92,9 +92,12 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
 
         // Only get sourceTokens if we have tokenLookup and need to process this record
         if (tokenLookup) {
+          const seenSourceArrays = new Set();
           for (const cv of singleCVs) {
-            if (tokenLookup[sourceBible][bookCode.toUpperCase()]?.[cv]) {
-              sourceTokens.push(...tokenLookup[sourceBible][bookCode.toUpperCase()][cv]);
+            const srcArr = tokenLookup[sourceBible][bookCode.toUpperCase()]?.[cv];
+            if (srcArr && !seenSourceArrays.has(srcArr)) {
+              seenSourceArrays.add(srcArr);
+              sourceTokens.push(...srcArr);
             }
           }
         }
@@ -122,10 +125,12 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
           // Only process alignment if we have tokenLookup
           if (tokenLookup) {
             const targetTokens = [];
-
+            const seenTargetArrays = new Set();
             for (const cv of singleCVs) {
-              if (tokenLookup[repo]?.[bookCode.toUpperCase()]?.[cv]) {
-                targetTokens.push(...tokenLookup[repo]?.[bookCode.toUpperCase()][cv]);
+              const tgtArr = tokenLookup[repo]?.[bookCode.toUpperCase()]?.[cv];
+              if (tgtArr && !seenTargetArrays.has(tgtArr)) {
+                seenTargetArrays.add(tgtArr);
+                targetTokens.push(...tgtArr);
               }
             }
 
@@ -196,8 +201,8 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
     // Only load resources if needed
     if (needsResourceLoading) {
       if (!quiet) console.log('Loading resources for quote alignment...');
-      loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcsUrl, quiet, removeHiddenHebrew: true })
-        .then(doAlignmentQuery)
+      loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcsUrl, quiet })
+        .then((pk) => doAlignmentQuery(pk, quiet))
         .then(tokenLookup => {
           processRecords(tokenLookup);
         })

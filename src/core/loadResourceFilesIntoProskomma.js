@@ -10,7 +10,7 @@ import { BibleBookData } from '../common/books';
  * @param {string} [dcsUrl='https://git.door43.org'] - The DCS URL
  * @returns {Promise<Proskomma>} The Proskomma object
  */
-export async function loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcsUrl = 'https://git.door43.org', quiet = true, removeHiddenHebrew = false }) {
+export async function loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcsUrl = 'https://git.door43.org', quiet = true }) {
   bookCode = bookCode.toLowerCase();
 
   const pk = new Proskomma([
@@ -56,7 +56,7 @@ export async function loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcs
     }
     baseURLs.push([org, repo, `${dcsUrl}/api/v1/repos/${org}/${repo}/contents/${BibleBookData[bookCode].usfm}.usfm?ref=${ref}`]);
   }
-  console.log('Download USFM');
+  if (!quiet) console.log('Downloading USFM');
   for (const [org, repo, baseURL] of baseURLs) {
     const selectors = {
       org,
@@ -84,7 +84,7 @@ export async function loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcs
     if (!quiet) console.log(`      Downloaded ${bookCode} ${content.length.toLocaleString()} bytes`);
 
     if (repo !== 'hbo_uhb' && repo !== 'el-x-koine_ugnt') {
-      content = [rejigAlignment(content)]; // Tidy-up USFM alignment info
+      content = [rejigAlignment(content[0])]; // Tidy-up USFM alignment info
     }
     try {
       pk.importDocuments(selectors, 'usfm', content, {});

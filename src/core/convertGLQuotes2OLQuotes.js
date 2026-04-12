@@ -8,16 +8,34 @@ import { parseBibleReference } from '../utils/parseBibleReference';
 
 const containsHebrewOrGreek = (text) => /[\u0590-\u05FF\uFB1D-\uFB4F\u0370-\u03FF\u1F00-\u1FFF]/.test(text);
 
-/**
- * Converts GL Quotes to OL Quotes.
- * @param {string} bibleLink - DCS owner/repo/ref link.
- * @param {string} bookCode - The book to process.
- * @param {string} tsvContent - The TSV content.
- * @param {boolean} [trySeparatorsAndOccurrences=false] - Whether to try different separators and occurrences.
- * @param {string} [dcsUrl='https://git.door43.org'] - The DCS URL.
- * @param {boolean} [quiet=true] - Whether to suppress console output.
- * @returns {Promise<Object>} The result object containing output and errors.
- */
+// Joins lines that are split by embedded newlines in TSV field values.
+// Some TSV files contain Quote fields with actual newline characters,
+// causing the row to span multiple physical lines.
+function joinEmbeddedNewlineRows(tsvContent) {
+  const lines = tsvContent.split('\n');
+  if (lines.length === 0) return tsvContent;
+  const expectedTabCount = (lines[0].match(/\t/g) || []).length;
+  const result = [];
+  let buffer = '';
+
+  for (const line of lines) {
+    if (buffer === '') {
+      buffer = line;
+    } else {
+      buffer += ' ' + line;
+    }
+    const tabCount = (buffer.match(/\t/g) || []).length;
+    if (tabCount >= expectedTabCount) {
+      result.push(buffer);
+      buffer = '';
+    }
+  }
+  if (buffer !== '') {
+    result.push(buffer);
+  }
+  return result.join('\n');
+}
+
 export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, trySeparatorsAndOccurrences = false, dcsUrl = 'https://git.door43.org', quiet = true }) {
   return new Promise((resolve, reject) => {
     let errors = [];
@@ -33,8 +51,10 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
       reject(errorMsg);
     }
 
-    loadResourceFilesIntoProskomma({ bibleLinks: [bibleLink], bookCode, dcsUrl, quiet, removeHiddenHebew: false })
-      .then(doAlignmentQuery)
+    tsvContent = joinEmbeddedNewlineRows(tsvContent);
+
+    loadResourceFilesIntoProskomma({ bibleLinks: [bibleLink], bookCode, dcsUrl, quiet })
+      .then((pk) => doAlignmentQuery(pk, quiet))
       .then((tokenLookup) => {
         // Query Proskomma which now contains the books
         const repo = bibleLink.split('/')[1];
@@ -87,6 +107,8 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
           const targetBible = testament === 'old' ? 'hbo_uhb' : 'el-x-koine_ugnt';
 
           const allCVs = parseBibleReference(tsvRecord['Reference']);
+          const seenSourceArrays = new Set();
+          const seenTargetArrays = new Set();
           for (const cv of allCVs) {
             if (!tokenLookup[repo]?.[bookCode.toUpperCase()]?.[cv]) {
               const errorMsg = `Error: ${bookCode} ${tsvRecord['Reference']} ${tsvRecord['ID']} CV not found in ${repo}: ${cv}`;
@@ -100,8 +122,16 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
               errors.push(errorMsg);
               continue;
             }
-            sourceTokens.push(...tokenLookup[repo]?.[bookCode.toUpperCase()][cv]);
-            targetTokens.push(...tokenLookup[targetBible][bookCode.toUpperCase()][cv]);
+            const srcArr = tokenLookup[repo][bookCode.toUpperCase()][cv];
+            if (!seenSourceArrays.has(srcArr)) {
+              seenSourceArrays.add(srcArr);
+              sourceTokens.push(...srcArr);
+            }
+            const tgtArr = tokenLookup[targetBible][bookCode.toUpperCase()][cv];
+            if (!seenTargetArrays.has(tgtArr)) {
+              seenTargetArrays.add(tgtArr);
+              targetTokens.push(...tgtArr);
+            }
           }
 
           let resultObject = null;
