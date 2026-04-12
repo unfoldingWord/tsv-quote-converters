@@ -1,0 +1,794 @@
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Ἰούδας[7m2[27m"[39m
+Received: [31m"Ἰούδας"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Ἰούδας[7m2[27m"[39m
+Received: [31m"Ἰούδας"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Ἰησοῦ Χριστοῦ δοῦλος, ἀδελφὸς δὲ Ἰακώβου[7m2[27m"[39m
+Received: [31m"Ἰησοῦ Χριστοῦ δοῦλος, ἀδελφὸς δὲ Ἰακώβου"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἀδελφὸς & Ἰακώβου[7m2[27m"[39m
+Received: [31m"ἀδελφὸς & Ἰακώβου"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τοῖς[7m2[27m"[39m
+Received: [31m"τοῖς"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"κλητοῖς[7m2[27m"[39m
+Received: [31m"κλητοῖς"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἐν Θεῷ Πατρὶ ἠγαπημένοις[7m2[27m"[39m
+Received: [31m"ἐν Θεῷ Πατρὶ ἠγαπημένοις"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Θεῷ Πατρὶ[7m2[27m"[39m
+Received: [31m"Θεῷ Πατρὶ"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Ἰησοῦ Χριστῷ τετηρημένοις κλητοῖς[7m2[27m"[39m
+Received: [31m"Ἰησοῦ Χριστῷ τετηρημένοις κλητοῖς"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἔλεος ὑμῖν, καὶ εἰρήνη, καὶ ἀγάπη πληθυνθείη[7m2[27m"[39m
+Received: [31m"ἔλεος ὑμῖν, καὶ εἰρήνη, καὶ ἀγάπη πληθυνθείη"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἔλεος ὑμῖν, καὶ εἰρήνη, καὶ ἀγάπη πληθυνθείη[7m2[27m"[39m
+Received: [31m"ἔλεος ὑμῖν, καὶ εἰρήνη, καὶ ἀγάπη πληθυνθείη"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἔλεος & καὶ εἰρήνη, καὶ ἀγάπη πληθυνθείη[7m2[27m"[39m
+Received: [31m"ἔλεος & καὶ εἰρήνη, καὶ ἀγάπη πληθυνθείη"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ὑμῖν[7m2[27m"[39m
+Received: [31m"ὑμῖν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἀγαπητοί[7m2[27m"[39m
+Received: [31m"ἀγαπητοί"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"πᾶσαν σπουδὴν ποιούμενος γράφειν ὑμῖν[7m2[27m"[39m
+Received: [31m"πᾶσαν σπουδὴν ποιούμενος γράφειν ὑμῖν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"περὶ τῆς κοινῆς ἡμῶν σωτηρίας[7m2[27m"[39m
+Received: [31m"περὶ τῆς κοινῆς ἡμῶν σωτηρίας"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"περὶ τῆς κοινῆς ἡμῶν σωτηρίας[7m2[27m"[39m
+Received: [31m"περὶ τῆς κοινῆς ἡμῶν σωτηρίας"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἡμῶν[7m2[27m"[39m
+Received: [31m"ἡμῶν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἀνάγκην ἔσχον γράψαι[7m2[27m"[39m
+Received: [31m"ἀνάγκην ἔσχον γράψαι"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"παρακαλῶν ἐπαγωνίζεσθαι τῇ & πίστει[7m2[27m"[39m
+Received: [31m"παρακαλῶν ἐπαγωνίζεσθαι τῇ & πίστει"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"παρακαλῶν ἐπαγωνίζεσθαι τῇ & πίστει[7m2[27m"[39m
+Received: [31m"παρακαλῶν ἐπαγωνίζεσθαι τῇ & πίστει"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τῇ ἅπαξ παραδοθείσῃ τοῖς ἁγίοις πίστει[7m2[27m"[39m
+Received: [31m"τῇ ἅπαξ παραδοθείσῃ τοῖς ἁγίοις πίστει"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἅπαξ[7m2[27m"[39m
+Received: [31m"ἅπαξ"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"γάρ[7m2[27m"[39m
+Received: [31m"γάρ"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"παρεισέδυσαν γάρ τινες ἄνθρωποι[7m2[27m"[39m
+Received: [31m"παρεισέδυσαν γάρ τινες ἄνθρωποι"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"παρεισέδυσαν γάρ τινες ἄνθρωποι[7m2[27m"[39m
+Received: [31m"παρεισέδυσαν γάρ τινες ἄνθρωποι"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"οἱ πάλαι προγεγραμμένοι εἰς τοῦτο τὸ κρίμα[7m2[27m"[39m
+Received: [31m"οἱ πάλαι προγεγραμμένοι εἰς τοῦτο τὸ κρίμα"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"εἰς τοῦτο τὸ κρίμα[7m2[27m"[39m
+Received: [31m"εἰς τοῦτο τὸ κρίμα"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἀσεβεῖς[7m2[27m"[39m
+Received: [31m"ἀσεβεῖς"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τὴν τοῦ Θεοῦ ἡμῶν χάριτα μετατιθέντες εἰς ἀσέλγειαν[7m2[27m"[39m
+Received: [31m"τὴν τοῦ Θεοῦ ἡμῶν χάριτα μετατιθέντες εἰς ἀσέλγειαν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἡμῶν & ἡμῶν[7m2[27m"[39m
+Received: [31m"ἡμῶν & ἡμῶν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τὴν τοῦ Θεοῦ ἡμῶν χάριτα[7m2[27m"[39m
+Received: [31m"τὴν τοῦ Θεοῦ ἡμῶν χάριτα"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"εἰς ἀσέλγειαν[7m2[27m"[39m
+Received: [31m"εἰς ἀσέλγειαν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τὸν μόνον Δεσπότην καὶ Κύριον ἡμῶν, Ἰησοῦν Χριστὸν, ἀρνούμενοι[7m2[27m"[39m
+Received: [31m"τὸν μόνον Δεσπότην καὶ Κύριον ἡμῶν, Ἰησοῦν Χριστὸν, ἀρνούμενοι"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τὸν μόνον Δεσπότην καὶ Κύριον ἡμῶν[7m2[27m"[39m
+Received: [31m"τὸν μόνον Δεσπότην καὶ Κύριον ἡμῶν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ὑπομνῆσαι & ὑμᾶς βούλομαι, εἰδότας ὑμᾶς ἅπαξ πάντα[7m2[27m"[39m
+Received: [31m"ὑπομνῆσαι & ὑμᾶς βούλομαι, εἰδότας ὑμᾶς ἅπαξ πάντα"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"πάντα[7m2[27m"[39m
+Received: [31m"πάντα"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ὅτι Ἰησοῦς[7m2[27m"[39m
+Received: [31m"ὅτι Ἰησοῦς"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"λαὸν ἐκ γῆς Αἰγύπτου σώσας[7m2[27m"[39m
+Received: [31m"λαὸν ἐκ γῆς Αἰγύπτου σώσας"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"λαὸν ἐκ γῆς Αἰγύπτου σώσας[7m2[27m"[39m
+Received: [31m"λαὸν ἐκ γῆς Αἰγύπτου σώσας"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τοὺς μὴ τηρήσαντας τὴν ἑαυτῶν ἀρχὴν[7m2[27m"[39m
+Received: [31m"τοὺς μὴ τηρήσαντας τὴν ἑαυτῶν ἀρχὴν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τὴν ἑαυτῶν ἀρχὴν[7m2[27m"[39m
+Received: [31m"τὴν ἑαυτῶν ἀρχὴν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"δεσμοῖς ἀϊδίοις ὑπὸ ζόφον τετήρηκεν[7m2[27m"[39m
+Received: [31m"δεσμοῖς ἀϊδίοις ὑπὸ ζόφον τετήρηκεν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"δεσμοῖς ἀϊδίοις & τετήρηκεν[7m2[27m"[39m
+Received: [31m"δεσμοῖς ἀϊδίοις & τετήρηκεν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ὑπὸ ζόφον[7m2[27m"[39m
+Received: [31m"ὑπὸ ζόφον"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"εἰς κρίσιν μεγάλης ἡμέρας[7m2[27m"[39m
+Received: [31m"εἰς κρίσιν μεγάλης ἡμέρας"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"εἰς κρίσιν μεγάλης ἡμέρας[7m2[27m"[39m
+Received: [31m"εἰς κρίσιν μεγάλης ἡμέρας"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"μεγάλης ἡμέρας[7m2[27m"[39m
+Received: [31m"μεγάλης ἡμέρας"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Σόδομα καὶ Γόμορρα, καὶ αἱ περὶ αὐτὰς πόλεις[7m2[27m"[39m
+Received: [31m"Σόδομα καὶ Γόμορρα, καὶ αἱ περὶ αὐτὰς πόλεις"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τὸν ὅμοιον τρόπον τούτοις[7m2[27m"[39m
+Received: [31m"τὸν ὅμοιον τρόπον τούτοις"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἐκπορνεύσασαι[7m2[27m"[39m
+Received: [31m"ἐκπορνεύσασαι"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"καὶ ἀπελθοῦσαι ὀπίσω σαρκὸς ἑτέρας[7m2[27m"[39m
+Received: [31m"καὶ ἀπελθοῦσαι ὀπίσω σαρκὸς ἑτέρας"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"σαρκὸς ἑτέρας[7m2[27m"[39m
+Received: [31m"σαρκὸς ἑτέρας"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"πρόκεινται δεῖγμα[7m2[27m"[39m
+Received: [31m"πρόκεινται δεῖγμα"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"πυρὸς αἰωνίου δίκην ὑπέχουσαι[7m2[27m"[39m
+Received: [31m"πυρὸς αἰωνίου δίκην ὑπέχουσαι"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ὁμοίως[7m2[27m"[39m
+Received: [31m"ὁμοίως"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"οὗτοι ἐνυπνιαζόμενοι[7m2[27m"[39m
+Received: [31m"οὗτοι ἐνυπνιαζόμενοι"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"σάρκα μὲν μιαίνουσιν[7m2[27m"[39m
+Received: [31m"σάρκα μὲν μιαίνουσιν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"κυριότητα[7m2[27m"[39m
+Received: [31m"κυριότητα"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"κυριότητα & ἀθετοῦσιν[7m2[27m"[39m
+Received: [31m"κυριότητα & ἀθετοῦσιν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"δόξας[7m2[27m"[39m
+Received: [31m"δόξας"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"κρίσιν ἐπενεγκεῖν βλασφημίας[7m2[27m"[39m
+Received: [31m"κρίσιν ἐπενεγκεῖν βλασφημίας"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"κρίσιν ἐπενεγκεῖν βλασφημίας[7m2[27m"[39m
+Received: [31m"κρίσιν ἐπενεγκεῖν βλασφημίας"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"κρίσιν ἐπενεγκεῖν βλασφημίας[7m2[27m"[39m
+Received: [31m"κρίσιν ἐπενεγκεῖν βλασφημίας"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"οὗτοι[7m2[27m"[39m
+Received: [31m"οὗτοι"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ὅσα & οὐκ οἴδασιν[7m2[27m"[39m
+Received: [31m"ὅσα & οὐκ οἴδασιν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἐν τούτοις[7m2[27m"[39m
+Received: [31m"ἐν τούτοις"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἐν τούτοις φθείρονται[7m2[27m"[39m
+Received: [31m"ἐν τούτοις φθείρονται"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"οὐαὶ αὐτοῖς[7m2[27m"[39m
+Received: [31m"οὐαὶ αὐτοῖς"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τῇ ὁδῷ τοῦ Κάϊν ἐπορεύθησαν[7m2[27m"[39m
+Received: [31m"τῇ ὁδῷ τοῦ Κάϊν ἐπορεύθησαν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τοῦ Κάϊν[7m2[27m"[39m
+Received: [31m"τοῦ Κάϊν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἐξεχύθησαν[7m2[27m"[39m
+Received: [31m"ἐξεχύθησαν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τοῦ Βαλαὰμ μισθοῦ[7m2[27m"[39m
+Received: [31m"τοῦ Βαλαὰμ μισθοῦ"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τοῦ Κόρε[7m2[27m"[39m
+Received: [31m"τοῦ Κόρε"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἀπώλοντο[7m2[27m"[39m
+Received: [31m"ἀπώλοντο"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"οὗτοί[7m2[27m"[39m
+Received: [31m"οὗτοί"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"σπιλάδες[7m2[27m"[39m
+Received: [31m"σπιλάδες"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ταῖς ἀγάπαις[7m2[27m"[39m
+Received: [31m"ταῖς ἀγάπαις"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἑαυτοὺς ποιμαίνοντες[7m2[27m"[39m
+Received: [31m"ἑαυτοὺς ποιμαίνοντες"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"νεφέλαι ἄνυδροι ὑπὸ ἀνέμων παραφερόμεναι[7m2[27m"[39m
+Received: [31m"νεφέλαι ἄνυδροι ὑπὸ ἀνέμων παραφερόμεναι"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ὑπὸ ἀνέμων παραφερόμεναι[7m2[27m"[39m
+Received: [31m"ὑπὸ ἀνέμων παραφερόμεναι"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"δένδρα φθινοπωρινὰ ἄκαρπα[7m2[27m"[39m
+Received: [31m"δένδρα φθινοπωρινὰ ἄκαρπα"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"δὶς ἀποθανόντα ἐκριζωθέντα[7m2[27m"[39m
+Received: [31m"δὶς ἀποθανόντα ἐκριζωθέντα"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"δὶς ἀποθανόντα ἐκριζωθέντα[7m2[27m"[39m
+Received: [31m"δὶς ἀποθανόντα ἐκριζωθέντα"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἐκριζωθέντα[7m2[27m"[39m
+Received: [31m"ἐκριζωθέντα"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἐκριζωθέντα[7m2[27m"[39m
+Received: [31m"ἐκριζωθέντα"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"κύματα ἄγρια θαλάσσης[7m2[27m"[39m
+Received: [31m"κύματα ἄγρια θαλάσσης"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἐπαφρίζοντα τὰς ἑαυτῶν αἰσχύνας[7m2[27m"[39m
+Received: [31m"ἐπαφρίζοντα τὰς ἑαυτῶν αἰσχύνας"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἀστέρες πλανῆται[7m2[27m"[39m
+Received: [31m"ἀστέρες πλανῆται"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"οἷς ὁ ζόφος τοῦ σκότους εἰς αἰῶνα τετήρηται[7m2[27m"[39m
+Received: [31m"οἷς ὁ ζόφος τοῦ σκότους εἰς αἰῶνα τετήρηται"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"οἷς[7m2[27m"[39m
+Received: [31m"οἷς"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ὁ ζόφος τοῦ σκότους[7m2[27m"[39m
+Received: [31m"ὁ ζόφος τοῦ σκότους"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ὁ ζόφος τοῦ σκότους[7m2[27m"[39m
+Received: [31m"ὁ ζόφος τοῦ σκότους"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἕβδομος ἀπὸ Ἀδὰμ[7m2[27m"[39m
+Received: [31m"ἕβδομος ἀπὸ Ἀδὰμ"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τούτοις[7m2[27m"[39m
+Received: [31m"τούτοις"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"λέγων[7m2[27m"[39m
+Received: [31m"λέγων"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἰδοὺ[7m2[27m"[39m
+Received: [31m"ἰδοὺ"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἦλθεν Κύριος[7m2[27m"[39m
+Received: [31m"ἦλθεν Κύριος"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Κύριος[7m2[27m"[39m
+Received: [31m"Κύριος"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"μυριάσιν[7m2[27m"[39m
+Received: [31m"μυριάσιν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἁγίαις[7m2[27m"[39m
+Received: [31m"ἁγίαις"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ποιῆσαι κρίσιν & καὶ ἐλέγξαι[7m2[27m"[39m
+Received: [31m"ποιῆσαι κρίσιν & καὶ ἐλέγξαι"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ποιῆσαι κρίσιν κατὰ[7m2[27m"[39m
+Received: [31m"ποιῆσαι κρίσιν κατὰ"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"πᾶσαν ψυχὴν[7m2[27m"[39m
+Received: [31m"πᾶσαν ψυχὴν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τῶν ἔργων ἀσεβείας αὐτῶν[7m2[27m"[39m
+Received: [31m"τῶν ἔργων ἀσεβείας αὐτῶν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τῶν σκληρῶν[7m2[27m"[39m
+Received: [31m"τῶν σκληρῶν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"αὐτοῦ[7m2[27m"[39m
+Received: [31m"αὐτοῦ"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"οὗτοί[7m2[27m"[39m
+Received: [31m"οὗτοί"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"εἰσιν γογγυσταί μεμψίμοιροι[7m2[27m"[39m
+Received: [31m"εἰσιν γογγυσταί μεμψίμοιροι"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"πορευόμενοι[7m2[27m"[39m
+Received: [31m"πορευόμενοι"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τὰς ἐπιθυμίας αὐτῶν[7m2[27m"[39m
+Received: [31m"τὰς ἐπιθυμίας αὐτῶν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τὸ στόμα αὐτῶν λαλεῖ[7m2[27m"[39m
+Received: [31m"τὸ στόμα αὐτῶν λαλεῖ"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τὸ στόμα αὐτῶν λαλεῖ[7m2[27m"[39m
+Received: [31m"τὸ στόμα αὐτῶν λαλεῖ"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"λαλεῖ ὑπέρογκα[7m2[27m"[39m
+Received: [31m"λαλεῖ ὑπέρογκα"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"θαυμάζοντες πρόσωπα[7m2[27m"[39m
+Received: [31m"θαυμάζοντες πρόσωπα"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"θαυμάζοντες πρόσωπα[7m2[27m"[39m
+Received: [31m"θαυμάζοντες πρόσωπα"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἀγαπητοί[7m2[27m"[39m
+Received: [31m"ἀγαπητοί"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τῶν ῥημάτων[7m2[27m"[39m
+Received: [31m"τῶν ῥημάτων"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τοῦ Κυρίου ἡμῶν[7m2[27m"[39m
+Received: [31m"τοῦ Κυρίου ἡμῶν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἡμῶν[7m2[27m"[39m
+Received: [31m"ἡμῶν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ὅτι ἔλεγον ὑμῖν[7m2[27m"[39m
+Received: [31m"ὅτι ἔλεγον ὑμῖν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἐσχάτου χρόνου[7m2[27m"[39m
+Received: [31m"ἐσχάτου χρόνου"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"πορευόμενοι[7m2[27m"[39m
+Received: [31m"πορευόμενοι"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"κατὰ τὰς ἑαυτῶν ἐπιθυμίας & τῶν ἀσεβειῶν[7m2[27m"[39m
+Received: [31m"κατὰ τὰς ἑαυτῶν ἐπιθυμίας & τῶν ἀσεβειῶν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"οὗτοί[7m2[27m"[39m
+Received: [31m"οὗτοί"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"οἱ ἀποδιορίζοντες[7m2[27m"[39m
+Received: [31m"οἱ ἀποδιορίζοντες"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Πνεῦμα[7m2[27m"[39m
+Received: [31m"Πνεῦμα"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ψυχικοί[7m2[27m"[39m
+Received: [31m"ψυχικοί"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Πνεῦμα μὴ ἔχοντες[7m2[27m"[39m
+Received: [31m"Πνεῦμα μὴ ἔχοντες"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἀγαπητοί[7m2[27m"[39m
+Received: [31m"ἀγαπητοί"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἐποικοδομοῦντες ἑαυτοὺς τῇ ἁγιωτάτῃ ὑμῶν πίστει[7m2[27m"[39m
+Received: [31m"ἐποικοδομοῦντες ἑαυτοὺς τῇ ἁγιωτάτῃ ὑμῶν πίστει"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἐποικοδομοῦντες ἑαυτοὺς[7m2[27m"[39m
+Received: [31m"ἐποικοδομοῦντες ἑαυτοὺς"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τῇ ἁγιωτάτῃ ὑμῶν πίστει[7m2[27m"[39m
+Received: [31m"τῇ ἁγιωτάτῃ ὑμῶν πίστει"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἐν Πνεύματι Ἁγίῳ προσευχόμενοι[7m2[27m"[39m
+Received: [31m"ἐν Πνεύματι Ἁγίῳ προσευχόμενοι"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἑαυτοὺς ἐν ἀγάπῃ Θεοῦ τηρήσατε[7m2[27m"[39m
+Received: [31m"ἑαυτοὺς ἐν ἀγάπῃ Θεοῦ τηρήσατε"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἑαυτοὺς ἐν ἀγάπῃ Θεοῦ τηρήσατε[7m2[27m"[39m
+Received: [31m"ἑαυτοὺς ἐν ἀγάπῃ Θεοῦ τηρήσατε"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"προσδεχόμενοι τὸ ἔλεος τοῦ Κυρίου ἡμῶν[7m2[27m"[39m
+Received: [31m"προσδεχόμενοι τὸ ἔλεος τοῦ Κυρίου ἡμῶν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τὸ ἔλεος τοῦ Κυρίου ἡμῶν, Ἰησοῦ Χριστοῦ[7m2[27m"[39m
+Received: [31m"τὸ ἔλεος τοῦ Κυρίου ἡμῶν, Ἰησοῦ Χριστοῦ"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τοῦ Κυρίου ἡμῶν[7m2[27m"[39m
+Received: [31m"τοῦ Κυρίου ἡμῶν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἡμῶν[7m2[27m"[39m
+Received: [31m"ἡμῶν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τὸ ἔλεος τοῦ Κυρίου ἡμῶν, Ἰησοῦ Χριστοῦ, εἰς ζωὴν αἰώνιον[7m2[27m"[39m
+Received: [31m"τὸ ἔλεος τοῦ Κυρίου ἡμῶν, Ἰησοῦ Χριστοῦ, εἰς ζωὴν αἰώνιον"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἐλεᾶτε[7m2[27m"[39m
+Received: [31m"ἐλεᾶτε"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"οὓς & διακρινομένους[7m2[27m"[39m
+Received: [31m"οὓς & διακρινομένους"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἐκ πυρὸς ἁρπάζοντες[7m2[27m"[39m
+Received: [31m"ἐκ πυρὸς ἁρπάζοντες"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἐκ πυρὸς ἁρπάζοντες[7m2[27m"[39m
+Received: [31m"ἐκ πυρὸς ἁρπάζοντες"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἐλεᾶτε[7m2[27m"[39m
+Received: [31m"ἐλεᾶτε"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἐν φόβῳ[7m2[27m"[39m
+Received: [31m"ἐν φόβῳ"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"μισοῦντες καὶ τὸν ἀπὸ τῆς σαρκὸς ἐσπιλωμένον χιτῶνα[7m2[27m"[39m
+Received: [31m"μισοῦντες καὶ τὸν ἀπὸ τῆς σαρκὸς ἐσπιλωμένον χιτῶνα"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τῆς σαρκὸς[7m2[27m"[39m
+Received: [31m"τῆς σαρκὸς"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τῷ δὲ δυναμένῳ φυλάξαι[7m2[27m"[39m
+Received: [31m"τῷ δὲ δυναμένῳ φυλάξαι"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"φυλάξαι ὑμᾶς ἀπταίστους[7m2[27m"[39m
+Received: [31m"φυλάξαι ὑμᾶς ἀπταίστους"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τῆς δόξης αὐτοῦ[7m2[27m"[39m
+Received: [31m"τῆς δόξης αὐτοῦ"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ἐν ἀγαλλιάσει[7m2[27m"[39m
+Received: [31m"ἐν ἀγαλλιάσει"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"μόνῳ Θεῷ Σωτῆρι ἡμῶν[7m2[27m"[39m
+Received: [31m"μόνῳ Θεῷ Σωτῆρι ἡμῶν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Σωτῆρι ἡμῶν[7m2[27m"[39m
+Received: [31m"Σωτῆρι ἡμῶν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"τοῦ Κυρίου ἡμῶν[7m2[27m"[39m
+Received: [31m"τοῦ Κυρίου ἡμῶν"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"μόνῳ Θεῷ & δόξα, μεγαλωσύνη, κράτος, καὶ ἐξουσία[7m2[27m"[39m
+Received: [31m"μόνῳ Θεῷ & δόξα, μεγαλωσύνη, κράτος, καὶ ἐξουσία"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"πρὸ παντὸς τοῦ αἰῶνος[7m2[27m"[39m
+Received: [31m"πρὸ παντὸς τοῦ αἰῶνος"[39m
+
+[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"εἰς πάντας τοὺς αἰῶνας[7m2[27m"[39m
+Received: [31m"εἰς πάντας τοὺς αἰῶνας"[39m

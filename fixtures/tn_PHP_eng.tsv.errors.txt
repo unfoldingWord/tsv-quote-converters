@@ -1,0 +1,2 @@
+Error: line #290 -- php 3:8 -- cez0 -- Error: Occurrence 2 not found for "I,consider,them" after position 98
+Error: line #406 -- php 4:9 -- mhvb -- Error: Occurrence 5 not found for "and" after position 50

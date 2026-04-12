@@ -1,0 +1,44 @@
+Comparing row 6, tit 1:1 (fyf8): "QUOTE_NOT_FOUND:  τῆς κατ’ εὐσέβειαν" vs "that agrees with godliness"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"that agrees with godliness"[39m
+Received: [31m"QUOTE_NOT_FOUND:  τῆς κατ’ εὐσέβειαν"[39m
+
+Comparing row 7, tit 1:2 (xyz9): "QUOTE_NOT_FOUND:  ἐπ’ ἐλπίδι ζωῆς αἰωνίου" vs "with the certain hope of eternal life"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"with the certain hope of eternal life"[39m
+Received: [31m"QUOTE_NOT_FOUND:  ἐπ’ ἐλπίδι ζωῆς αἰωνίου"[39m
+
+Comparing row 8, tit 1:2 (u0gk): "QUOTE_NOT_FOUND: ἐπ’ ἐλπίδι ζωῆς αἰωνίου" vs "with the certain hope of eternal life"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"with the certain hope of eternal life"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἐπ’ ἐλπίδι ζωῆς αἰωνίου"[39m
+
+Comparing row 36, tit 1:8 (xy11): "sensible & self-controlled" vs "sensible, & self-controlled"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"sensible[7m,[27m & self-controlled"[39m
+Received: [31m"sensible & self-controlled"[39m
+
+Comparing row 53, tit 1:13 (fif8): "QUOTE_NOT_FOUND: δι’ ἣν αἰτίαν ἔλεγχε αὐτοὺς ἀποτόμως" vs "For this reason, rebuke them severely"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"For this reason, rebuke them severely"[39m
+Received: [31m"QUOTE_NOT_FOUND: δι’ ἣν αἰτίαν ἔλεγχε αὐτοὺς ἀποτόμως"[39m
+
+Comparing row 54, tit 1:13 (abck): "QUOTE_NOT_FOUND: δι’ ἣν αἰτίαν" vs "For this reason"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"For this reason"[39m
+Received: [31m"QUOTE_NOT_FOUND: δι’ ἣν αἰτίαν"[39m
+
+Comparing row 164, tit 3:6 (fby9): "QUOTE_NOT_FOUND:  οὗ ἐξέχεεν ἐφ’ ἡμᾶς πλουσίως," vs "whom he richly poured on us"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"whom he richly poured on us"[39m
+Received: [31m"QUOTE_NOT_FOUND:  οὗ ἐξέχεεν ἐφ’ ἡμᾶς πλουσίως,"[39m
+
+Comparing row 172, tit 3:7 (q1cm): "QUOTE_NOT_FOUND: κληρονόμοι γενηθῶμεν, κατ’ ἐλπίδα ζωῆς αἰωνίου" vs "we might become heirs according to certain hope of eternal life"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"we might become heirs according to certain hope of eternal life"[39m
+Received: [31m"QUOTE_NOT_FOUND: κληρονόμοι γενηθῶμεν, κατ’ ἐλπίδα ζωῆς αἰωνίου"[39m
+
+Comparing row 202, tit 3:15 (k1sa): "QUOTE_NOT_FOUND: οἱ μετ’ ἐμοῦ πάντες" vs "All those with me"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"All those with me"[39m
+Received: [31m"QUOTE_NOT_FOUND: οἱ μετ’ ἐμοῦ πάντες"[39m

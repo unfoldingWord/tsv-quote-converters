@@ -1,0 +1,9 @@
+Comparing row 17, phm 1:2 (uof9): "QUOTE_NOT_FOUND: καὶ τῇ κατ’ οἶκόν σου ἐκκλησίᾳ" vs "and to the church in your house"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"and to the church in your house"[39m
+Received: [31m"QUOTE_NOT_FOUND: καὶ τῇ κατ’ οἶκόν σου ἐκκλησίᾳ"[39m
+
+Comparing row 48, phm 1:12 (fdwn): "QUOTE_NOT_FOUND: τοῦτ’ ἔστιν τὰ ἐμὰ σπλάγχνα" vs "this one is my inner parts"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"this one is my inner parts"[39m
+Received: [31m"QUOTE_NOT_FOUND: τοῦτ’ ἔστιν τὰ ἐμὰ σπλάγχνα"[39m

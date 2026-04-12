@@ -1,0 +1,2 @@
+Error: line #278 -- rev 3:20 -- i7gy -- Error: Occurrence 1 not found for "I,stand,at,the,door,and,knock,If,anyone,should,hear,my,voice,and,open,the,door,I,will,indeed,enter,to,him,and,will,eat,with,him,and,he,with,me" after position 74
+Error: line #430 -- rev 7:8 -- tzt6 -- Error: Occurrence 1 not found for "12,thousands,been,sealed" after position 53

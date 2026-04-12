@@ -1,0 +1,5 @@
+Error: line #71 -- 2co 1:14 -- urdj -- Error: Occurrence 2 not found for "our" after position 58
+Error: line #808 -- 2co 7:8 -- b2xj -- Error: Occurrence 3 not found for "if,only" after position 74
+Error: line #1153 -- 2co 10:14 -- ay6h -- Error: Occurrence 2 not found for "for" after position 58
+Error: line #1156 -- 2co 10:14 -- lpiu -- Error: Occurrence 2 not found for "for" after position 58
+Error: line #1332 -- 2co 11:33 -- uitt -- Error: Occurrence 2 not found for "and" after position 39

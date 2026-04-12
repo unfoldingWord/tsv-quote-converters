@@ -23,9 +23,6 @@ importers:
       proskomma-core:
         specifier: ^0.11.3
         version: 0.11.3(@babel/core@7.26.7)
-      proskomma-tools:
-        specifier: ^0.0.5
-        version: 0.0.5
       string-punctuation-tokenizer:
         specifier: ^2.2.0
         version: 2.2.0
@@ -5842,9 +5839,6 @@ packages:
 
   proskomma-json-tools@0.9.1:
     resolution: {integrity: sha512-1m2LxruiL15CwmlCrswz4rVEzWzdqKm7KCeWi2LCV7AZCGNJ4JH+GpCJPUNAVA36v0AtaNCqsMgJ+liTafSFHw==}
-
-  proskomma-tools@0.0.5:
-    resolution: {integrity: sha512-x21fVgLHWfZQjK+WDcGRgWSqJCe3LLmli/7c27zgxGZFLKds0YJnmH6ML8b7TfkRz+mSXNFQGXm8Z274Ws1FTw==}
 
   proxy-addr@2.0.7:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
@@ -14531,12 +14525,6 @@ snapshots:
       deep-equal: 2.2.3
       usfm-js: 3.4.3
       xregexp: 5.1.1
-    transitivePeerDependencies:
-      - supports-color
-
-  proskomma-tools@0.0.5:
-    dependencies:
-      '@babel/core': 7.26.7
     transitivePeerDependencies:
       - supports-color
 

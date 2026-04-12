@@ -1,0 +1,6 @@
+Error: line #204 -- act 2:15 -- a108 -- Error: Occurrence 2 not found for "for" after position 39
+Error: line #643 -- act 4:34 -- a320 -- Error: Occurrence 2 not found for "for" after position 61
+Error: line #861 -- act 6:5 -- jayc -- Error: Occurrence 2 not found for "So" after position 88
+Error: line #1021 -- act 7:34 -- atdo -- Error: Occurrence 3 not found for "And" after position 81
+Error: line #1070 -- act 7:43 -- zgq6 -- Error: Occurrence 3 not found for "and" after position 63
+Error: line #1205 -- act 8:12 -- vsy8 -- Error: Occurrence 1 not found for "they,were,baptized" after position 58

@@ -1,0 +1,3 @@
+Error: rev 14:4 r104 Error: Occurrence 1 not found for "οἱ,ἠγορασμένοι" after position 62
+Error: rev 16:8 r141 Error: Occurrence 1 not found for "οἱ,ἄνθρωποι" after position 38
+Error: rev 18:24 r252 Error: Occurrence 1 not found for "εὑρέθη,προφητῶν" after position 31

@@ -1,0 +1,2 @@
+Error: rom 11:2 wzs6 Error: Occurrence 1 not found for "τὸν,λαὸν,αὐτο" after position 54
+Error: rom 16:2 inh1 Error: Occurrence 2 not found for "καὶ,γὰρ,αὐτὴ,προστάτις,πολλῶν,ἐγενήθη,καὶ,ἐμοῦ,αὐτοῦ" after position 54

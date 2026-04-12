@@ -1,0 +1,3 @@
+Error: act 7:44 fs4q Error: Occurrence 0 not found for "Connecting,Statement" after position 51
+Error: act 28:11 jc5t Error: Occurrence 1 not found for "παρασήμῳ,Διοσκούροι" after position 31
+Error: act 28:11 a636 Error: Occurrence 1 not found for "παρασήμῳ,Διοσκούροι" after position 31

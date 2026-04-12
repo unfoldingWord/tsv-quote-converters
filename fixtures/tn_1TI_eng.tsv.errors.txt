@@ -1,0 +1,1 @@
+Error: line #343 -- 1ti 4:7 -- enby -- Error: Occurrence 2 not found for "but" after position 28

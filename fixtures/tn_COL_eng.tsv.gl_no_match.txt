@@ -1,0 +1,139 @@
+Comparing row 31, col 1:9 (u7zh): "QUOTE_NOT_FOUND: ἀφ’ ἧς ἡμέρας ἠκούσαμεν" vs "from the day we heard this"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"from the day we heard this"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἀφ’ ἧς ἡμέρας ἠκούσαμεν"[39m
+
+Comparing row 78, col 1:16 (zl7j): "QUOTE_NOT_FOUND: τὰ πάντα δι’ αὐτοῦ καὶ εἰς αὐτὸν ἔκτισται" vs "all things have been created though him and for him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"all things have been created though him and for him"[39m
+Received: [31m"QUOTE_NOT_FOUND: τὰ πάντα δι’ αὐτοῦ καὶ εἰς αὐτὸν ἔκτισται"[39m
+
+Comparing row 79, col 1:16 (c3lm): "QUOTE_NOT_FOUND: δι’ αὐτοῦ & ἔκτισται" vs "have been created though him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"have been created though him"[39m
+Received: [31m"QUOTE_NOT_FOUND: δι’ αὐτοῦ & ἔκτισται"[39m
+
+Comparing row 98, col 1:20 (mbra): "all things to himself & whether the things on the earth or the things in the heavens" vs "all things to himself, & whether the things on the earth or the things in the heavens"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"all things to himself[7m,[27m & whether the things on the earth or the things in the heavens"[39m
+Received: [31m"all things to himself & whether the things on the earth or the things in the heavens"[39m
+
+Comparing row 149, col 1:28 (lyz1): "every man" vs "every man & every man & every man"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"every man[7m & every man & every man[27m"[39m
+Received: [31m"every man"[39m
+
+Comparing row 150, col 1:28 (pwff): "man" vs "man & man & man"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"man[7m & man & man[27m"[39m
+Received: [31m"man"[39m
+
+Comparing row 247, col 2:14 (w22z): "QUOTE_NOT_FOUND: ἐξαλείψας τὸ καθ’ ἡμῶν χειρόγραφον τοῖς δόγμασιν, ὃ ἦν ὑπεναντίον ἡμῖν, καὶ αὐτὸ ἦρκεν ἐκ τοῦ μέσου, προσηλώσας αὐτὸ τῷ σταυρῷ;" vs "having canceled the written record of the decrees against us, which were opposed to us, and he has taken {it} out from our midst, having nailed it to the cross"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"having canceled the written record of the decrees against us, which were opposed to us, and he has taken {it} out from our midst, having nailed it to the cross"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἐξαλείψας τὸ καθ’ ἡμῶν χειρόγραφον τοῖς δόγμασιν, ὃ ἦν ὑπεναντίον ἡμῖν, καὶ αὐτὸ ἦρκεν ἐκ τοῦ μέσου, προσηλώσας αὐτὸ τῷ σταυρῷ;"[39m
+
+Comparing row 248, col 2:14 (k0fg): "QUOTE_NOT_FOUND: καθ’ ἡμῶν & ὃ ἦν ὑπεναντίον ἡμῖν" vs "against us, which were opposed to us"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"against us, which were opposed to us"[39m
+Received: [31m"QUOTE_NOT_FOUND: καθ’ ἡμῶν & ὃ ἦν ὑπεναντίον ἡμῖν"[39m
+
+Comparing row 262, col 2:18 (aa4v): "no one & he has seen & his" vs "no one & he has seen, & his"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"no one & he has seen[7m,[27m & his"[39m
+Received: [31m"no one & he has seen & his"[39m
+
+Comparing row 291, col 2:21 (pzj1): "You may & handle & taste & touch" vs "You may & handle, & taste, & touch"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"You may & handle[7m,[27m & taste[7m,[27m & touch"[39m
+Received: [31m"You may & handle & taste & touch"[39m
+
+Comparing row 310, col 3:1 (oav8): "If & you were raised with Christ" vs "If, & you were raised with Christ"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"If[7m,[27m & you were raised with Christ"[39m
+Received: [31m"If & you were raised with Christ"[39m
+
+Comparing row 325, col 3:4 (ugge): "Christ, your life, is revealed" vs "Christ, your life,is revealed"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Christ, your life,is revealed"[39m
+Received: [31m"Christ, your life,[7m [27mis revealed"[39m
+
+Comparing row 328, col 3:4 (b2io): "is revealed & will be revealed with him" vs "is revealed, & will be revealed with him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"is revealed[7m,[27m & will be revealed with him"[39m
+Received: [31m"is revealed & will be revealed with him"[39m
+
+Comparing row 334, col 3:5 (zn6i): "Put to death & the members {that are} on the earth" vs "Put to death, & the members {that are} on the earth"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Put to death[7m,[27m & the members {that are} on the earth"[39m
+Received: [31m"Put to death & the members {that are} on the earth"[39m
+
+Comparing row 343, col 3:6 (dj6g): "QUOTE_NOT_FOUND: δι’ ἃ" vs "because of which"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"because of which"[39m
+Received: [31m"QUOTE_NOT_FOUND: δι’ ἃ"[39m
+
+Comparing row 372, col 3:10 (v7xq): "QUOTE_NOT_FOUND: κατ’ εἰκόνα τοῦ κτίσαντος αὐτόν" vs "according to the image of the one having created it"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"according to the image of the one having created it"[39m
+Received: [31m"QUOTE_NOT_FOUND: κατ’ εἰκόνα τοῦ κτίσαντος αὐτόν"[39m
+
+Comparing row 374, col 3:10 (rqsf): "QUOTE_NOT_FOUND: κατ’ εἰκόνα τοῦ" vs "according to the image of the one"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"according to the image of the one"[39m
+Received: [31m"QUOTE_NOT_FOUND: κατ’ εἰκόνα τοῦ"[39m
+
+Comparing row 431, col 3:17 (bv84): "QUOTE_NOT_FOUND: δι’ αὐτοῦ" vs "through him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"through him"[39m
+Received: [31m"QUOTE_NOT_FOUND: δι’ αὐτοῦ"[39m
+
+Comparing row 495, col 4:3 (gs8f): "QUOTE_NOT_FOUND: δι’ ὃ" vs "on account of which"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"on account of which"[39m
+Received: [31m"QUOTE_NOT_FOUND: δι’ ὃ"[39m
+
+Comparing row 514, col 4:7 (ut91): "QUOTE_NOT_FOUND: τὰ κατ’ ἐμὲ πάντα γνωρίσει ὑμῖν Τυχικὸς, ὁ ἀγαπητὸς ἀδελφὸς, καὶ πιστὸς διάκονος, καὶ σύνδουλος ἐν Κυρίῳ" vs "All the things concerning me, Tychicus will make known to you, the beloved brother and faithful servant and fellow slave in the Lord"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"All the things concerning me, Tychicus will make known to you, the beloved brother and faithful servant and fellow slave in the Lord"[39m
+Received: [31m"QUOTE_NOT_FOUND: τὰ κατ’ ἐμὲ πάντα γνωρίσει ὑμῖν Τυχικὸς, ὁ ἀγαπητὸς ἀδελφὸς, καὶ πιστὸς διάκονος, καὶ σύνδουλος ἐν Κυρίῳ"[39m
+
+Comparing row 515, col 4:7 (xzz4): "QUOTE_NOT_FOUND: τὰ κατ’ ἐμὲ πάντα" vs "All the things concerning me"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"All the things concerning me"[39m
+Received: [31m"QUOTE_NOT_FOUND: τὰ κατ’ ἐμὲ πάντα"[39m
+
+Comparing row 532, col 4:10 (wmf4): "Aristarchus & Mark & of Barnabas" vs "Aristarchus, & Mark, & of Barnabas"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Aristarchus[7m,[27m & Mark[7m,[27m & of Barnabas"[39m
+Received: [31m"Aristarchus & Mark & of Barnabas"[39m
+
+Comparing row 541, col 4:11 (bm6s): "Jesus & Justus" vs "Jesus, & Justus"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Jesus[7m,[27m & Justus"[39m
+Received: [31m"Jesus & Justus"[39m
+
+Comparing row 564, col 4:14 (hq1k): "Luke & Demas" vs "Luke, & Demas"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Luke[7m,[27m & Demas"[39m
+Received: [31m"Luke & Demas"[39m
+
+Comparing row 569, col 4:15 (wyk3): "QUOTE_NOT_FOUND: κατ’ οἶκον αὐτῆς" vs "in her house"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"in her house"[39m
+Received: [31m"QUOTE_NOT_FOUND: κατ’ οἶκον αὐτῆς"[39m
+
+Comparing row 571, col 4:16 (zvor): "QUOTE_NOT_FOUND: ἀναγνωσθῇ παρ’ ὑμῖν ἡ ἐπιστολή & ἀναγνωσθῇ" vs "this letter has been read among you, & it would be read"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"this letter has been read among you, & it would be read"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἀναγνωσθῇ παρ’ ὑμῖν ἡ ἐπιστολή & ἀναγνωσθῇ"[39m
+
+Comparing row 586, col 4:18 (w2vm): "QUOTE_NOT_FOUND: ἡ χάρις μεθ’ ὑμῶν" vs "Grace {be} with you"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Grace {be} with you"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἡ χάρις μεθ’ ὑμῶν"[39m
+
+Comparing row 587, col 4:18 (v7qw): "QUOTE_NOT_FOUND: ἡ χάρις μεθ’" vs "Grace {be} with"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Grace {be} with"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἡ χάρις μεθ’"[39m

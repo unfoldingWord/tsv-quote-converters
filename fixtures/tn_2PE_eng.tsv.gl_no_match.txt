@@ -1,0 +1,89 @@
+Comparing row 34, 2pe 1:4 (g7fc): "QUOTE_NOT_FOUND: δι’ ὧν" vs "through which"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"through which"[39m
+Received: [31m"QUOTE_NOT_FOUND: δι’ ὧν"[39m
+
+Comparing row 35, 2pe 1:4 (m91m): "QUOTE_NOT_FOUND: δι’ ὧν" vs "through which"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"through which"[39m
+Received: [31m"QUOTE_NOT_FOUND: δι’ ὧν"[39m
+
+Comparing row 52, 2pe 1:5 (wj3w): "goodness & goodness" vs "goodness; & goodness"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"goodness[7m;[27m & goodness"[39m
+Received: [31m"goodness & goodness"[39m
+
+Comparing row 57, 2pe 1:6 (s5ni): "self-control & self-control" vs "self-control; & self-control"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"self-control[7m;[27m & self-control"[39m
+Received: [31m"self-control & self-control"[39m
+
+Comparing row 59, 2pe 1:6 (ajag): "endurance & endurance" vs "endurance; & endurance"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"endurance[7m;[27m & endurance"[39m
+Received: [31m"endurance & endurance"[39m
+
+Comparing row 63, 2pe 1:7 (a8ti): "brotherly affection & brotherly affection" vs "brotherly affection; & brotherly affection"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"brotherly affection[7m;[27m & brotherly affection"[39m
+Received: [31m"brotherly affection & brotherly affection"[39m
+
+Comparing row 101, 2pe 1:13 (ax2a): "QUOTE_NOT_FOUND: ἐφ’ ὅσον εἰμὶ ἐν τούτῳ τῷ σκηνώματι" vs "as long as I am in this tent"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"as long as I am in this tent"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἐφ’ ὅσον εἰμὶ ἐν τούτῳ τῷ σκηνώματι"[39m
+
+Comparing row 170, 2pe 2:2 (fz5m): "QUOTE_NOT_FOUND: δι’ οὓς" vs "because of whom"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"because of whom"[39m
+Received: [31m"QUOTE_NOT_FOUND: δι’ οὓς"[39m
+
+Comparing row 257, 2pe 2:11 (v1qt): "QUOTE_NOT_FOUND: οὐ φέρουσιν κατ’ αὐτῶν & βλάσφημον κρίσιν" vs "do not bring an insulting judgment against them"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"do not bring an insulting judgment against them"[39m
+Received: [31m"QUOTE_NOT_FOUND: οὐ φέρουσιν κατ’ αὐτῶν & βλάσφημον κρίσιν"[39m
+
+Comparing row 347, 2pe 2:21 (j7s6): "the holy commandment" vs ""[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m""[39m
+Received: [31m"the holy commandment"[39m
+
+Comparing row 348, 2pe 2:21 (xwid): "the holy commandment" vs ""[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m""[39m
+Received: [31m"the holy commandment"[39m
+
+Comparing row 383, 2pe 3:4 (xfkr): "QUOTE_NOT_FOUND: ἀφ’ ἧς γὰρ οἱ πατέρες ἐκοιμήθησαν" vs "For since the fathers fell asleep"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"For since the fathers fell asleep"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἀφ’ ἧς γὰρ οἱ πατέρες ἐκοιμήθησαν"[39m
+
+Comparing row 385, 2pe 3:4 (c2en): "QUOTE_NOT_FOUND: πάντα οὕτως διαμένει ἀπ’ ἀρχῆς κτίσεως" vs "all things continue in the same way from the beginning of creation"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"all things continue in the same way from the beginning of creation"[39m
+Received: [31m"QUOTE_NOT_FOUND: πάντα οὕτως διαμένει ἀπ’ ἀρχῆς κτίσεως"[39m
+
+Comparing row 386, 2pe 3:4 (yue7): "QUOTE_NOT_FOUND: ἀπ’ ἀρχῆς κτίσεως" vs "from the beginning of creation"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"from the beginning of creation"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἀπ’ ἀρχῆς κτίσεως"[39m
+
+Comparing row 389, 2pe 3:5 (mku9): "QUOTE_NOT_FOUND: γῆ ἐξ ὕδατος καὶ δι’ ὕδατος συνεστῶσα τῷ τοῦ Θεοῦ λόγῳ" vs "the earth had been formed out of water and through water by the word of God"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the earth had been formed out of water and through water by the word of God"[39m
+Received: [31m"QUOTE_NOT_FOUND: γῆ ἐξ ὕδατος καὶ δι’ ὕδατος συνεστῶσα τῷ τοῦ Θεοῦ λόγῳ"[39m
+
+Comparing row 390, 2pe 3:5 (s77f): "QUOTE_NOT_FOUND: ἐξ ὕδατος καὶ δι’ ὕδατος συνεστῶσα" vs "had been formed out of water and through water"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"had been formed out of water and through water"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἐξ ὕδατος καὶ δι’ ὕδατος συνεστῶσα"[39m
+
+Comparing row 392, 2pe 3:6 (jh4r): "QUOTE_NOT_FOUND: δι’ ὧν" vs "through which"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"through which"[39m
+Received: [31m"QUOTE_NOT_FOUND: δι’ ὧν"[39m
+
+Comparing row 429, 2pe 3:12 (b73o): "QUOTE_NOT_FOUND: δι’ ἣν" vs "because of which"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"because of which"[39m
+Received: [31m"QUOTE_NOT_FOUND: δι’ ἣν"[39m

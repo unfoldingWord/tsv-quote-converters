@@ -1,0 +1,129 @@
+Comparing row 91, est 1:15 (ics9): "According to law & on account of this, that" vs "According to law, & on account of this, that"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"According to law[7m,[27m & on account of this, that"[39m
+Received: [31m"According to law & on account of this, that"[39m
+
+Comparing row 186, est 2:7 (jd59): "Now the young woman was beautiful of form and pleasing of appearance & her" vs "Now the young woman was beautiful of form and pleasing of appearance. & her"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Now the young woman was beautiful of form and pleasing of appearance[7m.[27m & her"[39m
+Received: [31m"Now the young woman was beautiful of form and pleasing of appearance & her"[39m
+
+Comparing row 198, est 2:8 (n3zc): "that & was taken" vs "that, & was taken"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"that[7m,[27m & was taken"[39m
+Received: [31m"that & was taken"[39m
+
+Comparing row 199, est 2:8 (zcb1): "that & was taken" vs "that, & was taken"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"that[7m,[27m & was taken"[39m
+Received: [31m"that & was taken"[39m
+
+Comparing row 250, est 2:15 (fiy8): "Now when the turn of Esther & her & came to go to the king" vs "Now when the turn of Esther (& her & came to go to the king"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Now when the turn of Esther [7m([27m& her & came to go to the king"[39m
+Received: [31m"Now when the turn of Esther & her & came to go to the king"[39m
+
+Comparing row 253, est 2:15 (qx3u): "she did not seek anything except what Hegai & said" vs "she did not seek anything except what Hegai (& said"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"she did not seek anything except what Hegai [7m([27m& said"[39m
+Received: [31m"she did not seek anything except what Hegai & said"[39m
+
+Comparing row 254, est 2:15 (vw9r): "what Hegai & said" vs "what Hegai (& said"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"what Hegai [7m([27m& said"[39m
+Received: [31m"what Hegai & said"[39m
+
+Comparing row 255, est 2:15 (abf1): "what Hegai & said" vs "what Hegai (& said"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"what Hegai [7m([27m& said"[39m
+Received: [31m"what Hegai & said"[39m
+
+Comparing row 310, est 3:1 (abh9): "Ahasuerus made Haman & great" vs "Ahasuerus made Haman, & great"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Ahasuerus made Haman[7m,[27m & great"[39m
+Received: [31m"Ahasuerus made Haman & great"[39m
+
+Comparing row 346, est 3:6 (abk1): "the Jews, the people & Mordecai & of" vs "the Jews, the people & Mordecai, & of"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the Jews, the people & Mordecai[7m,[27m & of"[39m
+Received: [31m"the Jews, the people & Mordecai & of"[39m
+
+Comparing row 353, est 3:7 (abk4): "a Pur & was cast" vs "a Pur (& was cast"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"a Pur [7m([27m& was cast"[39m
+Received: [31m"a Pur & was cast"[39m
+
+Comparing row 354, est 3:7 (abk5): "a Pur & was cast" vs "a Pur (& was cast"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"a Pur [7m([27m& was cast"[39m
+Received: [31m"a Pur & was cast"[39m
+
+Comparing row 414, est 3:14 (l9w7): "the writing & was uncovered for all the peoples" vs "the writing, & was uncovered for all the peoples"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the writing[7m,[27m & was uncovered for all the peoples"[39m
+Received: [31m"the writing & was uncovered for all the peoples"[39m
+
+Comparing row 532, est 5:6 (q5nt): "is your petition & is your request" vs "is your petition? & is your request"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"is your petition[7m?[27m & is your request"[39m
+Received: [31m"is your petition & is your request"[39m
+
+Comparing row 650, est 6:13 (fd5k): "If Mordecai, before whose face you have begun to fall & then" vs "If Mordecai, before whose face you have begun to fall, & then"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"If Mordecai, before whose face you have begun to fall[7m,[27m & then"[39m
+Received: [31m"If Mordecai, before whose face you have begun to fall & then"[39m
+
+Comparing row 665, est 7:2 (yks7): "What is your petition & And let it be given to you. And what is your request? As much as half of the kingdom, and let it be done" vs "What is your petition, & And let it be given to you. And what is your request? As much as half of the kingdom, and let it be done"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"What is your petition[7m,[27m & And let it be given to you. And what is your request? As much as half of the kingdom, and let it be done"[39m
+Received: [31m"What is your petition & And let it be given to you. And what is your request? As much as half of the kingdom, and let it be done"[39m
+
+Comparing row 668, est 7:2 (j4d3): "is your petition & is your request" vs "is your petition, & is your request"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"is your petition[7m,[27m & is your request"[39m
+Received: [31m"is your petition & is your request"[39m
+
+Comparing row 716, est 7:9 (acc5): "Also & the pole that Haman made for Mordecai & is standing at the house of Haman" vs "Also, & the pole that Haman made for Mordecai, & is standing at the house of Haman"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Also[7m,[27m & the pole that Haman made for Mordecai[7m,[27m & is standing at the house of Haman"[39m
+Received: [31m"Also & the pole that Haman made for Mordecai & is standing at the house of Haman"[39m
+
+Comparing row 733, est 8:2 (m5hz): "And the king removed his signet ring & and he gave it to Mordecai" vs "And the king removed his signet ring, & and he gave it to Mordecai"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"And the king removed his signet ring[7m,[27m & and he gave it to Mordecai"[39m
+Received: [31m"And the king removed his signet ring & and he gave it to Mordecai"[39m
+
+Comparing row 753, est 8:5 (w7yl): "If it is good to the king & and the word is proper before the face of the king" vs "If it is good to the king, & and the word is proper before the face of the king"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"If it is good to the king[7m,[27m & and the word is proper before the face of the king"[39m
+Received: [31m"If it is good to the king & and the word is proper before the face of the king"[39m
+
+Comparing row 754, est 8:5 (r2yy): "and if I have found favor before his face & and I am good in his eyes" vs "and if I have found favor before his face, & and I am good in his eyes"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"and if I have found favor before his face[7m,[27m & and I am good in his eyes"[39m
+Received: [31m"and if I have found favor before his face & and I am good in his eyes"[39m
+
+Comparing row 758, est 8:5 (j1r7): "before his face & before the face of the king" vs "before his face, & before the face of the king"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"before his face[7m,[27m & before the face of the king"[39m
+Received: [31m"before his face & before the face of the king"[39m
+
+Comparing row 775, est 8:8 (acf0): "So & you" vs "So, & you"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"So[7m,[27m & you"[39m
+Received: [31m"So & you"[39m
+
+Comparing row 912, est 9:12 (n3ua): "And it will be given to you & and it will be done" vs "And it will be given to you. & and it will be done"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"And it will be given to you[7m.[27m & and it will be done"[39m
+Received: [31m"And it will be given to you & and it will be done"[39m
+
+Comparing row 913, est 9:12 (ly4g): "your petition & your request" vs "your petition? & your request"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"your petition[7m?[27m & your request"[39m
+Received: [31m"your petition & your request"[39m
+
+Comparing row 1014, est 9:27 (acp8): "the Jews set up and accepted for themselves and for their seed and for all those who unite themselves to them & to be making these two days" vs "the Jews set up and accepted for themselves and for their seed and for all those who unite themselves to them (& to be making these two days"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the Jews set up and accepted for themselves and for their seed and for all those who unite themselves to them [7m([27m& to be making these two days"[39m
+Received: [31m"the Jews set up and accepted for themselves and for their seed and for all those who unite themselves to them & to be making these two days"[39m

@@ -1,0 +1,19 @@
+Comparing row 8, 3jn 1:3 (k1jl): "to & truth & truth" vs "to & truth, & truth"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"to & truth[7m,[27m & truth"[39m
+Received: [31m"to & truth & truth"[39m
+
+Comparing row 16, 3jn 1:6-7 (jfun): "whom you will do well to send on worthily of God, for they went out for the sake of the name, receiving nothing from the Gentiles" vs "whom you will do well to send on worthily of God & for they went out for the sake of the name, receiving nothing from the Gentiles"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"whom you will do well to send on worthily of God[7m &[27m for they went out for the sake of the name, receiving nothing from the Gentiles"[39m
+Received: [31m"whom you will do well to send on worthily of God[7m,[27m for they went out for the sake of the name, receiving nothing from the Gentiles"[39m
+
+Comparing row 50, 3jn 1:12 (a16a): "we ourselves & attest & our" vs "we ourselves & attest, & our"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"we ourselves & attest[7m,[27m & our"[39m
+Received: [31m"we ourselves & attest & our"[39m
+
+Comparing row 57, 3jn 1:15 (dxln): "QUOTE_NOT_FOUND: κατ’ ὄνομα" vs "by name"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"by name"[39m
+Received: [31m"QUOTE_NOT_FOUND: κατ’ ὄνομα"[39m

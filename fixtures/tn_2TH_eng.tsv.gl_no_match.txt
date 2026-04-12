@@ -1,0 +1,59 @@
+Comparing row 29, 2th 1:7 (l3ht): "QUOTE_NOT_FOUND: καὶ ὑμῖν τοῖς θλιβομένοις, ἄνεσιν μεθ’ ἡμῶν" vs "and relief to you, the ones being afflicted with us"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"and relief to you, the ones being afflicted with us"[39m
+Received: [31m"QUOTE_NOT_FOUND: καὶ ὑμῖν τοῖς θλιβομένοις, ἄνεσιν μεθ’ ἡμῶν"[39m
+
+Comparing row 49, 2th 1:10 (e56p): "QUOTE_NOT_FOUND: ἐπιστεύθη τὸ μαρτύριον ἡμῶν ἐφ’ ὑμᾶς" vs "our testimony to you has been believed"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"our testimony to you has been believed"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἐπιστεύθη τὸ μαρτύριον ἡμῶν ἐφ’ ὑμᾶς"[39m
+
+Comparing row 65, 2th 2:1 (uy4z): "QUOTE_NOT_FOUND: ὑπὲρ τῆς παρουσίας τοῦ Κυρίου ἡμῶν, Ἰησοῦ Χριστοῦ, καὶ ἡμῶν ἐπισυναγωγῆς ἐπ’ αὐτόν" vs "about the coming of our Lord Jesus Christ and our gathering to him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"about the coming of our Lord Jesus Christ and our gathering to him"[39m
+Received: [31m"QUOTE_NOT_FOUND: ὑπὲρ τῆς παρουσίας τοῦ Κυρίου ἡμῶν, Ἰησοῦ Χριστοῦ, καὶ ἡμῶν ἐπισυναγωγῆς ἐπ’ αὐτόν"[39m
+
+Comparing row 66, 2th 2:1 (sx2f): "QUOTE_NOT_FOUND: ὑπὲρ τῆς παρουσίας τοῦ Κυρίου ἡμῶν, Ἰησοῦ Χριστοῦ, καὶ ἡμῶν ἐπισυναγωγῆς ἐπ’ αὐτόν" vs "about the coming of our Lord Jesus Christ and our gathering to him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"about the coming of our Lord Jesus Christ and our gathering to him"[39m
+Received: [31m"QUOTE_NOT_FOUND: ὑπὲρ τῆς παρουσίας τοῦ Κυρίου ἡμῶν, Ἰησοῦ Χριστοῦ, καὶ ἡμῶν ἐπισυναγωγῆς ἐπ’ αὐτόν"[39m
+
+Comparing row 70, 2th 2:2 (d334): "QUOTE_NOT_FOUND: μήτε διὰ πνεύματος, μήτε διὰ λόγου, μήτε δι’ ἐπιστολῆς, ὡς δι’ ἡμῶν" vs "neither by a spirit nor by a word nor by a letter as if from us"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"neither by a spirit nor by a word nor by a letter as if from us"[39m
+Received: [31m"QUOTE_NOT_FOUND: μήτε διὰ πνεύματος, μήτε διὰ λόγου, μήτε δι’ ἐπιστολῆς, ὡς δι’ ἡμῶν"[39m
+
+Comparing row 71, 2th 2:2 (ll80): "QUOTE_NOT_FOUND: ὡς δι’ ἡμῶν" vs "as if from us"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"as if from us"[39m
+Received: [31m"QUOTE_NOT_FOUND: ὡς δι’ ἡμῶν"[39m
+
+Comparing row 96, 2th 2:9 (sp9v): "QUOTE_NOT_FOUND: οὗ ἐστιν ἡ παρουσία, κατ’ ἐνέργειαν τοῦ Σατανᾶ" vs "the arrival of whom is according to a work of Satan"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the arrival of whom is according to a work of Satan"[39m
+Received: [31m"QUOTE_NOT_FOUND: οὗ ἐστιν ἡ παρουσία, κατ’ ἐνέργειαν τοῦ Σατανᾶ"[39m
+
+Comparing row 104, 2th 2:10 (e8hi): "QUOTE_NOT_FOUND: ἀνθ’ ὧν" vs "because of which"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"because of which"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἀνθ’ ὧν"[39m
+
+Comparing row 135, 2th 2:15 (jrg4): "QUOTE_NOT_FOUND: δι’ ἐπιστολῆς ἡμῶν" vs "by our letter"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"by our letter"[39m
+Received: [31m"QUOTE_NOT_FOUND: δι’ ἐπιστολῆς ἡμῶν"[39m
+
+Comparing row 159, 2th 3:4 (w79e): "QUOTE_NOT_FOUND: πεποίθαμεν δὲ ἐν Κυρίῳ ἐφ’ ὑμᾶς" vs "We are also confident in the Lord about you"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"We are also confident in the Lord about you"[39m
+Received: [31m"QUOTE_NOT_FOUND: πεποίθαμεν δὲ ἐν Κυρίῳ ἐφ’ ὑμᾶς"[39m
+
+Comparing row 166, 2th 3:6 (x9l8): "brothers & brother" vs "brothers, & brother"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"brothers[7m,[27m & brother"[39m
+Received: [31m"brothers & brother"[39m
+
+Comparing row 176, 2th 3:9 (sn3k): "QUOTE_NOT_FOUND: οὐχ ὅτι οὐκ ἔχομεν ἐξουσίαν, ἀλλ’" vs "not because we do not have authority, but"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"not because we do not have authority, but"[39m
+Received: [31m"QUOTE_NOT_FOUND: οὐχ ὅτι οὐκ ἔχομεν ἐξουσίαν, ἀλλ’"[39m

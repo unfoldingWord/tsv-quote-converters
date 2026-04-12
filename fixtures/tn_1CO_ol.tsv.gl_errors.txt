@@ -1,0 +1,3 @@
+Error: 1co 7:24 jio8 Error: Occurrence 0 not found for "General,Information" after position 22
+Error: 1co 7:36 t87y Error: Occurrence 0 not found for "he,is,acting,improperly,toward" after position 49
+Error: 1co 7:37 ta66 Error: Occurrence 0 not found for "But,if,he,is,standing,firm,in,his,heart" after position 68

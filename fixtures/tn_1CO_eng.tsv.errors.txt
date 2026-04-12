@@ -1,0 +1,7 @@
+Error: line #351 -- 1co 3:10 -- krd6 -- Error: Occurrence 2 not found for "he,builds,on,it" after position 82
+Error: line #717 -- 1co 6:13 -- pd10 -- Error: Occurrence 2 not found for "Now" after position 88
+Error: line #846 -- 1co 7:15 -- z5nz -- Error: Occurrence 2 not found for "but" after position 57
+Error: line #975 -- 1co 7:35 -- a5sg -- Error: Occurrence 2 not found for "toward,what,is" after position 66
+Error: line #1162 -- 1co 9:11 -- czcs -- Error: Occurrence 2 not found for "if" after position 43
+Error: line #1315 -- 1co 10:11 -- xlwp -- Error: Occurrence 2 not found for "but" after position 53
+Error: line #1456 -- 1co 11:6 -- s4r5 -- Error: Occurrence 2 not found for "if,it,is" after position 85

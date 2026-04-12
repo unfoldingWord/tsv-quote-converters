@@ -1,0 +1,13 @@
+Error: jon 1:5 u2bj Error: Occurrence 1 not found for "his,own,god" after position 112
+Error: jon 1:6 yx7e Error: Occurrence 1 not found for "What,are,you,doing,sleeping" after position 78
+Error: jon 1:7 sc57 Error: Occurrence 1 not found for "Then,every,man,said,to,his,friend" after position 86
+Error: jon 1:10 zi05 Error: Occurrence 1 not found for "Then,the,men,were,afraid,with,great,fear" after position 86
+Error: jon 2:7 ue9g Error: Occurrence 1 not found for "and,my,prayer,came,to,you,to,your,holy,temple" after position 44
+Error: jon 2:8 u1l9 Error: Occurrence 1 not found for "Those,who,give,attention,to,empty,vanities" after position 24
+Error: jon 3:2 ir79 Error: Occurrence 1 not found for "and,call,out,to,it,the,proclamation,that,I,tell,to,you" after position 44
+Error: jon 3:7 xw6c Error: Occurrence 1 not found for "herd,or,flock" after position 91
+Error: jon 4:1 jdr8 Error: Occurrence 1 not found for "But,this,was,evil,to,Jonah" after position 30
+Error: jon 4:1 m7ty Error: Occurrence 1 not found for "But,this,was,evil" after position 30
+Error: jon 4:1 nh8d Error: Occurrence 1 not found for "But,this,was,evil,to,Jonah,a,great,evil" after position 30
+Error: jon 4:11 ecl1 Error: Occurrence 1 not found for "So,I,should,I,not,feel,troubled,about,Nineveh,the,great,city,in,which,there,are,more,than,120,000,people,who,cannot,distinguish,between,their,right,hand,and,their,left,hand,and,many,animals" after position 78
+Error: jon 4:11 j35h Error: Occurrence 1 not found for "who,cannot,distinguish,between,their,right,hand,and,their,left,hand" after position 78

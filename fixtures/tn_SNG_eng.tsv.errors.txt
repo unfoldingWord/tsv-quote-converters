@@ -1,0 +1,5 @@
+Error: sng 1:3 j5ka Error: Occurrence 1 not found for "As,for,the,smell,of" after position 49
+Error: sng 1:12 lp8f Error: Occurrence 1 not found for "gave,off,its,smell" after position 29
+Error: sng 1:15 fb4x Error: Occurrence 1 not found for "your,eyes,are,doves" after position 32
+Error: sng 2:3 fkm3 Error: Occurrence 1 not found for "In,his,shadow,I,took,delight,and,I,sat" after position 76
+Error: sng 2:3 bfja Error: Occurrence 1 not found for "I,took,delight" after position 76

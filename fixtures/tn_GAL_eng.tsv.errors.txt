@@ -1,0 +1,3 @@
+Error: line #388 -- gal 3:20 -- lhui -- Error: Occurrence 2 not found for "but" after position 25
+Error: line #389 -- gal 3:20 -- l2b6 -- Error: Occurrence 2 not found for "but" after position 25
+Error: line #492 -- gal 4:5 -- nppu -- Error: Occurrence 2 not found for "so,that" after position 43

@@ -1,0 +1,16 @@
+Error: pro 1:9 h55y Error: Occurrence 1 not found for "For" after position 32
+Error: pro 1:16 cdbr Error: Occurrence 1 not found for "For" after position 27
+Error: pro 2:3 ntaj Error: Occurrence 1 not found for "for,perception" after position 30
+Error: pro 2:3 cda0 Error: Occurrence 1 not found for "for,perception" after position 30
+Error: pro 5:6 yot0 Error: Occurrence 1 not found for "Lest,she,observe,the,path,of,life" after position 33
+Error: pro 5:6 nxc1 Error: Occurrence 1 not found for "Lest,she,observe,the,path,of,life" after position 33
+Error: pro 5:9 pl7u Error: Occurrence 1 not found for "Lest" after position 28
+Error: pro 5:10 j1mn Error: Occurrence 1 not found for "Lest" after position 37
+Error: pro 6:31 jnq4 Error: Occurrence 1 not found for "But,if,he,is,found,he,must,repay" after position 38
+Error: pro 6:31 ugyl Error: Occurrence 1 not found for "But,if,he,is,found" after position 38
+Error: pro 6:31 n1t7 Error: Occurrence 1 not found for "But,if,he,is,found" after position 38
+Error: pro 16:13 c0v0 Error: Occurrence 1 not found for "are,lips,of,righteousness" after position 35
+Error: pro 16:13 k2h7 Error: Occurrence 1 not found for "are,lips,of" after position 35
+Error: pro 20:13 ell4 Error: Occurrence 1 not found for "open,your,eyes,be,satisfied,with,bread" after position 34
+Error: pro 20:13 ee3x Error: Occurrence 1 not found for "open,your,eyes" after position 34
+Error: pro 20:13 ls12 Error: Occurrence 1 not found for "open,your,eyes" after position 34

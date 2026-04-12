@@ -1,0 +1,5 @@
+Error: line #762 -- mrk 5:31 -- qfp2 -- Error: Occurrence 2 not found for "and" after position 47
+Error: line #1066 -- mrk 6:56 -- cir0 -- Error: Occurrence 2 not found for "it" after position 99
+Error: line #1516 -- mrk 9:18 -- x7vx -- Error: Occurrence 6 not found for "and" after position 90
+Error: line #1840 -- mrk 10:39 -- qb9x -- Error: Occurrence 2 not found for "But" after position 80
+Error: line #2125 -- mrk 12:12 -- v5wv -- Error: Occurrence 2 not found for "and" after position 62

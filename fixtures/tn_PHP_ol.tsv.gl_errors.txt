@@ -1,0 +1,4 @@
+Error: php 1:15 sa9n Error: Occurrence 0 not found for "Some,indeed,even,proclaim,Christ" after position 33
+Error: php 3:9 pbgf Error: Occurrence 1 not found for "τὴν,ἐκ,Θεοῦ,δικαιοσύνην,ἐπὶ,τῇ,πίστε" after position 51
+Error: php 3:9 jmqf Error: Occurrence 1 not found for "τὴν,ἐκ,Θεοῦ,δικαιοσύνην,ἐπὶ,τῇ,πίστε" after position 51
+Error: php 4:6 a443 Error: Occurrence 1 not found for "τὰ,αἰτήματα,ὑμῶν,γνωριζέσθω,πρὸς,τὸν,Θεό" after position 43

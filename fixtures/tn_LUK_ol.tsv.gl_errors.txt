@@ -1,0 +1,4 @@
+Error: luk 23:34 m641 Error: Occurrence 0 not found for "But,Jesus,said,Father,forgive,them,for,they,do,not,know,what,they,are,doing" after position 16
+Error: luk 23:34 m643 Error: Occurrence 0 not found for "Father,forgive,them,for,they,do,not,know,what,they,are,doing" after position 16
+Error: luk 23:34 m644 Error: Occurrence 0 not found for "Father" after position 16
+Error: luk 23:34 m645 Error: Occurrence 0 not found for "forgive,them" after position 16

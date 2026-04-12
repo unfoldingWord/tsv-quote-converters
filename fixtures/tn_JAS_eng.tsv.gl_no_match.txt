@@ -1,0 +1,144 @@
+Comparing row 84, jas 1:17 (j042): "QUOTE_NOT_FOUND: παρ’ ᾧ οὐκ ἔνι παραλλαγὴ ἢ τροπῆς ἀποσκίασμα" vs "with whom there is no change or shadow of turning"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"with whom there is no change or shadow of turning"[39m
+Received: [31m"QUOTE_NOT_FOUND: παρ’ ᾧ οὐκ ἔνι παραλλαγὴ ἢ τροπῆς ἀποσκίασμα"[39m
+
+Comparing row 133, jas 1:25 (j069): "But the one having gazed into the perfect law of freedom and having continued & this one will be blessed" vs "But the one having gazed into the perfect law of freedom and having continued, & this one will be blessed"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"But the one having gazed into the perfect law of freedom and having continued[7m,[27m & this one will be blessed"[39m
+Received: [31m"But the one having gazed into the perfect law of freedom and having continued & this one will be blessed"[39m
+
+Comparing row 173, jas 2:3 (j090): "you look & say & you say" vs "you look & say, “& you say"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"you look & say[7m, “[27m& you say"[39m
+Received: [31m"you look & say[7m [27m& you say"[39m
+
+Comparing row 175, jas 2:3 (j092): "You sit here well & You stand there & Sit by my footstool" vs "You sit here well,” & You stand there,” & Sit by my footstool"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"You sit here well[7m,”[27m & You stand there[7m,”[27m & Sit by my footstool"[39m
+Received: [31m"You sit here well & You stand there & Sit by my footstool"[39m
+
+Comparing row 179, jas 2:3 (j095): "You stand there & Sit by my footstool" vs "You stand there,” & Sit by my footstool"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"You stand there[7m,”[27m & Sit by my footstool"[39m
+Received: [31m"You stand there & Sit by my footstool"[39m
+
+Comparing row 180, jas 2:3 (ce14): "You stand there & Sit by my footstool" vs "You stand there,” & Sit by my footstool"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"You stand there[7m,”[27m & Sit by my footstool"[39m
+Received: [31m"You stand there & Sit by my footstool"[39m
+
+Comparing row 205, jas 2:7 (las1): "QUOTE_NOT_FOUND: οὐκ αὐτοὶ βλασφημοῦσιν τὸ καλὸν ὄνομα τὸ ἐπικληθὲν ἐφ’ ὑμᾶς?" vs "Do they not blaspheme the good name that has been called upon you"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Do they not blaspheme the good name that has been called upon you"[39m
+Received: [31m"QUOTE_NOT_FOUND: οὐκ αὐτοὶ βλασφημοῦσιν τὸ καλὸν ὄνομα τὸ ἐπικληθὲν ἐφ’ ὑμᾶς?"[39m
+
+Comparing row 208, jas 2:7 (j107): "QUOTE_NOT_FOUND: τὸ ἐπικληθὲν ἐφ’ ὑμᾶς" vs "that has been called upon you"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"that has been called upon you"[39m
+Received: [31m"QUOTE_NOT_FOUND: τὸ ἐπικληθὲν ἐφ’ ὑμᾶς"[39m
+
+Comparing row 209, jas 2:7 (j108): "QUOTE_NOT_FOUND: τὸ ἐπικληθὲν ἐφ’ ὑμᾶς" vs "that has been called upon you"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"that has been called upon you"[39m
+Received: [31m"QUOTE_NOT_FOUND: τὸ ἐπικληθὲν ἐφ’ ὑμᾶς"[39m
+
+Comparing row 228, jas 2:11 (c8jm): "Do not commit adultery & Do not murder & you do not commit adultery & you do murder, you have become" vs "Do not commit adultery,” & Do not murder.” & you do not commit adultery & you do murder, you have become"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Do not commit adultery[7m,”[27m & Do not murder[7m.”[27m & you do not commit adultery & you do murder, you have become"[39m
+Received: [31m"Do not commit adultery & Do not murder & you do not commit adultery & you do murder, you have become"[39m
+
+Comparing row 254, jas 2:16 (j132): "to them & them" vs "to them, “& them"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"to them[7m, “[27m& them"[39m
+Received: [31m"to them[7m [27m& them"[39m
+
+Comparing row 264, jas 2:17 (me1d): "QUOTE_NOT_FOUND: ἡ πίστις, ἐὰν μὴ ἔχῃ ἔργα, νεκρά ἐστιν καθ’ ἑαυτήν" vs "the faith by itself, if it does not have works, is dead"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the faith by itself, if it does not have works, is dead"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἡ πίστις, ἐὰν μὴ ἔχῃ ἔργα, νεκρά ἐστιν καθ’ ἑαυτήν"[39m
+
+Comparing row 265, jas 2:17 (j138): "QUOTE_NOT_FOUND: ἡ πίστις, ἐὰν μὴ ἔχῃ ἔργα, νεκρά ἐστιν καθ’ ἑαυτήν" vs "the faith by itself, if it does not have works, is dead"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the faith by itself, if it does not have works, is dead"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἡ πίστις, ἐὰν μὴ ἔχῃ ἔργα, νεκρά ἐστιν καθ’ ἑαυτήν"[39m
+
+Comparing row 266, jas 2:18 (j139): "QUOTE_NOT_FOUND: ἀλλ’ ἐρεῖ τις, σὺ πίστιν ἔχεις, κἀγὼ ἔργα ἔχω" vs "But someone will say, “You have faith, and I have works"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"But someone will say, “You have faith, and I have works"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἀλλ’ ἐρεῖ τις, σὺ πίστιν ἔχεις, κἀγὼ ἔργα ἔχω"[39m
+
+Comparing row 267, jas 2:18 (j140): "QUOTE_NOT_FOUND: ἀλλ’ ἐρεῖ τις, σὺ πίστιν ἔχεις, κἀγὼ ἔργα ἔχω" vs "But someone will say, “You have faith, and I have works"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"But someone will say, “You have faith, and I have works"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἀλλ’ ἐρεῖ τις, σὺ πίστιν ἔχεις, κἀγὼ ἔργα ἔχω"[39m
+
+Comparing row 268, jas 2:18 (al63): "QUOTE_NOT_FOUND: ἀλλ’ ἐρεῖ τις" vs "But someone will say"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"But someone will say"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἀλλ’ ἐρεῖ τις"[39m
+
+Comparing row 328, jas 3:2 (p9ek): "we all stumble much & does not stumble in word" vs "we all stumble much. & does not stumble in word"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"we all stumble much[7m.[27m & does not stumble in word"[39m
+Received: [31m"we all stumble much & does not stumble in word"[39m
+
+Comparing row 339, jas 3:4 (yn42): "ships & the & rudder" vs "ships, & the & rudder"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"ships[7m,[27m & the & rudder"[39m
+Received: [31m"ships & the & rudder"[39m
+
+Comparing row 389, jas 3:9 (umg1): "QUOTE_NOT_FOUND: τοὺς καθ’ ὁμοίωσιν Θεοῦ γεγονότας" vs "the ones having come into being according to the likeness of God"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the ones having come into being according to the likeness of God"[39m
+Received: [31m"QUOTE_NOT_FOUND: τοὺς καθ’ ὁμοίωσιν Θεοῦ γεγονότας"[39m
+
+Comparing row 474, jas 4:6 (qs61): "the proud & to the humble" vs "the proud, & to the humble"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the proud[7m,[27m & to the humble"[39m
+Received: [31m"the proud & to the humble"[39m
+
+Comparing row 477, jas 4:7 (j263): "QUOTE_NOT_FOUND: ἀντίστητε δὲ τῷ διαβόλῳ, καὶ φεύξεται ἀφ’ ὑμῶν" vs "But resist the devil, and he will flee from you"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"But resist the devil, and he will flee from you"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἀντίστητε δὲ τῷ διαβόλῳ, καὶ φεύξεται ἀφ’ ὑμῶν"[39m
+
+Comparing row 479, jas 4:7 (w9ue): "QUOTE_NOT_FOUND: φεύξεται ἀφ’ ὑμῶν" vs "he will flee from you"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"he will flee from you"[39m
+Received: [31m"QUOTE_NOT_FOUND: φεύξεται ἀφ’ ὑμῶν"[39m
+
+Comparing row 502, jas 4:11 (uyi9): "brothers & a brother & his brother" vs "brothers. & a brother & his brother"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"brothers[7m.[27m & a brother & his brother"[39m
+Received: [31m"brothers & a brother & his brother"[39m
+
+Comparing row 524, jas 4:16 (j291): "you are boasting in your pretensions. All such boasting is evil" vs ""[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m""[39m
+Received: [31m"you are boasting in your pretensions. All such boasting is evil"[39m
+
+Comparing row 552, jas 5:4 (j305): "QUOTE_NOT_FOUND: ὁ μισθὸς τῶν ἐργατῶν, τῶν ἀμησάντων τὰς χώρας ὑμῶν, ὁ ἀφυστερημένος ἀφ’ ὑμῶν, κράζει" vs "the pay of the workers who have reaped your fields, which has been withheld from you, is crying out"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the pay of the workers who have reaped your fields, which has been withheld from you, is crying out"[39m
+Received: [31m"QUOTE_NOT_FOUND: ὁ μισθὸς τῶν ἐργατῶν, τῶν ἀμησάντων τὰς χώρας ὑμῶν, ὁ ἀφυστερημένος ἀφ’ ὑμῶν, κράζει"[39m
+
+Comparing row 557, jas 5:5 (j308): "You have lived luxuriously on the earth and have lived self-indulgently" vs ""[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m""[39m
+Received: [31m"You have lived luxuriously on the earth and have lived self-indulgently"[39m
+
+Comparing row 573, jas 5:7 (j316): "QUOTE_NOT_FOUND: μακροθυμῶν ἐπ’ αὐτῷ ἕως λάβῃ" vs "waiting patiently for it until it receives"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"waiting patiently for it until it receives"[39m
+Received: [31m"QUOTE_NOT_FOUND: μακροθυμῶν ἐπ’ αὐτῷ ἕως λάβῃ"[39m
+
+Comparing row 601, jas 5:14 (j326): "QUOTE_NOT_FOUND: προσευξάσθωσαν ἐπ’ αὐτὸν, ἀλείψαντες αὐτὸν ἐλαίῳ ἐν τῷ ὀνόματι τοῦ Κυρίου" vs "let them pray over him, having anointed him with oil in the name of the Lord"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"let them pray over him, having anointed him with oil in the name of the Lord"[39m
+Received: [31m"QUOTE_NOT_FOUND: προσευξάσθωσαν ἐπ’ αὐτὸν, ἀλείψαντες αὐτὸν ἐλαίῳ ἐν τῷ ὀνόματι τοῦ Κυρίου"[39m
+
+Comparing row 602, jas 5:14 (j327): "QUOTE_NOT_FOUND: προσευξάσθωσαν ἐπ’ αὐτὸν" vs "let them pray over him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"let them pray over him"[39m
+Received: [31m"QUOTE_NOT_FOUND: προσευξάσθωσαν ἐπ’ αὐτὸν"[39m

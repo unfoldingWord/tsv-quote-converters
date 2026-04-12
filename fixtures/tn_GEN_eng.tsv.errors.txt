@@ -1,0 +1,4 @@
+Error: line #1871 -- gen 18:5 -- wdtf -- Error: Occurrence 2 not found for "Alright" after position 77
+Error: line #2488 -- gen 22:11 -- ea4o -- Error: Occurrence 2 not found for "And,he,said" after position 47
+Error: line #4045 -- gen 33:8 -- gyh6 -- Error: Occurrence 2 not found for "And,he,said" after position 61
+Error: line #5538 -- gen 46:2 -- zw7m -- Error: Occurrence 2 not found for "And,he,said" after position 47

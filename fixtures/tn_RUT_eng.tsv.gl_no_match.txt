@@ -1,0 +1,29 @@
+Comparing row 15, rut 1:6 (zo55): "for she had heard in a field of Moab that Yahweh had visited his people, giving them bread" vs ""[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m""[39m
+Received: [31m"for she had heard in a field of Moab that Yahweh had visited his people, giving them bread"[39m
+
+Comparing row 184, rut 3:9 (wj9e): "your female servant & your female servant" vs "your female servant. & your female servant"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"your female servant[7m.[27m & your female servant"[39m
+Received: [31m"your female servant & your female servant"[39m
+
+Comparing row 198, rut 3:12 (fvq5): "a kinsman-redeemer & a kinsman-redeemer" vs "a kinsman-redeemer, & a kinsman-redeemer"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"a kinsman-redeemer[7m,[27m & a kinsman-redeemer"[39m
+Received: [31m"a kinsman-redeemer & a kinsman-redeemer"[39m
+
+Comparing row 241, rut 4:5 (ab43): "the dead & the dead" vs "the dead, & the dead"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the dead[7m,[27m & the dead"[39m
+Received: [31m"the dead & the dead"[39m
+
+Comparing row 284, rut 4:17 (ab50): "So the neighbor women called out a name for him, saying & And they called his name Obed" vs "So the neighbor women called out a name for him, saying, “& And they called his name Obed"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"So the neighbor women called out a name for him, saying[7m, “[27m& And they called his name Obed"[39m
+Received: [31m"So the neighbor women called out a name for him, saying[7m [27m& And they called his name Obed"[39m
+
+Comparing row 291, rut 4:19 (rl3k): "and Hezron & Ram & Amminadab" vs "and Hezron & Ram; & Amminadab"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"and Hezron & Ram[7m;[27m & Amminadab"[39m
+Received: [31m"and Hezron & Ram & Amminadab"[39m

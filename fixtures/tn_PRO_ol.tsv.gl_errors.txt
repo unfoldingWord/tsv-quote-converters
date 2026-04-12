@@ -1,0 +1,3 @@
+Error: pro 1:5 lrm2 Error: Occurrence 0 not found for "יִשְׁמַ֣ע,חָ֭כָם,וְ⁠י֣וֹסֶף,לֶ֑קַח,וְ֝⁠נָב֗וֹן,תַּחְבֻּל֥וֹת,יִקְנֶֽה" after position 15
+Error: pro 17:20 gekd Error: Occurrence 1 not found for "שִׂפְתֵ֣י" after position 19
+Error: pro 27:7 hu2h Error: Occurrence 1 not found for "אוֹהֵ֑ב" after position 19

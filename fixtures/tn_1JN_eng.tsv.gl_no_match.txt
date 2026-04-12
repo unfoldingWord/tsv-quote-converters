@@ -1,0 +1,329 @@
+Comparing row 4, 1jn 1:1 (j363): "QUOTE_NOT_FOUND: ὃ ἦν ἀπ’ ἀρχῆς, ὃ ἀκηκόαμεν, ὃ ἑωράκαμεν τοῖς ὀφθαλμοῖς ἡμῶν, ὃ ἐθεασάμεθα, καὶ αἱ χεῖρες ἡμῶν ἐψηλάφησαν, περὶ τοῦ λόγου τῆς ζωῆς—" vs "What was from the beginning, which we have heard, which we have seen with our eyes, which we have looked at and our hands have touched, regarding the Word of life"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"What was from the beginning, which we have heard, which we have seen with our eyes, which we have looked at and our hands have touched, regarding the Word of life"[39m
+Received: [31m"QUOTE_NOT_FOUND: ὃ ἦν ἀπ’ ἀρχῆς, ὃ ἀκηκόαμεν, ὃ ἑωράκαμεν τοῖς ὀφθαλμοῖς ἡμῶν, ὃ ἐθεασάμεθα, καὶ αἱ χεῖρες ἡμῶν ἐψηλάφησαν, περὶ τοῦ λόγου τῆς ζωῆς—"[39m
+
+Comparing row 5, 1jn 1:1 (j364): "QUOTE_NOT_FOUND:  ἀπ’ ἀρχῆς" vs "from the beginning"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"from the beginning"[39m
+Received: [31m"QUOTE_NOT_FOUND:  ἀπ’ ἀρχῆς"[39m
+
+Comparing row 6, 1jn 1:1 (jd7p): "we have heard & we have seen & our & we have looked at & our" vs "we have heard, & we have seen & our & we have looked at & our"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"we have heard[7m,[27m & we have seen & our & we have looked at & our"[39m
+Received: [31m"we have heard & we have seen & our & we have looked at & our"[39m
+
+Comparing row 11, 1jn 1:1 (j002): "we have seen with our eyes & our hands have touched" vs "we have seen with our eyes, & our hands have touched"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"we have seen with our eyes[7m,[27m & our hands have touched"[39m
+Received: [31m"we have seen with our eyes & our hands have touched"[39m
+
+Comparing row 19, 1jn 1:2 (j007): "we have seen {it & we are testifying {to it & we are announcing & to us" vs "we have seen {it}, & we are testifying {to it}, & we are announcing & to us"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"we have seen {it[7m},[27m & we are testifying {to it[7m},[27m & we are announcing & to us"[39m
+Received: [31m"we have seen {it & we are testifying {to it & we are announcing & to us"[39m
+
+Comparing row 26, 1jn 1:3 (j009): "QUOTE_NOT_FOUND: ὃ ἑωράκαμεν, καὶ ἀκηκόαμεν, ἀπαγγέλλομεν καὶ ὑμῖν, ἵνα καὶ ὑμεῖς κοινωνίαν ἔχητε μεθ’ ἡμῶν" vs "what we have seen and heard, we declare also to you, so that you also may have fellowship with us"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"what we have seen and heard, we declare also to you, so that you also may have fellowship with us"[39m
+Received: [31m"QUOTE_NOT_FOUND: ὃ ἑωράκαμεν, καὶ ἀκηκόαμεν, ἀπαγγέλλομεν καὶ ὑμῖν, ἵνα καὶ ὑμεῖς κοινωνίαν ἔχητε μεθ’ ἡμῶν"[39m
+
+Comparing row 29, 1jn 1:3 (dw7l): "QUOTE_NOT_FOUND: καὶ ὑμεῖς κοινωνίαν ἔχητε μεθ’ ἡμῶν & ἡ κοινωνία & ἡ ἡμετέρα μετὰ τοῦ Πατρὸς, καὶ μετὰ τοῦ Υἱοῦ αὐτοῦ" vs "you also may have fellowship with us. & our fellowship {is} with the Father and with his Son"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"you also may have fellowship with us. & our fellowship {is} with the Father and with his Son"[39m
+Received: [31m"QUOTE_NOT_FOUND: καὶ ὑμεῖς κοινωνίαν ἔχητε μεθ’ ἡμῶν & ἡ κοινωνία & ἡ ἡμετέρα μετὰ τοῦ Πατρὸς, καὶ μετὰ τοῦ Υἱοῦ αὐτοῦ"[39m
+
+Comparing row 41, 1jn 1:5 (j017): "QUOTE_NOT_FOUND: ἀπ’ αὐτοῦ" vs "from him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"from him"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἀπ’ αὐτοῦ"[39m
+
+Comparing row 47, 1jn 1:6 (j021): "QUOTE_NOT_FOUND: ἐὰν εἴπωμεν ὅτι κοινωνίαν ἔχομεν μετ’ αὐτοῦ, καὶ ἐν τῷ σκότει περιπατῶμεν, ψευδόμεθα καὶ οὐ ποιοῦμεν τὴν ἀλήθειαν" vs "If we say that we have fellowship with him and walk in the darkness, we are lying and we are not doing the truth"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"If we say that we have fellowship with him and walk in the darkness, we are lying and we are not doing the truth"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἐὰν εἴπωμεν ὅτι κοινωνίαν ἔχομεν μετ’ αὐτοῦ, καὶ ἐν τῷ σκότει περιπατῶμεν, ψευδόμεθα καὶ οὐ ποιοῦμεν τὴν ἀλήθειαν"[39m
+
+Comparing row 48, 1jn 1:6 (j022): "QUOTE_NOT_FOUND: ἐὰν εἴπωμεν ὅτι κοινωνίαν ἔχομεν μετ’ αὐτοῦ" vs "If we say that we have fellowship with him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"If we say that we have fellowship with him"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἐὰν εἴπωμεν ὅτι κοινωνίαν ἔχομεν μετ’ αὐτοῦ"[39m
+
+Comparing row 49, 1jn 1:6 (j023): "QUOTE_NOT_FOUND: μετ’ αὐτοῦ" vs "with him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"with him"[39m
+Received: [31m"QUOTE_NOT_FOUND: μετ’ αὐτοῦ"[39m
+
+Comparing row 55, 1jn 1:7 (j028): "QUOTE_NOT_FOUND: ἐὰν δὲ ἐν τῷ φωτὶ περιπατῶμεν, ὡς αὐτός ἐστιν ἐν τῷ φωτί, κοινωνίαν ἔχομεν μετ’ ἀλλήλων" vs "But if we walk in the light as he is in the light, we have fellowship with one another"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"But if we walk in the light as he is in the light, we have fellowship with one another"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἐὰν δὲ ἐν τῷ φωτὶ περιπατῶμεν, ὡς αὐτός ἐστιν ἐν τῷ φωτί, κοινωνίαν ἔχομεν μετ’ ἀλλήλων"[39m
+
+Comparing row 60, 1jn 1:7 (j032): "QUOTE_NOT_FOUND: κοινωνίαν ἔχομεν μετ’ ἀλλήλων" vs "we have fellowship with one another"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"we have fellowship with one another"[39m
+Received: [31m"QUOTE_NOT_FOUND: κοινωνίαν ἔχομεν μετ’ ἀλλήλων"[39m
+
+Comparing row 97, 1jn 2:3 (j051): "him & his" vs "him, & his"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"him[7m,[27m & his"[39m
+Received: [31m"him & his"[39m
+
+Comparing row 103, 1jn 2:4 (j053): "him & his" vs "him,” & his"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"him[7m,”[27m & his"[39m
+Received: [31m"him & his"[39m
+
+Comparing row 109, 1jn 2:5 (a3x8): "QUOTE_NOT_FOUND: δ’" vs "But"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"But"[39m
+Received: [31m"QUOTE_NOT_FOUND: δ’"[39m
+
+Comparing row 110, 1jn 2:5 (j057): "QUOTE_NOT_FOUND: ὃς δ’ ἂν τηρῇ αὐτοῦ τὸν λόγον, ἀληθῶς ἐν τούτῳ ἡ ἀγάπη τοῦ Θεοῦ τετελείωται" vs "But whoever keeps his word, in this one truly the love of God has been perfected"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"But whoever keeps his word, in this one truly the love of God has been perfected"[39m
+Received: [31m"QUOTE_NOT_FOUND: ὃς δ’ ἂν τηρῇ αὐτοῦ τὸν λόγον, ἀληθῶς ἐν τούτῳ ἡ ἀγάπη τοῦ Θεοῦ τετελείωται"[39m
+
+Comparing row 119, 1jn 2:5-6 (oi3a): "In this we know that we are in him: the one saying he remains in him ought, just as that one walked, also to walk himself" vs "In this we know that we are in him & the one saying he remains in him ought, just as that one walked, also to walk himself"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"In this we know that we are in him[7m &[27m the one saying he remains in him ought, just as that one walked, also to walk himself"[39m
+Received: [31m"In this we know that we are in him[7m:[27m the one saying he remains in him ought, just as that one walked, also to walk himself"[39m
+
+Comparing row 126, 1jn 2:7 (vz9w): "QUOTE_NOT_FOUND: ἀπ' ἀρχῆς." vs ""[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m""[39m
+Received: [31m"QUOTE_NOT_FOUND: ἀπ' ἀρχῆς."[39m
+
+Comparing row 165, 1jn 2:13 (wmt8): "QUOTE_NOT_FOUND: τὸν ἀπ’ ἀρχῆς" vs "the one {who is} from the beginning"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the one {who is} from the beginning"[39m
+Received: [31m"QUOTE_NOT_FOUND: τὸν ἀπ’ ἀρχῆς"[39m
+
+Comparing row 179, 1jn 2:14 (j094): "QUOTE_NOT_FOUND: τὸν ἀπ’ ἀρχῆς" vs "the one {who is} from the beginning"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the one {who is} from the beginning"[39m
+Received: [31m"QUOTE_NOT_FOUND: τὸν ἀπ’ ἀρχῆς"[39m
+
+Comparing row 210, 1jn 2:18 (esd9): "it is the last hour" vs "it is the last hour, & it is the last hour"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"it is the last hour[7m, & it is the last hour[27m"[39m
+Received: [31m"it is the last hour"[39m
+
+Comparing row 213, 1jn 2:19 (ytb1): "QUOTE_NOT_FOUND: ἀλλ’ οὐκ ἦσαν ἐξ ἡμῶν & οὐκ εἰσὶν πάντες ἐξ ἡμῶν" vs "but they were not from us. & they are all not from us"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"but they were not from us. & they are all not from us"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἀλλ’ οὐκ ἦσαν ἐξ ἡμῶν & οὐκ εἰσὶν πάντες ἐξ ἡμῶν"[39m
+
+Comparing row 215, 1jn 2:19 (j114): "QUOTE_NOT_FOUND: εἰ γὰρ ἐξ ἡμῶν ἦσαν, μεμενήκεισαν ἂν μεθ’ ἡμῶν" vs "For if they had been from us, they would have remained with us"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"For if they had been from us, they would have remained with us"[39m
+Received: [31m"QUOTE_NOT_FOUND: εἰ γὰρ ἐξ ἡμῶν ἦσαν, μεμενήκεισαν ἂν μεθ’ ἡμῶν"[39m
+
+Comparing row 216, 1jn 2:19 (jin1): "QUOTE_NOT_FOUND: μεμενήκεισαν ἂν μεθ’ ἡμῶν" vs "they would have remained with us"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"they would have remained with us"[39m
+Received: [31m"QUOTE_NOT_FOUND: μεμενήκεισαν ἂν μεθ’ ἡμῶν"[39m
+
+Comparing row 217, 1jn 2:19 (j115): "QUOTE_NOT_FOUND: ἀλλ’ ἵνα φανερωθῶσιν ὅτι οὐκ εἰσὶν πάντες ἐξ ἡμῶν" vs "but so that they would be made apparent that they are all not from us"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"but so that they would be made apparent that they are all not from us"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἀλλ’ ἵνα φανερωθῶσιν ὅτι οὐκ εἰσὶν πάντες ἐξ ἡμῶν"[39m
+
+Comparing row 226, 1jn 2:21 (j123): "QUOTE_NOT_FOUND: οὐκ ἔγραψα ὑμῖν ὅτι οὐκ οἴδατε τὴν ἀλήθειαν, ἀλλ’ ὅτι οἴδατε αὐτήν" vs "I have not written to you because you do not know the truth, but because you do know it"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"I have not written to you because you do not know the truth, but because you do know it"[39m
+Received: [31m"QUOTE_NOT_FOUND: οὐκ ἔγραψα ὑμῖν ὅτι οὐκ οἴδατε τὴν ἀλήθειαν, ἀλλ’ ὅτι οἴδατε αὐτήν"[39m
+
+Comparing row 227, 1jn 2:21 (w4fm): "QUOTE_NOT_FOUND: οὐκ ἔγραψα ὑμῖν ὅτι οὐκ οἴδατε τὴν ἀλήθειαν, ἀλλ’ ὅτι οἴδατε αὐτήν" vs "I have not written to you because you do not know the truth, but because you do know it"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"I have not written to you because you do not know the truth, but because you do know it"[39m
+Received: [31m"QUOTE_NOT_FOUND: οὐκ ἔγραψα ὑμῖν ὅτι οὐκ οἴδατε τὴν ἀλήθειαν, ἀλλ’ ὅτι οἴδατε αὐτήν"[39m
+
+Comparing row 228, 1jn 2:21 (r8yr): "the truth & from the truth" vs "the truth, & from the truth"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the truth[7m,[27m & from the truth"[39m
+Received: [31m"the truth & from the truth"[39m
+
+Comparing row 229, 1jn 2:21 (j124): "the truth & from the truth" vs "the truth, & from the truth"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the truth[7m,[27m & from the truth"[39m
+Received: [31m"the truth & from the truth"[39m
+
+Comparing row 239, 1jn 2:23 (j130): "the Son" vs "the Son & the Son"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the Son[7m & the Son[27m"[39m
+Received: [31m"the Son"[39m
+
+Comparing row 240, 1jn 2:23 (k78f): "does not have the Father & also has the Father" vs "does not have the Father. & also has the Father"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"does not have the Father[7m.[27m & also has the Father"[39m
+Received: [31m"does not have the Father & also has the Father"[39m
+
+Comparing row 241, 1jn 2:23 (j131): "the Father" vs "the Father. & the Father"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the Father[7m. & the Father[27m"[39m
+Received: [31m"the Father"[39m
+
+Comparing row 245, 1jn 2:24 (dsl7): "QUOTE_NOT_FOUND: ἀπ’ ἀρχῆς" vs "from the beginning. & from the beginning"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"from the beginning. & from the beginning"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἀπ’ ἀρχῆς"[39m
+
+Comparing row 247, 1jn 2:24 (j132): "QUOTE_NOT_FOUND: ἐὰν ἐν ὑμῖν μείνῃ ὃ ἀπ’ ἀρχῆς ἠκούσατε, καὶ ὑμεῖς ἐν τῷ Υἱῷ καὶ ἐν τῷ Πατρὶ μενεῖτε" vs "If what you have heard from the beginning remains in you, you will also remain in the Son and in the Father"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"If what you have heard from the beginning remains in you, you will also remain in the Son and in the Father"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἐὰν ἐν ὑμῖν μείνῃ ὃ ἀπ’ ἀρχῆς ἠκούσατε, καὶ ὑμεῖς ἐν τῷ Υἱῷ καὶ ἐν τῷ Πατρὶ μενεῖτε"[39m
+
+Comparing row 255, 1jn 2:27 (m8kr): "And you & as" vs "And you, & as"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"And you[7m,[27m & as"[39m
+Received: [31m"And you & as"[39m
+
+Comparing row 256, 1jn 2:27 (cn2f): "QUOTE_NOT_FOUND: τὸ χρῖσμα ὃ ἐλάβετε ἀπ’ αὐτοῦ" vs "the anointing that you received from him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the anointing that you received from him"[39m
+Received: [31m"QUOTE_NOT_FOUND: τὸ χρῖσμα ὃ ἐλάβετε ἀπ’ αὐτοῦ"[39m
+
+Comparing row 257, 1jn 2:27 (j135): "QUOTE_NOT_FOUND: ἀπ’ αὐτοῦ & ἐν αὐτῷ" vs "from him & in him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"from him & in him"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἀπ’ αὐτοῦ & ἐν αὐτῷ"[39m
+
+Comparing row 269, 1jn 2:28 (j143): "QUOTE_NOT_FOUND: αὐτῷ & ἐὰν φανερωθῇ & ἀπ’ αὐτοῦ & αὐτοῦ" vs "him, & whenever he appears, & by him & his"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"him, & whenever he appears, & by him & his"[39m
+Received: [31m"QUOTE_NOT_FOUND: αὐτῷ & ἐὰν φανερωθῇ & ἀπ’ αὐτοῦ & αὐτοῦ"[39m
+
+Comparing row 271, 1jn 2:28 (j144): "QUOTE_NOT_FOUND: σχῶμεν παρρησίαν, καὶ μὴ αἰσχυνθῶμεν ἀπ’ αὐτοῦ" vs "we may have boldness and not be put to shame by him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"we may have boldness and not be put to shame by him"[39m
+Received: [31m"QUOTE_NOT_FOUND: σχῶμεν παρρησίαν, καὶ μὴ αἰσχυνθῶμεν ἀπ’ αὐτοῦ"[39m
+
+Comparing row 273, 1jn 2:28 (d4ql): "QUOTE_NOT_FOUND: μὴ αἰσχυνθῶμεν ἀπ’ αὐτοῦ" vs "not be put to shame by him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"not be put to shame by him"[39m
+Received: [31m"QUOTE_NOT_FOUND: μὴ αἰσχυνθῶμεν ἀπ’ αὐτοῦ"[39m
+
+Comparing row 274, 1jn 2:28 (j145): "QUOTE_NOT_FOUND: μὴ αἰσχυνθῶμεν ἀπ’ αὐτοῦ" vs "not be put to shame by him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"not be put to shame by him"[39m
+Received: [31m"QUOTE_NOT_FOUND: μὴ αἰσχυνθῶμεν ἀπ’ αὐτοῦ"[39m
+
+Comparing row 288, 1jn 3:1 (j155): "does not know us & it did not know him" vs "does not know us, & it did not know him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"does not know us[7m,[27m & it did not know him"[39m
+Received: [31m"does not know us & it did not know him"[39m
+
+Comparing row 296, 1jn 3:2 (j161): "whenever he appears & him & him & he is" vs "whenever he appears, & him & him & he is"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"whenever he appears[7m,[27m & him & him & he is"[39m
+Received: [31m"whenever he appears & him & him & he is"[39m
+
+Comparing row 298, 1jn 3:3 (pj6a): "QUOTE_NOT_FOUND: πᾶς ὁ ἔχων τὴν ἐλπίδα ταύτην ἐπ’ αὐτῷ" vs "everyone having this hope upon him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"everyone having this hope upon him"[39m
+Received: [31m"QUOTE_NOT_FOUND: πᾶς ὁ ἔχων τὴν ἐλπίδα ταύτην ἐπ’ αὐτῷ"[39m
+
+Comparing row 317, 1jn 3:8 (cit3): "QUOTE_NOT_FOUND: ἀπ’ ἀρχῆς" vs "from the beginning"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"from the beginning"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἀπ’ ἀρχῆς"[39m
+
+Comparing row 323, 1jn 3:9 (cbdt): "does not commit sin & he is not able to sin" vs "does not commit sin, & he is not able to sin"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"does not commit sin[7m,[27m & he is not able to sin"[39m
+Received: [31m"does not commit sin & he is not able to sin"[39m
+
+Comparing row 335, 1jn 3:11 (j183): "QUOTE_NOT_FOUND: ἀπ’ ἀρχῆς" vs "from the beginning"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"from the beginning"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἀπ’ ἀρχῆς"[39m
+
+Comparing row 337, 1jn 3:12 (w83v): "Cain & killed his brother" vs "Cain—& killed his brother"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Cain[7m—[27m& killed his brother"[39m
+Received: [31m"Cain[7m [27m& killed his brother"[39m
+
+Comparing row 365, 1jn 3:17 (zql1): "QUOTE_NOT_FOUND: κλείσῃ τὰ σπλάγχνα αὐτοῦ ἀπ’ αὐτοῦ" vs "closes his entrails from him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"closes his entrails from him"[39m
+Received: [31m"QUOTE_NOT_FOUND: κλείσῃ τὰ σπλάγχνα αὐτοῦ ἀπ’ αὐτοῦ"[39m
+
+Comparing row 446, 1jn 4:6 (j254): "We & to us & to us" vs "We & to us. & to us"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"We & to us[7m.[27m & to us"[39m
+Received: [31m"We & to us & to us"[39m
+
+Comparing row 450, 1jn 4:6 (j258): "listens to us & does not listen to us" vs "listens to us. & does not listen to us"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"listens to us[7m.[27m & does not listen to us"[39m
+Received: [31m"listens to us & does not listen to us"[39m
+
+Comparing row 475, 1jn 4:9 (wxf8): "QUOTE_NOT_FOUND: ἵνα ζήσωμεν δι’ αὐτοῦ" vs "so that we might live through him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"so that we might live through him"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἵνα ζήσωμεν δι’ αὐτοῦ"[39m
+
+Comparing row 507, 1jn 4:17 (m76g): "QUOTE_NOT_FOUND: τετελείωται ἡ ἀγάπη μεθ’ ἡμῶν" vs "love has been perfected with us"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"love has been perfected with us"[39m
+Received: [31m"QUOTE_NOT_FOUND: τετελείωται ἡ ἀγάπη μεθ’ ἡμῶν"[39m
+
+Comparing row 515, 1jn 4:18 (j287): "QUOTE_NOT_FOUND: φόβος οὐκ ἔστιν ἐν τῇ ἀγάπῃ, ἀλλ’ ἡ τελεία ἀγάπη ἔξω βάλλει τὸν φόβον, ὅτι ὁ φόβος κόλασιν ἔχει" vs "Fear is not in love, but perfect love throws fear outside, because fear has punishment"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Fear is not in love, but perfect love throws fear outside, because fear has punishment"[39m
+Received: [31m"QUOTE_NOT_FOUND: φόβος οὐκ ἔστιν ἐν τῇ ἀγάπῃ, ἀλλ’ ἡ τελεία ἀγάπη ἔξω βάλλει τὸν φόβον, ὅτι ὁ φόβος κόλασιν ἔχει"[39m
+
+Comparing row 516, 1jn 4:18 (sq7k): "QUOTE_NOT_FOUND: φόβος οὐκ ἔστιν ἐν τῇ ἀγάπῃ, ἀλλ’ ἡ τελεία ἀγάπη ἔξω βάλλει τὸν φόβον, ὅτι ὁ φόβος κόλασιν ἔχει" vs "Fear is not in love, but perfect love throws fear outside, because fear has punishment"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Fear is not in love, but perfect love throws fear outside, because fear has punishment"[39m
+Received: [31m"QUOTE_NOT_FOUND: φόβος οὐκ ἔστιν ἐν τῇ ἀγάπῃ, ἀλλ’ ἡ τελεία ἀγάπη ἔξω βάλλει τὸν φόβον, ὅτι ὁ φόβος κόλασιν ἔχει"[39m
+
+Comparing row 529, 1jn 4:20 (a8zh): "the one not loving his brother & is not able to love God" vs "the one not loving his brother, & is not able to love God"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the one not loving his brother[7m,[27m & is not able to love God"[39m
+Received: [31m"the one not loving his brother & is not able to love God"[39m
+
+Comparing row 531, 1jn 4:21 (j298): "QUOTE_NOT_FOUND: ἀπ’ αὐτοῦ" vs "from him"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"from him"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἀπ’ αὐτοῦ"[39m
+
+Comparing row 563, 1jn 5:6 (js27): "QUOTE_NOT_FOUND: οὗτός ἐστιν ὁ ἐλθὼν δι’ ὕδατος καὶ αἵματος" vs "This is the one having come by water and blood"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"This is the one having come by water and blood"[39m
+Received: [31m"QUOTE_NOT_FOUND: οὗτός ἐστιν ὁ ἐλθὼν δι’ ὕδατος καὶ αἵματος"[39m
+
+Comparing row 565, 1jn 5:6 (fgl6): "QUOTE_NOT_FOUND: δι’ ὕδατος καὶ αἵματος" vs "by water and blood"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"by water and blood"[39m
+Received: [31m"QUOTE_NOT_FOUND: δι’ ὕδατος καὶ αἵματος"[39m
+
+Comparing row 566, 1jn 5:6 (x777): "QUOTE_NOT_FOUND: οὐκ ἐν τῷ ὕδατι μόνον, ἀλλ’ ἐν τῷ ὕδατι καὶ ἐν τῷ αἵματι" vs "not in water alone, but in water and in blood"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"not in water alone, but in water and in blood"[39m
+Received: [31m"QUOTE_NOT_FOUND: οὐκ ἐν τῷ ὕδατι μόνον, ἀλλ’ ἐν τῷ ὕδατι καὶ ἐν τῷ αἵματι"[39m
+
+Comparing row 594, 1jn 5:12 (j329): "has life & does not have life" vs "has life. & does not have life"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"has life[7m.[27m & does not have life"[39m
+Received: [31m"has life & does not have life"[39m
+
+Comparing row 604, 1jn 5:14 (j333): "him & his & he listens" vs "him, & his & he listens"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"him[7m,[27m & his & he listens"[39m
+Received: [31m"him & his & he listens"[39m
+
+Comparing row 613, 1jn 5:16 (j341): "a sin not toward death & for the ones sinning not toward death & a sin toward death" vs "a sin not toward death, & for the ones sinning not toward death. & a sin toward death"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"a sin not toward death[7m,[27m & for the ones sinning not toward death[7m.[27m & a sin toward death"[39m
+Received: [31m"a sin not toward death & for the ones sinning not toward death & a sin toward death"[39m
+
+Comparing row 636, 1jn 5:20 (hvr7): "the True One & the True One" vs "the True One. & the True One"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the True One[7m.[27m & the True One"[39m
+Received: [31m"the True One & the True One"[39m
+
+Comparing row 637, 1jn 5:20 (j358): "the True One & the True One" vs "the True One. & the True One"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"the True One[7m.[27m & the True One"[39m
+Received: [31m"the True One & the True One"[39m

@@ -1,0 +1,9 @@
+Error: line #593 -- mat 5:30 -- r4d2 -- Error: Occurrence 3 not found for "and" after position 86
+Error: line #867 -- mat 6:32 -- rk7f -- Error: Occurrence 2 not found for "for" after position 40
+Error: line #2923 -- mat 17:16 -- jyjl -- Error: Occurrence 2 not found for "and" after position 32
+Error: line #3284 -- mat 19:17 -- o0ke -- Error: Occurrence 2 not found for "but" after position 64
+Error: line #3541 -- mat 21:7 -- q6r5 -- Error: Occurrence 3 not found for "them" after position 36
+Error: line #3759 -- mat 22:3 -- c007 -- Error: Occurrence 2 not found for "and" after position 51
+Error: line #4256 -- mat 24:23 -- x392 -- Error: Occurrence 2 not found for "Here" after position 50
+Error: line #4570 -- mat 25:40 -- sjbd -- Error: Occurrence 1 not found for "to,them,Truly,I,say,to,you,you,did,for,one,of,the,least,of,these,brothers,of,mine,you,did,for,me" after position 70
+Error: line #4987 -- mat 27:11 -- at28 -- Error: Occurrence 2 not found for "But" after position 67

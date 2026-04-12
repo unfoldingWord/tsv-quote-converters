@@ -1,0 +1,2 @@
+Error: line #2303 -- rom 13:6 -- hy4f -- Error: Occurrence 2 not found for "for" after position 41
+Error: line #2458 -- rom 14:21 -- mrr4 -- Error: Occurrence 2 not found for "nor,anything" after position 58

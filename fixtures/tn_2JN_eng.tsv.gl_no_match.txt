@@ -1,0 +1,19 @@
+Comparing row 12, 2jn 1:3 (gad9): "QUOTE_NOT_FOUND: ἔσται μεθ’ ἡμῶν χάρις, ἔλεος, εἰρήνη, παρὰ Θεοῦ Πατρός καὶ παρὰ Ἰησοῦ Χριστοῦ" vs "Grace, mercy, {and} peace will be with us from God the Father and from Jesus Christ"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Grace, mercy, {and} peace will be with us from God the Father and from Jesus Christ"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἔσται μεθ’ ἡμῶν χάρις, ἔλεος, εἰρήνη, παρὰ Θεοῦ Πατρός καὶ παρὰ Ἰησοῦ Χριστοῦ"[39m
+
+Comparing row 13, 2jn 1:3 (zfgr): "QUOTE_NOT_FOUND: ἔσται μεθ’ ἡμῶν χάρις, ἔλεος, εἰρήνη" vs "Grace, mercy, {and} peace will be with us"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"Grace, mercy, {and} peace will be with us"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἔσται μεθ’ ἡμῶν χάρις, ἔλεος, εἰρήνη"[39m
+
+Comparing row 24, 2jn 1:5 (c9xi): "you & to you" vs "you, & to you"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"you[7m,[27m & to you"[39m
+Received: [31m"you & to you"[39m
+
+Comparing row 27, 2jn 1:5 (uhs8): "QUOTE_NOT_FOUND: ἀπ’ ἀρχῆς" vs "from the beginning"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"from the beginning"[39m
+Received: [31m"QUOTE_NOT_FOUND: ἀπ’ ἀρχῆς"[39m

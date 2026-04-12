@@ -1,0 +1,9 @@
+Comparing row 62, jud 1:8 (pn3j): "the glorious" vs "glorious ones"[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m"glorious[7m ones[27m"[39m
+Received: [31m"[7mthe [27mglorious"[39m
+
+Comparing row 68, jud 1:10 (q640): "what they understand by instinct as the unreasoning animals" vs ""[2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+Expected: [32m""[39m
+Received: [31m"what they understand by instinct as the unreasoning animals"[39m

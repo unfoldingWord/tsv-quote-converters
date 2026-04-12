@@ -1,0 +1,8 @@
+Error: line #524 -- luk 3:14 -- l193 -- Error: Occurrence 4 not found for "and" after position 75
+Error: line #2606 -- luk 15:12 -- m001 -- Error: Occurrence 2 not found for "And" after position 65
+Error: line #2780 -- luk 16:18 -- sq24 -- Error: Occurrence 2 not found for "the,one,marrying" after position 47
+Error: line #3676 -- luk 21:24 -- m469 -- Error: Occurrence 2 not found for "of,the,nations" after position 74
+Error: line #4126 -- luk 23:34 -- m642 -- Error: Cannot find the aligned words in the original language verse: 
+Error: line #4237 -- luk 24:4 -- m685 -- Error: Occurrence 2 not found for "and" after position 44
+Error: line #4268 -- luk 24:11 -- m702 -- Error: Occurrence 2 not found for "and" after position 26
+Error: line #4341 -- luk 24:29 -- tgi6 -- Error: Occurrence 3 not found for "And" after position 62
