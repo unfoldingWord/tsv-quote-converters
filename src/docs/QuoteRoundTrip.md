@@ -39,7 +39,14 @@ function submitForm(e) {
       quote: '',
       skip_empty_lines: true,
     });
-    tsvRecords.forEach((rec) => {rec['Quote'] = rec['GLQuote']; rec['Occurrence'] = rec['GLOccurrence']});
+    let quoteColName = 'Quote';
+    const firstRecord = tsvRecords[0] || {};
+    if (Object.prototype.hasOwnProperty.call(firstRecord, 'OrigWords')) {
+      quoteColName = 'OrigWords';
+    } else if (Object.prototype.hasOwnProperty.call(firstRecord, 'OrigQuote')) {
+      quoteColName = 'OrigQuote';
+    }
+    tsvRecords.forEach((rec) => {rec[quoteColName] = rec['GLQuote']; rec['Occurrence'] = rec['GLOccurrence']});
     const outputTsv = stringify(tsvRecords, {
       header: true,
       delimiter: '\t',
