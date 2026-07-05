@@ -103,7 +103,7 @@ export async function doAlignmentQuery(pk, quiet = true) {
             annotateTokens(docSet.repo, itemGroup.tokens, chapter, verse);
             bookLookup[`${chapter}:${verse}`] = itemGroup.tokens;
           }
-          if (!quiet) console.log(`Loaded ${itemGroup.tokens.length} tokens for ${document.book} ${chapter}:${verseScope}`);
+          // if (!quiet) console.log(`Loaded ${itemGroup.tokens.length} tokens for ${document.book} ${chapter}:${verseScope}`);
         } catch (error) {
           if (!quiet) console.error(`Error processing itemGroup with scopeLabels ${itemGroup.scopeLabels}:`, error);
           continue;
