@@ -1,6 +1,7 @@
 import { tokenize, tokenizeOrigLang } from 'string-punctuation-tokenizer';
 import { generateNextQuoteCombination } from '../utils/generateNextQuoteCombination';
 import { findPhraseOccurrenceInSentence } from '../utils/findPhraseInSentence';
+import { dropUnbalancedBraces } from '../utils/dropUnbalancedBraces.js';
 
 /**
  * Gets the target quote from the given quote based on alignment scopes.
@@ -157,7 +158,12 @@ export function getAlignedQuote({ sourceTokens, targetTokens, sourceQuote, sourc
   };
   const firstGroupOccurrence = findPhraseOccurrenceInSentence(findPhraseParams);
 
-  return { quote: targetGroups.join(' & '), occurrence: firstGroupOccurrence || firstGroupFirstTokenOccurrence };
+  // A quote covers only the aligned words, so a {supplied words} group that starts
+  // or ends outside it leaves a stray brace behind. Balance each group separately:
+  // the groups are discontiguous spans, so a brace in one cannot close in another.
+  const balancedGroups = targetGroups.map((group) => dropUnbalancedBraces(group));
+
+  return { quote: balancedGroups.join(' & '), occurrence: firstGroupOccurrence || firstGroupFirstTokenOccurrence };
 }
 
 /**

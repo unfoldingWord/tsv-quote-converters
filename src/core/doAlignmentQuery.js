@@ -129,7 +129,7 @@ export async function doAlignmentQuery(pk, quiet = true) {
         annotateTokens(docSet.repo, itemGroup.tokens, chapter, 'front');
         const frontKey = `${chapter}:front`;
         bookLookup[frontKey] = bookLookup[frontKey] ? bookLookup[frontKey].concat(itemGroup.tokens) : itemGroup.tokens;
-        if (!quiet) console.log(`Loaded ${itemGroup.tokens.length} front-matter tokens for ${document.book} ${frontKey}`);
+        // if (!quiet) console.log(`Loaded ${itemGroup.tokens.length} front-matter tokens for ${document.book} ${frontKey}`);
       }
     }
   }
