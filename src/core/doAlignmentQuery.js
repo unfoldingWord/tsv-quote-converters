@@ -1,3 +1,5 @@
+import { expandVerseRange } from '../utils/expandVerseRange.js';
+
 /**
  * Does the alignment query
  * @param {Promise<Proskomma>} pk - The Proskomma object
@@ -96,11 +98,16 @@ export async function doAlignmentQuery(pk, quiet = true) {
         }
         try {
           const verseScope = itemGroup.scopeLabels.filter((s) => s.startsWith('verses/'))[0].split('/')[1];
-          // For verse spans (e.g. "5-6"), annotate all tokens and store under each verse.
-          // The same array reference is stored under each key; callers must deduplicate
-          // when collecting tokens for a span reference.
-          for (const verse of verseScope.split('-')) {
-            annotateTokens(docSet.repo, itemGroup.tokens, chapter, verse);
+          // A verse span (e.g. "6-7") is a single block: its \w occurrence numbers and
+          // its zaln x-occurrence numbers are both counted across the whole span, so stamp
+          // the tokens once with the span itself rather than once per verse. Stamping per
+          // verse would mutate the same array repeatedly and leave every token labelled
+          // with the last verse of the span.
+          annotateTokens(docSet.repo, itemGroup.tokens, chapter, verseScope);
+          // The same array reference is stored under each verse key, including the middle
+          // verses of a span like "11-13"; callers must deduplicate when collecting tokens
+          // for a span reference.
+          for (const verse of expandVerseRange(verseScope)) {
             bookLookup[`${chapter}:${verse}`] = itemGroup.tokens;
           }
           // if (!quiet) console.log(`Loaded ${itemGroup.tokens.length} tokens for ${document.book} ${chapter}:${verseScope}`);

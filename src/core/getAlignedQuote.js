@@ -2,6 +2,23 @@ import { tokenize, tokenizeOrigLang } from 'string-punctuation-tokenizer';
 import { generateNextQuoteCombination } from '../utils/generateNextQuoteCombination';
 import { findPhraseOccurrenceInSentence } from '../utils/findPhraseInSentence';
 import { dropUnbalancedBraces } from '../utils/dropUnbalancedBraces.js';
+import { expandVerseRange } from '../utils/expandVerseRange.js';
+import { getAlignedRef } from '../utils/rejig_alignment.js';
+
+/**
+ * Whether two verse labels refer to any of the same verse.
+ * A label is either a single verse ("6") or a verse span from a bridged \v marker ("6-7").
+ * A bridged target verse must still match any single source verse it contains, and vice versa,
+ * including the middle verses of a span such as "11-13".
+ * @param {string|number} a - First verse label.
+ * @param {string|number} b - Second verse label.
+ * @returns {boolean} True if the labels share at least one verse.
+ */
+function versesOverlap(a, b) {
+  if (a === b) return true;
+  const bVerses = expandVerseRange(b);
+  return expandVerseRange(a).some((verse) => bVerses.includes(verse));
+}
 
 /**
  * Gets the target quote from the given quote based on alignment scopes.
@@ -68,7 +85,9 @@ export function getAlignedQuote({ sourceTokens, targetTokens, sourceQuote, sourc
     }
   }
 
-  const sourceScopes = sourceMatches.map((tokens) => tokens.map((token) => token.scopes.map((scope) => `${scope}:${token.chapter}:${token.verse}`) || []).flat()).flat(); // This may be an empty array if source is Greek or Hebrew
+  // This may be an empty array if source is Greek or Hebrew. Chapter/verse are kept alongside
+  // the scope rather than appended to it so a bridged verse label can be compared by overlap.
+  const sourceScopes = sourceMatches.flat().flatMap((token) => (token.scopes || []).map((scope) => ({ scope, chapter: token.chapter, verse: token.verse })));
 
   let targetGroups = [];
   const wordOccurrences = {};
@@ -95,15 +114,27 @@ export function getAlignedQuote({ sourceTokens, targetTokens, sourceQuote, sourc
 
       let targetIsMatch = false;
       if (sourceScopes.length > 0) {
-        for (const scope of sourceScopes) {
-          if (scope.includes(`/${targetToken.payload}:${occurrence}:`) && scope.endsWith(`:${targetToken.chapter}:${targetToken.verse}`)) {
+        for (const sourceScope of sourceScopes) {
+          // In a verse bridge, an alignment's x-ref names the one verse its word is from (and its
+          // occurrence is counted within that verse); without one, match anywhere in the bridge.
+          const alignedRef = getAlignedRef(sourceScope.scope);
+          if (
+            sourceScope.scope.includes(`/${targetToken.payload}:${occurrence}:`) &&
+            (alignedRef
+              ? alignedRef.chapter == targetToken.chapter && alignedRef.verse == targetToken.verse
+              : sourceScope.chapter == targetToken.chapter && versesOverlap(sourceScope.verse, targetToken.verse))
+          ) {
             targetIsMatch = true;
             break;
           }
         }
       } else {
-        for (const sourceMatch of sourceMatches.flat().filter((t) => t.chapter == targetToken.chapter && t.verse === targetToken.verse)) {
+        for (const sourceMatch of sourceMatches.flat().filter((t) => t.chapter == targetToken.chapter && versesOverlap(t.verse, targetToken.verse))) {
           for (const scope of targetToken.scopes) {
+            const alignedRef = getAlignedRef(scope);
+            if (alignedRef && (alignedRef.chapter != sourceMatch.chapter || alignedRef.verse != sourceMatch.verse)) {
+              continue; // aligned to the same word in a different verse of the bridge
+            }
             if (scope.includes(`/${sourceMatch.payload}:${sourceMatch.occurrence}`)) {
               targetIsMatch = true;
               break;
@@ -146,7 +177,7 @@ export function getAlignedQuote({ sourceTokens, targetTokens, sourceQuote, sourc
     if (sourceIsOrigLang) {
       throw new Error(`Nothing in the verse of the target Bible is aligned to ${sourceQuote}`);
     } else {
-      throw new Error(`Cannot find the aligned words in the original language verse: ${sourceScopes.join(', ')}`);
+      throw new Error(`Cannot find the aligned words in the original language verse: ${sourceScopes.map((s) => s.scope).join(', ')}`);
     }
   }
 

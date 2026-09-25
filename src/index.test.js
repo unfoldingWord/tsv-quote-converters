@@ -680,3 +680,34 @@ describe('test13-addGLQuoteCols-jhn-1-10', () => {
     TEST_TIMEOUT
   );
 });
+
+// The UST bridges these verses (\v 20-21, \v 11-13, \v 17-18). Each row must find the English
+// aligned to its own verse: a middle verse of a span must be found, and a word that also occurs
+// in another verse of the bridge (אֶת, ὁ) must not pick up that verse's English. The x-ref on
+// each alignment says which verse of the bridge its word is from.
+describe('test14-addGLQuoteCols-ust-verse-bridges', () => {
+  const header = 'Reference\tID\tTags\tOrigWords\tOccurrence\tTWLink';
+  const cases = [
+    { bookCode: 'dan', row: '9:20\tbzzf\tkeyterm\tוּ⁠מִתְפַּלֵּ֔ל\t1\trc://*/tw/dict/bible/kt/pray', glQuote: 'was praying', glOccurrence: '1' },
+    { bookCode: 'jdg', row: '2:11\tsdgj\tkeyterm\tאֶת־הָ⁠רַ֖ע\t1\trc://*/tw/dict/bible/kt/evil', glQuote: 'things that & were very evil', glOccurrence: '1' },
+    { bookCode: 'jdg', row: '2:12\tmccu\tkeyterm\tאֶת־יְהוָ֣ה\t1\trc://*/tw/dict/bible/kt/yahweh', glQuote: 'Yahweh', glOccurrence: '2' },
+    { bookCode: 'mrk', row: '6:17\tg7nr\tname\tὁ Ἡρῴδης\t1\trc://*/tw/dict/bible/names/herodantipas', glQuote: 'Herod', glOccurrence: '5' },
+    { bookCode: 'mrk', row: '6:18\ttxrc\tname\tὁ Ἰωάννης\t1\trc://*/tw/dict/bible/names/johnthebaptist', glQuote: 'John the Baptizer', glOccurrence: '1' },
+  ];
+
+  test.each(cases)(
+    '$bookCode $row',
+    async ({ bookCode, row, glQuote, glOccurrence }) => {
+      const result = await addGLQuoteCols({
+        bibleLinks: ['unfoldingWord/en_ust/master'],
+        bookCode,
+        tsvContent: `${header}\n${row}`,
+        trySeparatorsAndOccurrences: true,
+      });
+      expect(result.errors).toEqual([]);
+      const cols = result.output.trimEnd().split('\n')[1].split('\t');
+      expect(cols.slice(5, 7)).toEqual([glQuote, glOccurrence]);
+    },
+    TEST_TIMEOUT
+  );
+});
