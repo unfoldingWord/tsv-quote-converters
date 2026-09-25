@@ -1,8 +1,11 @@
 node_modules
 dist
 .history
+.DS_Store
+.vscode
 
 # Local Netlify folder
 .netlify
 
 styleguide
+fixtures/*.errors.txt
