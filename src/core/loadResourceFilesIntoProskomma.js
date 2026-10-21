@@ -49,9 +49,12 @@ function parseLink(link) {
  * @param {Object<string,string>} [bibleContents={}] - USFM content for the requested book,
  *   keyed by the exact `owner/repo/ref` string used in `bibleLinks`. A link with an entry
  *   here is imported from that content instead of being downloaded.
- * @param {string} [olBibleLink] - `owner/repo/ref` of the original-language Bible to use
- *   (hbo_uhb for Old Testament books, el-x-koine_ugnt for New Testament). When omitted,
- *   the unfoldingWord repo's current production release is looked up on DCS, as before.
+ * @param {string} [olBibleLink] - `owner/repo/ref` of the original-language Bible to use.
+ *   Only the **owner and ref** are honoured: the repo is always the canonical
+ *   original-language repo for the book's testament (`hbo_uhb` for Old Testament books,
+ *   `el-x-koine_ugnt` for New Testament books), because the alignment lookups are keyed by
+ *   that name. A link whose repo segment differs is used anyway, with a warning. When
+ *   omitted, unfoldingWord's current production release is looked up on DCS, as before.
  * @param {string} [olBibleContent] - USFM content of the original-language book. When
  *   given, the original-language Bible is not downloaded (and not looked up).
  * @returns {Promise<Proskomma>} The Proskomma object
@@ -100,7 +103,10 @@ export async function loadResourceFilesIntoProskomma({
     olOrg = parsed.org;
     olRef = parsed.ref;
     if (parsed.repo !== ol_bible && !quiet) {
-      console.warn(`olBibleLink repo ${parsed.repo} is not ${ol_bible}; importing it as ${ol_bible}`);
+      console.warn(
+        `olBibleLink "${olBibleLink}": repo "${parsed.repo}" is not the original-language repo for ${bookCode.toUpperCase()} (${ol_bible}); ` +
+          `using ${parsed.org}/${ol_bible}@${parsed.ref} instead`
+      );
     }
   }
   if (olBibleContent == null && !olRef) {
@@ -113,6 +119,13 @@ export async function loadResourceFilesIntoProskomma({
       if (!quiet) console.error(`Using master branch for ${ol_bible}`);
       olRef = 'master';
     }
+  }
+
+  // A bibleContents key that matches no link is a caller mistake (a typo, or a
+  // different ref); say so, then download that Bible as usual.
+  const unusedKeys = Object.keys(bibleContents || {}).filter((key) => !bibleLinks.includes(key));
+  if (unusedKeys.length && !quiet) {
+    console.warn(`bibleContents keys match no bibleLinks entry and are ignored: ${unusedKeys.join(', ')}`);
   }
 
   const usfmFile = `${BibleBookData[bookCode].usfm}.usfm`;

@@ -80,6 +80,50 @@ describe('loadResourceFilesIntoProskomma with supplied content', () => {
     expect(axios.request.mock.calls[0][0].url).toContain('/el-x-koine_ugnt/contents/65-3JN.usfm?ref=v0.34');
   });
 
+  test('warns and downloads when a bibleContents key matches no link', async () => {
+    serveFixtures();
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => {});
+    await loadResourceFilesIntoProskomma({
+      bibleLinks: [ULT_LINK],
+      bookCode: '3jn',
+      olBibleContent: ugntUsfm,
+      bibleContents: { en_ult: ultUsfm, 'unfoldingWord/en_ult/master': ultUsfm },
+      quiet: false,
+    });
+    expect(warn).toHaveBeenCalledWith(expect.stringContaining('match no bibleLinks entry'));
+    expect(warn).toHaveBeenCalledWith(expect.stringContaining('en_ult, unfoldingWord/en_ult/master'));
+    expect(axios.request).toHaveBeenCalledTimes(1); // the ULT was downloaded after all
+    expect(axios.request.mock.calls[0][0].url).toContain('/en_ult/contents/65-3JN.usfm?ref=v91');
+    warn.mockRestore();
+  });
+
+  test('rejects a malformed olBibleLink or bibleLinks entry', async () => {
+    refuseNetwork();
+    await expect(
+      loadResourceFilesIntoProskomma({ bibleLinks: [ULT_LINK], bookCode: '3jn', olBibleLink: 'el-x-koine_ugnt' })
+    ).rejects.toThrow('Invalid DCS link: el-x-koine_ugnt');
+    await expect(
+      loadResourceFilesIntoProskomma({ bibleLinks: ['https://git.door43.org/unfoldingWord/en_ult'], bookCode: '3jn', olBibleContent: ugntUsfm })
+    ).rejects.toThrow('Invalid DCS link');
+    expect(axios.request).not.toHaveBeenCalled();
+  });
+
+  test('honours only the owner and ref of olBibleLink, warning when its repo is not the canonical one', async () => {
+    serveFixtures();
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => {});
+    await loadResourceFilesIntoProskomma({
+      bibleLinks: [ULT_LINK],
+      bookCode: '3jn',
+      olBibleLink: 'Door43-Catalog/ugnt/v0.34',
+      bibleContents: { [ULT_LINK]: ultUsfm },
+      quiet: false,
+    });
+    expect(warn).toHaveBeenCalledWith(expect.stringContaining('is not the original-language repo for 3JN (el-x-koine_ugnt)'));
+    expect(axios.request).toHaveBeenCalledTimes(1);
+    expect(axios.request.mock.calls[0][0].url).toContain('/repos/Door43-Catalog/el-x-koine_ugnt/contents/65-3JN.usfm?ref=v0.34');
+    warn.mockRestore();
+  });
+
   test('falls back to downloading everything when no content is supplied', async () => {
     serveFixtures();
     await loadResourceFilesIntoProskomma({ bibleLinks: [ULT_LINK], bookCode: '3jn' });

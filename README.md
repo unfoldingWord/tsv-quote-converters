@@ -91,9 +91,17 @@ those files, for example a renderer or a cache, can hand them in:
   not downloaded; links without one still are.
 - `olBibleLink` — `owner/repo/ref` for the original-language Bible, so a caller that
   pinned a specific release (for example from a DCS book package) gets that one rather
-  than whatever is currently in production.
+  than whatever is currently in production. Only the **owner and ref** are honoured: the
+  repo is always the canonical original-language repo for the book's testament
+  (`hbo_uhb` for Old Testament books, `el-x-koine_ugnt` for New Testament books), since
+  the alignment lookups are keyed by that name. A link with a different repo segment is
+  still used (owner and ref), with a warning unless `quiet`.
 - `olBibleContent` — the original-language book's USFM; when given nothing is looked up
   or downloaded for it.
+
+Links must be `owner/repo/ref` strings (a URL is not accepted and throws
+`Invalid DCS link`). A `bibleContents` key that matches no entry of `bibleLinks` is
+ignored with a warning, and that Bible is downloaded as usual.
 
 Supplied content goes through the same NFC normalization and alignment preprocessing as
 downloaded content, so results are identical either way.
