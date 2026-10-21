@@ -36,7 +36,31 @@ function joinEmbeddedNewlineRows(tsvContent) {
   return result.join('\n');
 }
 
-export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, trySeparatorsAndOccurrences = false, dcsUrl = 'https://git.door43.org', quiet = true }) {
+/**
+ * Converts Gateway Language quotes in the Quote column back to original-language quotes.
+ * @param {string} bibleLink - DCS owner/repo/ref link of the Gateway Language Bible the quotes come from.
+ * @param {string} bookCode - The book code to process.
+ * @param {string} tsvContent - The TSV content.
+ * @param {boolean} [trySeparatorsAndOccurrences=false] - Whether to try different separators and occurrences.
+ * @param {string} [dcsUrl='https://git.door43.org'] - The DCS URL.
+ * @param {boolean} [quiet=true] - Whether to suppress console output.
+ * @param {Object<string,string>} [bibleContents] - USFM content of the book keyed by `bibleLink`;
+ *   when present that Bible is not downloaded.
+ * @param {string} [olBibleLink] - `owner/repo/ref` of the original-language Bible to use.
+ * @param {string} [olBibleContent] - USFM content of the original-language book; when given it is not downloaded.
+ * @returns {Promise<Object>} The result object containing output and errors.
+ */
+export function convertGLQuotes2OLQuotes({
+  bibleLink,
+  bookCode,
+  tsvContent,
+  trySeparatorsAndOccurrences = false,
+  dcsUrl = 'https://git.door43.org',
+  quiet = true,
+  bibleContents,
+  olBibleLink,
+  olBibleContent,
+}) {
   return new Promise((resolve, reject) => {
     let errors = [];
 
@@ -53,7 +77,7 @@ export function convertGLQuotes2OLQuotes({ bibleLink, bookCode, tsvContent, tryS
 
     tsvContent = joinEmbeddedNewlineRows(tsvContent);
 
-    loadResourceFilesIntoProskomma({ bibleLinks: [bibleLink], bookCode, dcsUrl, quiet })
+    loadResourceFilesIntoProskomma({ bibleLinks: [bibleLink], bookCode, dcsUrl, quiet, bibleContents, olBibleLink, olBibleContent })
       .then((pk) => doAlignmentQuery(pk, quiet))
       .then((tokenLookup) => {
         // Query Proskomma which now contains the books

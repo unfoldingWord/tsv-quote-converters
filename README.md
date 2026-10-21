@@ -39,6 +39,11 @@ const params = {
   trySeparatorsAndOccurrences: true,           // Try different quote separators
   quiet: false,                                // Show console output
   usePreviousGLQuotes: true,                   // Skip if GLQuote/GLOccurrence already exist
+
+  // Optional: supply USFM you already hold, so it is not downloaded again
+  bibleContents: { 'unfoldingWord/en_ult/master': ultUsfmString }, // keyed by the bibleLinks entry
+  olBibleLink: 'unfoldingWord/el-x-koine_ugnt/v0.34',             // pin the original-language ref
+  olBibleContent: ugntUsfmString,                                 // or pass its USFM directly
 };
 
 const result = await addGLQuoteCols(params);
@@ -62,12 +67,44 @@ const params = {
   // Optional parameters
   trySeparatorsAndOccurrences: true,           // Try different quote separators
   quiet: false,                                // Show console output
+
+  // Optional: supply USFM you already hold, so it is not downloaded again
+  bibleContents: { 'unfoldingWord/en_ult/master': ultUsfmString },
+  olBibleLink: 'unfoldingWord/el-x-koine_ugnt/v0.34',
+  olBibleContent: ugntUsfmString,
 };
 
 const result = await convertGLQuotes2OLQuotes(params);
 console.log(result.output);  // Modified TSV with original language quotes
 console.log(result.errors);  // Array of any errors encountered
 ```
+
+### Supplying Bible content instead of downloading
+
+By default both functions download the book's USFM for every Bible in `bibleLinks`, plus
+the original-language Bible (`hbo_uhb` for Old Testament books, `el-x-koine_ugnt` for
+New Testament books) at its current production release on DCS. A caller that already has
+those files, for example a renderer or a cache, can hand them in:
+
+- `bibleContents` — object keyed by the exact `owner/repo/ref` strings in `bibleLinks`
+  (or `bibleLink`), each value the USFM of the requested book. Links with an entry are
+  not downloaded; links without one still are.
+- `olBibleLink` — `owner/repo/ref` for the original-language Bible, so a caller that
+  pinned a specific release (for example from a DCS book package) gets that one rather
+  than whatever is currently in production. Only the **owner and ref** are honoured: the
+  repo is always the canonical original-language repo for the book's testament
+  (`hbo_uhb` for Old Testament books, `el-x-koine_ugnt` for New Testament books), since
+  the alignment lookups are keyed by that name. A link with a different repo segment is
+  still used (owner and ref), with a warning unless `quiet`.
+- `olBibleContent` — the original-language book's USFM; when given nothing is looked up
+  or downloaded for it.
+
+Links must be `owner/repo/ref` strings (a URL is not accepted and throws
+`Invalid DCS link`). A `bibleContents` key that matches no entry of `bibleLinks` is
+ignored with a warning, and that Bible is downloaded as usual.
+
+Supplied content goes through the same NFC normalization and alignment preprocessing as
+downloaded content, so results are identical either way.
 
 ## Input TSV Format
 
