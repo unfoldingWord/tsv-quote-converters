@@ -14,9 +14,26 @@ import { parseBibleReference } from '../utils/parseBibleReference';
  * @param {boolean} [trySeparatorsAndOccurrences=false] - Whether to try different separators and occurrences.
  * @param {string} [dcsUrl='https://git.door43.org'] - The DCS URL.
  * @param {boolean} [quiet=true] - Whether to suppress console output.
+ * @param {Object<string,string>} [bibleContents] - USFM content of the book for any of the
+ *   `bibleLinks` (keyed by the same `owner/repo/ref` string); those Bibles are not downloaded.
+ * @param {string} [olBibleLink] - `owner/repo/ref` of the original-language Bible to use
+ *   instead of the current production release of unfoldingWord's hbo_uhb / el-x-koine_ugnt.
+ * @param {string} [olBibleContent] - USFM content of the original-language book; when given
+ *   it is not downloaded.
  * @returns {Promise<Object>} The result object containing output and errors.
  */
-export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparatorsAndOccurrences = false, dcsUrl = 'https://git.door43.org', usePreviousGLQuotes = false, quiet = true }) {
+export function addGLQuoteCols({
+  bibleLinks,
+  bookCode,
+  tsvContent,
+  trySeparatorsAndOccurrences = false,
+  dcsUrl = 'https://git.door43.org',
+  usePreviousGLQuotes = false,
+  quiet = true,
+  bibleContents,
+  olBibleLink,
+  olBibleContent,
+}) {
   return new Promise((resolve, reject) => {
     let errors = [];
 
@@ -201,7 +218,7 @@ export function addGLQuoteCols({ bibleLinks, bookCode, tsvContent, trySeparators
     // Only load resources if needed
     if (needsResourceLoading) {
       if (!quiet) console.log('Loading resources for quote alignment...');
-      loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcsUrl, quiet })
+      loadResourceFilesIntoProskomma({ bibleLinks, bookCode, dcsUrl, quiet, bibleContents, olBibleLink, olBibleContent })
         .then((pk) => doAlignmentQuery(pk, quiet))
         .then(tokenLookup => {
           processRecords(tokenLookup);
